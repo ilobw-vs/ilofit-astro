@@ -1,0 +1,112 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Button from '../../components/ui/Button.astro';
+
+const included = ['Henkilökohtainen alkukartoitus ja tavoitteiden asettaminen','Räätälöity treeniohjelma tavoitteidesi mukaan','Henkilökohtainen ohjaus jokaisessa harjoituksessa','Ravinto-ohjaus ja elämäntapamuutoksen tuki','Edistymisen seuranta ja ohjelman päivitys','Tavoitettavissa viestien välityksellä treenien välillä'];
+const goals = [{title:'Painonpudotus',desc:'Tehokas ja kestävä painonpudotus oikean harjoittelun ja ravinto-ohjauksen avulla. Ei pikadieettejä — pysyviä elämäntapamuutoksia.'},{title:'Kiinteytyminen',desc:'Kiinteä ja tukeva keho kehon koostumusta parantamalla. Yhdistetään sopiva lihastyö ja sopiva cardio.'},{title:'Lihasmassan kasvatus',desc:'Progressiivinen harjoittelu, joka rakentaa lihasta tehokkaasti ja turvallisesti.'},{title:'Elämäntapamuutos',desc:'Liikunnasta pysyvä osa arkeasi. Löydät liikunnan ilon ja rakennat terveet, kestävät tottumukset.'}];
+const steps = [{n:'01',title:'Ilmainen alkukartoitus',desc:'Käymme läpi tavoitteesi, treenisi historian ja nykyisen tilanteesi. Sitoumukseton ja maksuton.'},{n:'02',title:'Henkilökohtainen ohjelma',desc:'Suunnittelen sinulle räätälöidyn harjoitusohjelman, joka vastaa juuri sinun tavoitteitasi ja aikatauluasi.'},{n:'03',title:'Valmennus & tulosten seuranta',desc:'Treenikerroilla ohjaan sinut liikkeiden läpi, seuraan edistymistäsi ja päivitän ohjelmaa tarpeen mukaan.'}];
+const faqs = [{q:'Sopiiko yksilövalmennus aloittelijalle?',a:'Kyllä! Yksilövalmennus on erityisen sopiva aloittelijoille, koska saat henkilökohtaisen ohjauksen ja turvallisen startin liikuntaan.'},{q:'Kuinka usein pitäisi treenata?',a:'Se riippuu tavoitteistasi ja aikataulustasi. Yleensä 2–3 kertaa viikossa on hyvä aloituspiste.'},{q:'Mitä tarvitsen mukaan ensimmäiselle kerralle?',a:'Liikuntavaatteet, juomapullo ja avoimen mielen. Kaikki muu järjestyy!'},{q:'Missä treenit tapahtuvat?',a:'Treenipaikkoja ovat Turku-alueen kuntosalit ja ulkotiloissa Urheilupuisto. Voidaan sopia yhteisesti sopivasta paikasta.'}];
+const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+---
+
+<PageLayout title="Yksilövalmennus Turku | IloFit — Personal Trainer" description="Henkilökohtainen yksilövalmennus Turussa. Räätälöity treeniohjelma ja jatkuva tuki. Varaa ilmainen alkukartoitus.">
+
+  <section class="bg-off-white pt-36 pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center gap-2 text-xs text-charcoal-mid mb-6">
+        <a href="/palvelut" class="hover:text-pink transition-colors">Palvelut</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="text-charcoal">Yksilövalmennus</span>
+      </nav>
+      <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">Palvelut</p>
+      <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">Yksilövalmennus</h1>
+      <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-10">Henkilökohtainen valmennus, joka on suunniteltu juuri sinulle — tavoitteistasi, kuntotasostasi ja aikataulustasi riippumatta.</p>
+      <Button href="/yhteystiedot" size="lg">Varaa ilmainen konsultaatio</Button>
+    </div>
+  </section>
+
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <SectionHeader eyebrow="Sisältö" heading="Mitä sisältyy?" class="mb-8" />
+          <ul class="space-y-4">
+            {included.map((item) => (
+              <li class="flex items-start gap-3"><Fragment set:html={checkSvg} /><span class="text-charcoal-mid">{item}</span></li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-soft-border bg-off-white p-8">
+          <h3 class="font-display text-2xl font-semibold text-charcoal mb-6">Hinnat</h3>
+          <p class="text-charcoal-mid text-sm mb-6">[PLACEHOLDER: Ilona täyttää pakettihinnat]</p>
+          <div class="space-y-4">
+            {['Yksittäinen tunti','5 kerran paketti','10 kerran paketti'].map((pkg) => (
+              <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
+                <span class="font-medium text-charcoal">{pkg}</span>
+                <span class="text-pink font-semibold">[PLACEHOLDER: hinta]</span>
+              </div>
+            ))}
+          </div>
+          <div class="mt-8"><Button href="/yhteystiedot" class="w-full justify-center">Kysy lisää tai varaa aika</Button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16"><SectionHeader eyebrow="Kenelle sopii" heading="Mihin tavoitteisiin?" centered /></div>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {goals.map((goal) => (
+          <div class="card-accent rounded-xl border border-soft-border bg-white p-6 shadow-warm">
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-3">{goal.title}</h3>
+            <p class="text-sm text-charcoal-mid leading-relaxed">{goal.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16"><SectionHeader eyebrow="Prosessi" heading="Miten se toimii?" centered /></div>
+      <div class="space-y-8">
+        {steps.map((step) => (
+          <div class="flex gap-6 items-start">
+            <div class="flex-shrink-0 w-14 h-14 rounded-full bg-pink-light flex items-center justify-center">
+              <span class="font-display text-lg font-semibold text-pink">{step.n}</span>
+            </div>
+            <div>
+              <h3 class="font-display text-2xl font-semibold text-charcoal mb-2">{step.title}</h3>
+              <p class="text-charcoal-mid leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12"><SectionHeader eyebrow="Kysymyksiä" heading="Usein kysyttyä" centered /></div>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="rounded-xl border border-soft-border bg-white p-6 shadow-warm">
+            <h3 class="font-semibold text-charcoal mb-2">{faq.q}</h3>
+            <p class="text-sm text-charcoal-mid leading-relaxed">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeader eyebrow="Aloitetaan" heading="Valmis aloittamaan?" centered class="mb-6" />
+      <p class="text-charcoal-mid mb-8">Ilmainen alkukartoitus on maksuton ja sitoumukseton. Otetaan ensimmäinen askel yhdessä.</p>
+      <Button href="/yhteystiedot" size="lg">Varaa ilmainen konsultaatio</Button>
+    </div>
+  </section>
+
+</PageLayout>

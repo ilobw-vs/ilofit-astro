@@ -1,0 +1,68 @@
+---
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden">
+  <!-- Background image -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/images/718A5050.avif"
+      alt="Ilona Salomäki — Personal Trainer Turku"
+      class="w-full h-full object-cover object-center"
+    />
+    <!-- Gradient overlays -->
+    <div class="absolute inset-0 bg-charcoal/50"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/40 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/5 to-transparent"></div>
+  </div>
+
+  <!-- Pink wash accent -->
+  <div class="absolute inset-0 z-0 opacity-10 bg-gradient-to-br from-pink via-transparent to-transparent"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-32 pt-40">
+    <div class="max-w-2xl hero-content">
+      <p class="hero-eyebrow mb-4 text-xs font-medium uppercase tracking-widest text-pink opacity-0 translate-y-5">
+        Personal Trainer Turku
+      </p>
+
+      <h1 class="hero-heading font-display text-6xl font-semibold text-white sm:text-7xl lg:text-8xl leading-[1.05] mb-6 opacity-0 translate-y-8">
+        Voimaa. Iloa. Tuloksia.
+      </h1>
+
+      <p class="hero-sub text-lg text-white/80 leading-relaxed mb-10 max-w-lg opacity-0 translate-y-5">
+        Henkilökohtainen valmennus, joka sopii sinulle — tavoitteistasi riippumatta.
+      </p>
+
+      <div class="hero-cta flex flex-wrap gap-4 opacity-0 translate-y-5">
+        <a
+          href="/yhteystiedot"
+          class="rounded-lg bg-pink px-8 py-4 text-base font-medium text-white transition-all duration-200 hover:bg-pink-dark hover:scale-[1.02] active:scale-100"
+        >
+          Varaa ilmainen konsultaatio
+        </a>
+        <a
+          href="/palvelut"
+          class="rounded-lg border border-[1.5px] border-white/60 px-8 py-4 text-base font-medium text-white transition-all duration-200 hover:bg-white/10"
+        >
+          Tutustu palveluihin
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 z-10 opacity-0">
+    <div class="h-10 w-px bg-white/30 animate-pulse"></div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeInUp 0.6s ease forwards 0.1s; }
+  .hero-heading  { animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.2s; }
+  .hero-sub      { animation: fadeInUp 0.7s ease forwards 0.4s; }
+  .hero-cta      { animation: fadeInUp 0.6s ease forwards 0.55s; }
+  .scroll-indicator { animation: fadeInUp 0.8s ease forwards 1.2s; }
+</style>

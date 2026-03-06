@@ -1,0 +1,48 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import Button from '../components/ui/Button.astro';
+
+const faqs = [
+  { question: 'Mitä personal training maksaa Turussa?', answer: '[PLACEHOLDER: Ilona täyttää tarkat hinnat] Hinnat vaihtelevat palvelutyypistä ja pakettivalinnasta riippuen. Ota yhteyttä tai kysy tarjous — räätälöimme sinulle sopivan paketin.' },
+  { question: 'Missä treenit tapahtuvat?', answer: 'Treenipaikkoja ovat Turku-alueen kuntosalit, Urheilupuisto (Paavo Nurmi -stadion) sekä Hirvensalon alue. Sijainti sovitaan yhteisesti. Yritysvalmennukseen tulen yrityksenne tiloihin.' },
+  { question: 'Sopiiko personal training aloittelijalle?', answer: 'Ehdottomasti! Personal training on erityisen hyödyllinen aloittelijoille. Saat turvallisen ja henkilökohtaisen startin liikuntaan — ei tarvitse tietää etukäteen mitään.' },
+  { question: 'Miten varaan ajan?', answer: 'Voit varata ajan suoraan Acuity Scheduling -palvelun kautta, lähettämällä sähköpostia osoitteeseen ilona@ilofit.com tai soittamalla numeroon +358 400 315 775. Ensimmäinen alkukartoitus on maksuton.' },
+  { question: 'Kuinka kauan valmennus kestää?', answer: 'Yksittäinen harjoituskerta kestää yleensä 60 minuuttia. Valmennusjakson pituus sovitaan tavoitteidesi mukaan — tyypillisesti 1–6 kuukautta.' },
+  { question: 'Voiko treenata ulkona myös talvella?', answer: 'Kyllä! Ulkotreeni on mahdollista myös talvisin säällä kuin säällä — tarvitaan vain sopivat vaatteet. Talvitreeni on usein asiakkaiden suosikki sen raikkauden vuoksi.' },
+  { question: 'Tarjoatko verkkoval­mennusta?', answer: '[PLACEHOLDER: Ilona täyttää, tarjoaako hän online-valmennusta vai ei] Tällä hetkellä keskitymme lähivalmennukseen Turun alueella.' },
+  { question: 'Miten yritysvalmennus tilataan?', answer: 'Ota yhteyttä lomakkeen, sähköpostin tai puhelimen kautta. Kerro yrityksestäsi ja toiveistasi — lähetän räätälöidyn tarjouksen 24 tunnin kuluessa.' },
+  { question: 'Onko alkukartoitus maksuton?', answer: 'Kyllä! Alkukartoitus on aina maksuton ja sitoumukseton. Se on 30–45 minuutin tapaaminen, jossa käymme läpi tavoitteesi ja katsomme, miten voimme auttaa.' },
+];
+---
+
+<PageLayout title="Usein kysytyt kysymykset | IloFit — Personal Trainer Turku" description="Vastauksia yleisimpiin kysymyksiin IloFitin personal trainer -palveluista Turussa.">
+
+  <!-- Hero -->
+  <section class="bg-off-white pt-36 pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">IloFit</p>
+      <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">Usein kysytyt<br />kysymykset</h1>
+      <p class="text-xl text-charcoal-mid max-w-xl">Vastauksia yleisimpiin kysymyksiin. Jos et löydä vastausta, ota yhteyttä niin selvitetään asia yhdessä.</p>
+    </div>
+  </section>
+
+  <!-- FAQ list -->
+  <section class="bg-white py-24 pb-32">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="rounded-xl border border-soft-border bg-off-white p-6 shadow-warm">
+            <h2 class="font-semibold text-charcoal mb-3 text-base">{faq.question}</h2>
+            <p class="text-sm text-charcoal-mid leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-16 text-center">
+        <p class="text-charcoal-mid mb-6">Ei löytynyt vastausta? Ota suoraan yhteyttä.</p>
+        <Button href="/yhteystiedot">Ota yhteyttä</Button>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

@@ -1,0 +1,133 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+---
+
+<PageLayout title="Yhteystiedot | IloFit — Personal Trainer Turku" description="Ota yhteyttä personal trainer Ilona Salomäkeen. Varaa ilmainen alkukartoitus tai kysy lisää IloFitin palveluista Turussa.">
+
+  <!-- Hero -->
+  <section class="bg-off-white pt-36 pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">IloFit</p>
+      <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">Otetaan yhteyttä</h1>
+      <p class="text-xl text-charcoal-mid max-w-xl">Vastaan yhteydenottoihin yleensä 24 tunnin kuluessa. Voit myös varata ajan suoraan Acuity-palvelun kautta.</p>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="bg-white py-16 pb-32">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
+
+        <!-- Contact form -->
+        <div>
+          <SectionHeader eyebrow="Yhteydenotto" heading="Lähetä viesti" class="mb-8" />
+          <form id="contact-form" class="space-y-5">
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1.5">Nimi</label>
+              <input type="text" name="name" required class="w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal placeholder-charcoal-mid/50 focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors" placeholder="Sinun nimesi" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1.5">Sähköposti</label>
+              <input type="email" name="email" required class="w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal placeholder-charcoal-mid/50 focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors" placeholder="sinun@email.fi" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1.5">Puhelinnumero</label>
+              <input type="tel" name="phone" class="w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal placeholder-charcoal-mid/50 focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors" placeholder="+358 40 000 0000" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1.5">Palvelu</label>
+              <select name="service" class="w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors">
+                <option value="">Valitse palvelu</option>
+                <option value="yksilovalmennus">Yksilövalmennus</option>
+                <option value="pienryhmavalennus">Pienryhmävalmennus</option>
+                <option value="ulkotreenit">Ulkotreenit</option>
+                <option value="yrityspalvelut">Yrityspalvelut</option>
+                <option value="muu">Muu</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-1.5">Viesti</label>
+              <textarea name="message" rows="5" required class="w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal placeholder-charcoal-mid/50 focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors resize-none" placeholder="Kerro tavoitteistasi tai kysy lisää..."></textarea>
+            </div>
+            <button type="submit" id="submit-btn" class="w-full rounded-lg bg-pink px-8 py-4 text-base font-medium text-white transition-all duration-200 hover:bg-pink-dark hover:scale-[1.01] active:scale-100">
+              Lähetä viesti
+            </button>
+            <p id="form-success" class="hidden text-sm text-center text-green-600 font-medium">Kiitos! Otan sinuun yhteyttä pian.</p>
+            <p id="form-error" class="hidden text-sm text-center text-red-500">Jokin meni pieleen. Yritä uudelleen tai ota yhteyttä suoraan.</p>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:pl-8">
+          <!-- Acuity -->
+          <div class="rounded-2xl bg-pink-light border border-pink/20 p-8 mb-8">
+            <h2 class="font-display text-2xl font-semibold text-charcoal mb-3">Varaa aika suoraan</h2>
+            <p class="text-charcoal-mid text-sm mb-6">Helpoiten varaat ajan Acuity Scheduling -palvelun kautta. Näet vapaana olevat ajat suoraan kalenterista.</p>
+            <a href="https://acuityscheduling.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-lg bg-pink px-6 py-3 text-sm font-medium text-white hover:bg-pink-dark transition-colors w-full">
+              Varaa aika Acuitystä →
+            </a>
+            <p class="text-xs text-charcoal-mid mt-3 text-center">[PLACEHOLDER: Päivitä Acuity-linkki oikeaksi]</p>
+          </div>
+
+          <!-- Direct contact -->
+          <div class="space-y-6 mb-8">
+            <h2 class="font-display text-2xl font-semibold text-charcoal">Suora yhteys</h2>
+            <a href="tel:+358400315775" class="flex items-center gap-4 group">
+              <div class="w-11 h-11 rounded-lg bg-pink-light flex items-center justify-center flex-shrink-0 group-hover:bg-pink transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C97A8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-white transition-colors"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.37 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-charcoal-mid mb-0.5">Puhelin</p>
+                <p class="font-medium text-charcoal group-hover:text-pink transition-colors">+358 400 315 775</p>
+              </div>
+            </a>
+            <a href="mailto:ilona@ilofit.com" class="flex items-center gap-4 group">
+              <div class="w-11 h-11 rounded-lg bg-pink-light flex items-center justify-center flex-shrink-0 group-hover:bg-pink transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C97A8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-white transition-colors"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-charcoal-mid mb-0.5">Sähköposti</p>
+                <p class="font-medium text-charcoal group-hover:text-pink transition-colors">ilona@ilofit.com</p>
+              </div>
+            </a>
+            <div class="flex items-center gap-4">
+              <div class="w-11 h-11 rounded-lg bg-pink-light flex items-center justify-center flex-shrink-0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C97A8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-charcoal-mid mb-0.5">Sijainti</p>
+                <p class="font-medium text-charcoal">Turku & lähialueet</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-11 h-11 rounded-lg bg-pink-light flex items-center justify-center flex-shrink-0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C97A8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-charcoal-mid mb-0.5">Vastausaika</p>
+                <p class="font-medium text-charcoal">Yleensä 24h kuluessa</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Seuraa somessa</h3>
+            <div class="flex gap-3">
+              <a href="https://www.instagram.com/ilofit_ilona" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm font-medium text-charcoal hover:border-pink hover:text-pink transition-colors">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                Instagram
+              </a>
+              <a href="https://www.facebook.com/IloFit.Ilona" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm font-medium text-charcoal hover:border-pink hover:text-pink transition-colors">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

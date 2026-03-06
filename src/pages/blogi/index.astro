@@ -1,0 +1,56 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const categories = ['Kaikki','Treenivinkit','Ravinto','Elämäntapa','Motivaatio','Yritysliikunta'];
+const posts = [
+  {slug:'miten-aloittaa-kuntosaliharjoittelu-aloittelijana',title:'Miten aloittaa kuntosaliharjoittelu aloittelijana Turussa',excerpt:'Kuntosali voi tuntua pelottavalta paikalta aloittelijalle. Tässä artikkelissa käymme läpi, miten pääset alkuun turvallisesti ja tehokkaasti.',category:'Treenivinkit',readTime:5,date:'2024-11-15'},
+  {slug:'toiminnallinen-harjoittelu',title:'Toiminnallinen harjoittelu — mitä se on ja miksi se toimii',excerpt:'Toiminnallinen harjoittelu parantaa kehon kokonaisvaltaista liikettä ja soveltuu arjen liikkeisiin.',category:'Treenivinkit',readTime:6,date:'2024-11-05'},
+  {slug:'painonpudotus-vs-kiinteytyminen',title:'Painonpudotus vs kiinteytyminen — mitä eroa on?',excerpt:'Monet sekoittavat nämä kaksi tavoitetta. Selitämme eron ja kerromme, miten saavuttaa kumpikin tavoite tehokkaasti.',category:'Treenivinkit',readTime:6,date:'2024-11-01'},
+  {slug:'5-syyta-tilata-personal-trainer-yrityksellesi',title:'5 syytä tilata personal trainer yrityksellesi',excerpt:'Henkilöstön hyvinvointi on yrityksen voimavara. Lue, miksi yritystreeni kannattaa.',category:'Yritysliikunta',readTime:4,date:'2024-10-25'},
+  {slug:'ulkotreeni-vs-kuntosali',title:'Ulkotreeni vs kuntosali — kumpi sopii sinulle?',excerpt:'Molemmat treeniympäristöt tarjoavat omat etunsa. Lue, mikä sopii sinulle parhaiten.',category:'Elämäntapa',readTime:4,date:'2024-10-20'},
+];
+const formatDate = (d: string) => new Date(d).toLocaleDateString('fi-FI',{day:'numeric',month:'long',year:'numeric'});
+---
+
+<PageLayout title="Blogi | IloFit — Personal Trainer Turku" description="Treenivinkkejä, ravinto-ohjeita ja motivaatiota IloFitin blogista.">
+
+  <section class="bg-off-white pt-36 pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">IloFit</p>
+      <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">Blogi</h1>
+      <p class="text-xl text-charcoal-mid max-w-xl">Treenivinkkejä, ravinto-ohjeita ja inspiraatiota terveelliseen elämäntyyliin.</p>
+    </div>
+  </section>
+
+  <section class="bg-white border-b border-soft-border">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex gap-2 py-4 overflow-x-auto">
+        {categories.map((cat, i) => (
+          <button class={`flex-shrink-0 rounded-full border px-4 py-1.5 text-sm transition-colors ${i === 0 ? 'border-pink bg-pink-light text-charcoal' : 'border-soft-border text-charcoal-mid hover:border-pink hover:text-charcoal'}`}>
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 pb-32">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <a href={`/blogi/${post.slug}`} class="group rounded-xl border border-soft-border bg-off-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1">
+            <span class="inline-block rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-pink-dark mb-4">{post.category}</span>
+            <h2 class="font-display text-xl font-semibold text-charcoal mb-3 group-hover:text-pink transition-colors leading-snug">{post.title}</h2>
+            <p class="text-sm text-charcoal-mid leading-relaxed mb-5">{post.excerpt}</p>
+            <div class="flex items-center gap-3 text-xs text-charcoal-mid">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>{post.readTime} min lukuaika</span>
+              <span class="ml-auto">{formatDate(post.date)}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

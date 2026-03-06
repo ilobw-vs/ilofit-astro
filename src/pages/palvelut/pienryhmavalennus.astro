@@ -1,0 +1,74 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Button from '../../components/ui/Button.astro';
+
+const benefits = ['Max. 10 henkilöä — yksilöllinen huomio taattu','Ryhmän energia ja motivaatio nostaa suoritusta','Edullisempi kuin yksilövalmennus','Hyvä tapa treenata kaverin kanssa','Monipuolinen ja vaihtelevainen treeni','Sopii kaikille kuntotasoille'];
+const suitableFor = [{title:'Kaveriryhmät',desc:'Treenaa parhaan kaverin kanssa ja pidä motivaatio korkealla.'},{title:'Äidit',desc:'Löydä aikaa itsellesi ja tapaa muita samassa elämäntilanteessa olevia.'},{title:'Kollegat',desc:'Tiimi, joka treenaa yhdessä, pysyy yhdessä. Hyvä vaihtoehto tyky-aktiviteeteille.'},{title:'Aloittelijat',desc:'Ryhmässä on matala kynnys aloittaa — ei pelottele kuten iso kuntosali.'}];
+const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+---
+
+<PageLayout title="Pienryhmävalmennus Turku | IloFit — Personal Trainer" description="Pienryhmäliikuntaa Turussa enintään 10 henkilölle. Energinen ryhmätreeni ammattivalmentajan ohjauksessa.">
+
+  <section class="bg-off-white pt-36 pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center gap-2 text-xs text-charcoal-mid mb-6">
+        <a href="/palvelut" class="hover:text-pink transition-colors">Palvelut</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="text-charcoal">Pienryhmävalmennus</span>
+      </nav>
+      <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">Palvelut</p>
+      <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">Pienryhmävalmennus</h1>
+      <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-10">Energistä ryhmätreeniä pienessä, tiiviissä porukassa — enintään 10 henkilöä. Saat ryhmän motivaation ja silti yksilöllisen huomion.</p>
+      <Button href="/yhteystiedot" size="lg">Varaa paikka</Button>
+    </div>
+  </section>
+
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div>
+          <SectionHeader eyebrow="Edut" heading="Miksi pienryhmä?" class="mb-8" />
+          <ul class="space-y-4">
+            {benefits.map((b) => (<li class="flex items-start gap-3"><Fragment set:html={checkSvg} /><span class="text-charcoal-mid">{b}</span></li>))}
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-pink-light p-8">
+          <h3 class="font-display text-2xl font-semibold text-charcoal mb-4">Hinnat</h3>
+          <p class="text-charcoal-mid text-sm mb-6">[PLACEHOLDER: Ilona täyttää ryhmävalmennuksen hinnat ja aikataulun]</p>
+          <div class="space-y-3">
+            {['Yksittäinen treeni','Kuukausikortti','10 kerran kortti'].map((pkg) => (
+              <div class="flex items-center justify-between rounded-xl bg-white p-4">
+                <span class="font-medium text-charcoal text-sm">{pkg}</span>
+                <span class="text-pink font-semibold text-sm">[PLACEHOLDER]</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16"><SectionHeader eyebrow="Kenelle sopii" heading="Kenelle pienryhmävalmennus sopii?" centered /></div>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {suitableFor.map((item) => (
+          <div class="card-accent rounded-xl border border-soft-border bg-white p-6 shadow-warm">
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-2">{item.title}</h3>
+            <p class="text-sm text-charcoal-mid leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeader eyebrow="Aloitetaan" heading="Haluatko mukaan ryhmään?" centered class="mb-6" />
+      <p class="text-charcoal-mid mb-8">Kysy vapaista paikoista tai perusta oma ryhmä kaveriporukan kanssa.</p>
+      <Button href="/yhteystiedot" size="lg">Kysy vapaista paikoista</Button>
+    </div>
+  </section>
+
+</PageLayout>

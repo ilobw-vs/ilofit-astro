@@ -1,0 +1,104 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import Button from '../components/ui/Button.astro';
+
+const certifications = [
+  '[PLACEHOLDER: Sertifikaatti 1]',
+  '[PLACEHOLDER: Sertifikaatti 2]',
+  '[PLACEHOLDER: Sertifikaatti 3]',
+];
+const interests = ['Padel', 'Kuntosali', 'Juoksu', 'Jooga', 'Ulkoilu'];
+const values = [
+  { title: 'Yksilöllisyys', desc: 'Jokainen asiakas on ainutlaatuinen. Ei ole olemassa yhtä ainoaa oikeaa tapaa treenata.' },
+  { title: 'Kannustus', desc: 'Uskon, että jokainen voi löytää liikunnan ilon. Roolini on auttaa sinua löytämään se.' },
+  { title: 'Kestävyys', desc: 'Nopeat tulokset ovat hienoja, mutta pysyvät muutokset ovat tavoite. Rakennetaan kestäviä tottumuksia.' },
+];
+---
+
+<PageLayout title="Tietoa Ilonasta | IloFit — Personal Trainer Turku" description="Tutustu personal trainer Ilona Salomäkeen. Sertifioitu personal trainer Turusta — intohimona auttaa sinua löytämään liikkumisen ilo.">
+
+  <!-- Hero -->
+  <section class="bg-off-white pt-36 pb-0">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 items-end">
+        <div class="pb-20">
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">Tietoa minusta</p>
+          <h1 class="font-display text-6xl font-semibold text-charcoal sm:text-7xl mb-4">Ilona<br />Salomäki</h1>
+          <p class="text-xl text-charcoal-mid mb-6">Personal Trainer, IloFit Turku</p>
+          <div class="h-0.5 w-16 bg-pink"></div>
+        </div>
+        <div class="relative h-80 lg:h-[500px]">
+          <img src="/images/94e4f8_bb63741d6fdd4cd191a998010720a24e~mv2.avif" alt="Ilona Salomäki — Personal Trainer Turku" class="w-full h-full object-cover object-top rounded-t-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <SectionHeader eyebrow="Tarinani" heading="Miksi IloFit?" class="mb-8" />
+      <div class="space-y-4 text-charcoal-mid leading-relaxed text-lg">
+        <p>[PLACEHOLDER: Ilona kirjoittaa henkilökohtaisen tarinansa — miksi hänestä tuli personal trainer, mikä on hänen taustansa ja mikä motivoi häntä.]</p>
+        <p>[PLACEHOLDER: Ilona kertoo IloFitin synnystä ja siitä, mitä IloFit merkitsee hänelle.]</p>
+        <p>[PLACEHOLDER: Ilona kertoo valmennusfilosofiastaan ja siitä, mikä erottaa hänet muista valmentajista.]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications & Interests -->
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div>
+          <SectionHeader eyebrow="Koulutus" heading="Sertifikaatit & koulutus" class="mb-8" />
+          <ul class="space-y-4">
+            {certifications.map((cert) => (
+              <li class="flex items-start gap-3">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span class="text-charcoal-mid">{cert}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <SectionHeader eyebrow="Vapaa-aika" heading="Vapaa-ajan intohimot" class="mb-8" />
+          <div class="flex flex-wrap gap-3">
+            {interests.map((interest) => (
+              <span class="rounded-full border border-soft-border bg-white px-5 py-2.5 text-sm font-medium text-charcoal-mid">{interest}</span>
+            ))}
+          </div>
+          <p class="mt-6 text-charcoal-mid leading-relaxed">[PLACEHOLDER: Ilona kertoo lyhyesti vapaa-ajan harrastuksistaan.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <SectionHeader eyebrow="Filosofia" heading="Valmennusfilosofiani" centered />
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+        {values.map((v) => (
+          <div class="card-accent rounded-xl border border-soft-border bg-off-white p-6 shadow-warm text-center">
+            <h3 class="font-display text-2xl font-semibold text-charcoal mb-3">{v.title}</h3>
+            <p class="text-sm text-charcoal-mid leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-pink-light py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeader eyebrow="Aloitetaan" heading="Otetaan yhteyttä?" centered class="mb-6" />
+      <p class="text-charcoal-mid mb-8">Ilmainen alkukartoitus auttaa meitä tutustumaan toisiimme ja löytämään juuri sinulle sopivan tavan treenata.</p>
+      <Button href="/yhteystiedot" size="lg">Varaa ilmainen konsultaatio</Button>
+    </div>
+  </section>
+
+</PageLayout>

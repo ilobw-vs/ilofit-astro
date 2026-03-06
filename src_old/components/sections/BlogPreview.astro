@@ -1,0 +1,78 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+
+const posts = [
+  {
+    slug: 'miten-aloittaa-kuntosaliharjoittelu-aloittelijana',
+    title: 'Miten aloittaa kuntosaliharjoittelu aloittelijana Turussa',
+    excerpt: 'Kuntosali voi tuntua pelottavalta paikkaa aloittelijalle. Tässä artikkelissa käymme läpi, miten pääset alkuun turvallisesti ja tehokkaasti.',
+    category: 'Treenivinkit',
+    readTime: 5,
+    date: '2024-11-15',
+  },
+  {
+    slug: 'painonpudotus-vs-kiinteytyminen',
+    title: 'Painonpudotus vs kiinteytyminen — mitä eroa on?',
+    excerpt: 'Monet sekoittavat nämä kaksi tavoitetta. Selitämme eron ja kerromme, miten saavuttaa kumpikin tavoite tehokkaasti.',
+    category: 'Treenivinkit',
+    readTime: 6,
+    date: '2024-11-01',
+  },
+  {
+    slug: 'ulkotreeni-vs-kuntosali',
+    title: 'Ulkotreeni vs kuntosali — kumpi sopii sinulle?',
+    excerpt: 'Molemmat treeniympäristöt tarjoavat omat etunsa. Lue, mikä sopii sinulle parhaiten ja miten saat kummastakin kaiken irti.',
+    category: 'Elämäntapa',
+    readTime: 4,
+    date: '2024-10-20',
+  },
+];
+
+const formatDate = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString('fi-FI', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+---
+
+<section class="bg-off-white py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <!-- Header row -->
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-16 gap-6">
+      <SectionHeader eyebrow="Blogi" heading="Vinkkejä & inspiraatiota" />
+      <a href="/blogi" class="text-sm font-medium text-pink hover:text-pink-dark transition-colors flex-shrink-0">
+        Kaikki artikkelit →
+      </a>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {posts.map((post) => (
+        <a
+          href={`/blogi/${post.slug}`}
+          class="group rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1"
+        >
+          <span class="inline-block rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-pink-dark mb-4">
+            {post.category}
+          </span>
+          <h3 class="font-display text-xl font-semibold text-charcoal mb-3 group-hover:text-pink transition-colors leading-snug">
+            {post.title}
+          </h3>
+          <p class="text-sm text-charcoal-mid leading-relaxed mb-5">
+            {post.excerpt}
+          </p>
+          <div class="flex items-center gap-3 text-xs text-charcoal-mid">
+            <!-- Clock icon -->
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span>{post.readTime} min lukuaika</span>
+            <span class="ml-auto">{formatDate(post.date)}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

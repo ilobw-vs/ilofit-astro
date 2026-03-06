@@ -1,0 +1,29 @@
+---
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  subheading?: string;
+  centered?: boolean;
+  class?: string;
+}
+
+const { eyebrow, heading, subheading, centered = false, class: className = '' } = Astro.props;
+---
+
+<div class={`${centered ? 'text-center' : ''} ${className}`}>
+  {eyebrow && (
+    <p class="mb-3 text-xs font-medium uppercase tracking-widest text-pink">
+      {eyebrow}
+    </p>
+  )}
+  <h2 class="font-display text-4xl font-semibold text-charcoal sm:text-5xl">
+    {heading}
+  </h2>
+  {subheading && (
+    <p class="mt-4 text-lg text-charcoal-mid leading-relaxed max-w-2xl">
+      {subheading}
+    </p>
+  )}
+  <!-- Decorative underline -->
+  <div class={`mt-5 h-0.5 w-12 bg-pink ${centered ? 'mx-auto' : ''}`} />
+</div>
