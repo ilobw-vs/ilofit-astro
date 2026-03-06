@@ -1,0 +1,8 @@
+This is an Astro website for IloFit, a personal trainer business in Turku, Finland.
+- Framework: Astro with Tailwind CSS v4
+- Language: Finnish (fi)
+- Design: Cormorant Garamond for headings, DM Sans for body
+- Brand colors: pink #E8A0B0, charcoal #2D2D2D
+- Components live in src/components/, pages in src/pages/
+- No React, no JS frameworks — use vanilla JS in <script> tags for interactivity
+- Images are in public/images/ as .webp files
