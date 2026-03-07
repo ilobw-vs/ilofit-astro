@@ -17,7 +17,7 @@ const pathname = Astro.url.pathname;
 const isActive = (href: string) => pathname.includes(href);
 ---
 
-<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white">
   <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-20 items-center justify-between">
 
@@ -163,8 +163,8 @@ const isActive = (href: string) => pathname.includes(href);
       navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-warm');
       navbar.classList.remove('bg-transparent');
     } else {
+      navbar.classList.add('bg-white');
       navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-warm');
-      navbar.classList.add('bg-transparent');
     }
   };
   window.addEventListener('scroll', updateNavbar, { passive: true });
