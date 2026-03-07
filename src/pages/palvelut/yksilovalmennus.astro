@@ -27,23 +27,6 @@ const other_prices = [
 
 <section class="bg-off-white pt-36 pb-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <nav class="flex items-center gap-2 text-xs text-charcoal-mid mb-6">
-      <a href="/palvelut" class="hover:text-pink transition-colors">Palvelut</a>
-      <svg
-        width="12"
-        height="12"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <polyline points="9 18 15 12 9 6" />
-      </svg>
-      <span class="text-charcoal">Yksilövalmennus</span>
-    </nav>
-
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <!-- Vasen: tekstit + nappi -->
       <div>
@@ -53,9 +36,8 @@ const other_prices = [
         <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">
           Yksilövalmennus
         </h1>
-        <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">
-          Henkilökohtainen valmennus, joka on suunniteltu juuri sinulle — tavoitteistasi,
-          kuntotasostasi ja aikataulustasi riippumatta.
+        <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">Sinun tavoitteesi on minun tavoitteeni!</p> 
+        <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">Olipa kyseessä sitten painonpudotus, kiinteytys, lihasvoiman kasvatus tai yleinen terveyden edistys, teemme suunnitelman tavoitteen saavuttamiseksi ja olen tukenasi koko valmennuksen ajan.</p>  
         </p>
 
         <div class="flex flex-col items-start gap-3">
@@ -71,7 +53,7 @@ const other_prices = [
      <img
        src="/images/skanssi-9717.webp"
        alt="Yksilövalmennus Turussa – IloFit"
-       class="w-full h-full object-cover object-top"
+       class="w-full h-full object-cover object-top grayscale"
      />
    </div>
       </div>
@@ -82,19 +64,11 @@ const other_prices = [
   <section class="bg-white py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        <div>
-          <SectionHeader eyebrow="Sisältö" heading="Mitä sisältyy?" class="mb-8" />
-          <ul class="space-y-4">
-            {included.map((item) => (
-              <li class="flex items-start gap-3"><Fragment set:html={checkSvg} /><span class="text-charcoal-mid">{item}</span></li>
-            ))}
-          </ul>
-        </div>
         <div class="rounded-2xl border border-soft-border bg-off-white p-8">
-          <h3 class="font-display text-4xl font-semibold text-charcoal mb-6">Hinnat</h3>
+                  <SectionHeader heading="Hinnat" class="mb-8" />
 
-          <div class="mb-6 rounded-xl border border-pink/30 p-4">            
-            <p class="text-sm font-medium text-charcoal">Meillä käy myös liikuntaedut!</p>
+          <div class="mb-6 rounded-xl border border-pink/30 p-4">
+            <p class="text-charcoal-mid text-sm mb-2">Huom: myös liikuntaedut käyvät!</p>
             <div class="mt-2 flex flex-wrap gap-2">
               <span class="rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">Smartum</span>
               <span class="rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">E-passi</span>
@@ -102,7 +76,7 @@ const other_prices = [
             </div>
           </div>
 
-         <p class="text-charcoal-mid text-lg mb-6">Kuukausisopimukset</p>
+         <p class="text-charcoal-mid text-lg font-semibold mb-6">Kuukausisopimukset</p>
          <p class="text-charcoal-mid text-sm mb-6">Minimi 3 kuukautta. Hinnat toistaiseksi voimassa 1kk irtisanomisajalla.</p>
           <div class="space-y-4">
             {monthly_prices.map((pkg) => (
@@ -112,7 +86,7 @@ const other_prices = [
               </div>
             ))}
           <p class="mb-6"></p>
-         <p class="text-charcoal-mid text-lg mb-6">Valmennuspaketit</p>
+         <p class="text-charcoal-mid text-lg font-semibold mb-6">Valmennuspaketit</p>
          <p class="text-charcoal-mid text-sm mb-6">Valmennuspaketit voimassa 3 kuukautta aloituksesta.</p>
           <div class="space-y-4">
             {package_prices.map((pkg2) => (
@@ -123,7 +97,7 @@ const other_prices = [
             ))}
           </div>
           <p class="mb-6"></p>
-         <p class="text-charcoal-mid text-lg mb-6">Muut hinnat</p>
+         <p class="text-charcoal-mid text-lg font-semibold mb-6">Muut hinnat</p>
           <div class="space-y-4">
             {other_prices.map((pkg3) => (
               <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
@@ -135,6 +109,17 @@ const other_prices = [
           <div class="mt-8"><Button href="/yhteystiedot" class="w-full justify-center">Kysy lisää tai varaa aika</Button></div>
         </div>
       </div>
+
+        <div class="rounded-2xl border border-soft-border bg-white p-8">
+          <SectionHeader heading="Palvelun sisältö" class="mb-8" />
+          <ul class="space-y-4">
+            {included.map((item) => (
+              <li class="flex items-start gap-3"><Fragment set:html={checkSvg} /><span class="text-charcoal-mid">{item}</span></li>
+            ))}
+          </ul>
+        </div>
+
+
     </div>
   </section>
 
