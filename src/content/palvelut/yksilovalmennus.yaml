@@ -1,0 +1,99 @@
+title: Yksilövalmennus
+hero_eyebrow: Palvelut
+hero_heading: Yksilövalmennus
+hero_text1: Sinun tavoitteesi on minun tavoitteeni!
+hero_text2: >-
+  Olipa kyseessä sitten painonpudotus, kiinteytys, lihasvoiman kasvatus tai
+  yleinen terveyden edistys, teemme suunnitelman tavoitteen saavuttamiseksi ja
+  olen tukenasi koko valmennuksen ajan.
+hero_cta_primary: Varaa ilmainen konsultaatio
+hero_cta_secondary: Täytä taustatietolomake
+hero_image: /images/skanssi-9717.webp
+monthly_prices_heading: Kuukausisopimukset
+monthly_prices_note: Minimi 3 kuukautta. Hinnat toistaiseksi voimassa 1kk irtisanomisajalla.
+monthly_prices:
+  - label: 60 min valmennus kerran kuukaudessa
+    price: 75 €/kk
+  - label: 60 min valmennus 2 kertaa kuukaudessa
+    price: 140 €/kk
+  - label: 60 min valmennus 4 kertaa kuukaudessa
+    price: 270 €/kk
+package_prices_heading: Valmennuspaketit
+package_prices_note: Valmennuspaketit voimassa 3 kuukautta aloituksesta.
+package_prices:
+  - label: 5 kerran valmennuspaketti
+    price: 350 €
+  - label: 10 kerran valmennuspaketti
+    price: 690 €
+other_prices_heading: Muut hinnat
+other_prices:
+  - label: DUO-valmennus
+    price: "-30% hinnoista / hlö"
+  - label: Onko mielessäsi jotain muuta?
+    price: Pyydä tarjous!
+included_heading: Palvelun sisältö
+included:
+  - Henkilökohtainen alkukartoitus ja tavoitteiden asettaminen
+  - Räätälöity treeniohjelma tavoitteidesi mukaan
+  - Henkilökohtainen ohjaus jokaisessa harjoituksessa
+  - Ravinto-ohjaus ja elämäntapamuutoksen tuki
+  - Edistymisen seuranta ja ohjelman päivitys
+  - Tavoitettavissa viestien välityksellä treenien välillä
+goals_eyebrow: Kenelle sopii
+goals_heading: Mihin tavoitteisiin?
+goals:
+  - title: Painonpudotus
+    desc: >-
+      Tehokas ja kestävä painonpudotus oikean harjoittelun ja ravinto-ohjauksen
+      avulla. Ei pikadieettejä — pysyviä elämäntapamuutoksia.
+  - title: Kiinteytyminen
+    desc: >-
+      Kiinteä ja tukeva keho kehon koostumusta parantamalla. Yhdistetään sopiva
+      lihastyö ja sopiva cardio.
+  - title: Lihasmassan kasvatus
+    desc: >-
+      Progressiivinen harjoittelu, joka rakentaa lihasta tehokkaasti ja
+      turvallisesti.
+  - title: Elämäntapamuutos
+    desc: >-
+      Liikunnasta pysyvä osa arkeasi. Löydät liikunnan ilon ja rakennat
+      terveet, kestävät tottumukset.
+steps_eyebrow: Prosessi
+steps_heading: Miten se toimii?
+steps:
+  - n: "01"
+    title: Ilmainen alkukartoitus
+    desc: >-
+      Käymme läpi tavoitteesi, treenisi historian ja nykyisen tilanteesi.
+      Sitoumukseton ja maksuton.
+  - n: "02"
+    title: Henkilökohtainen ohjelma
+    desc: >-
+      Suunnittelen sinulle räätälöidyn harjoitusohjelman, joka vastaa juuri
+      sinun tavoitteitasi ja aikatauluasi.
+  - n: "03"
+    title: Valmennus & tulosten seuranta
+    desc: >-
+      Treenikerroilla ohjaan sinut liikkeiden läpi, seuraan edistymistäsi ja
+      päivitän ohjelmaa tarpeen mukaan.
+faq_eyebrow: Kysymyksiä
+faq_heading: Usein kysyttyä
+faqs:
+  - q: Sopiiko yksilövalmennus aloittelijalle?
+    a: >-
+      Kyllä! Yksilövalmennus on erityisen sopiva aloittelijoille, koska saat
+      henkilökohtaisen ohjauksen ja turvallisen startin liikuntaan.
+  - q: Kuinka usein pitäisi treenata?
+    a: >-
+      Se riippuu tavoitteistasi ja aikataulustasi. Yleensä 2–3 kertaa viikossa
+      on hyvä aloituspiste.
+  - q: Mitä tarvitsen mukaan ensimmäiselle kerralle?
+    a: Liikuntavaatteet, juomapullo ja avoimen mielen. Kaikki muu järjestyy!
+  - q: Missä treenit tapahtuvat?
+    a: >-
+      Treenipaikkoja ovat Turku-alueen kuntosalit ja ulkotiloissa Urheilupuisto.
+      Voidaan sopia yhteisesti sopivasta paikasta.
+cta_eyebrow: Aloitetaan
+cta_heading: Valmis aloittamaan?
+cta_text: Ilmainen alkukartoitus on maksuton ja sitoumukseton. Otetaan ensimmäinen askel yhdessä.
+cta_button: Varaa ilmainen konsultaatio

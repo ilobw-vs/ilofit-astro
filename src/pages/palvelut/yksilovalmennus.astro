@@ -2,74 +2,44 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Button from '../../components/ui/Button.astro';
+import { getEntry } from 'astro:content';
 
-const included = ['Henkilökohtainen alkukartoitus ja tavoitteiden asettaminen','Räätälöity treeniohjelma tavoitteidesi mukaan','Henkilökohtainen ohjaus jokaisessa harjoituksessa','Ravinto-ohjaus ja elämäntapamuutoksen tuki','Edistymisen seuranta ja ohjelman päivitys','Tavoitettavissa viestien välityksellä treenien välillä'];
-const goals = [{title:'Painonpudotus',desc:'Tehokas ja kestävä painonpudotus oikean harjoittelun ja ravinto-ohjauksen avulla. Ei pikadieettejä — pysyviä elämäntapamuutoksia.'},{title:'Kiinteytyminen',desc:'Kiinteä ja tukeva keho kehon koostumusta parantamalla. Yhdistetään sopiva lihastyö ja sopiva cardio.'},{title:'Lihasmassan kasvatus',desc:'Progressiivinen harjoittelu, joka rakentaa lihasta tehokkaasti ja turvallisesti.'},{title:'Elämäntapamuutos',desc:'Liikunnasta pysyvä osa arkeasi. Löydät liikunnan ilon ja rakennat terveet, kestävät tottumukset.'}];
-const steps = [{n:'01',title:'Ilmainen alkukartoitus',desc:'Käymme läpi tavoitteesi, treenisi historian ja nykyisen tilanteesi. Sitoumukseton ja maksuton.'},{n:'02',title:'Henkilökohtainen ohjelma',desc:'Suunnittelen sinulle räätälöidyn harjoitusohjelman, joka vastaa juuri sinun tavoitteitasi ja aikatauluasi.'},{n:'03',title:'Valmennus & tulosten seuranta',desc:'Treenikerroilla ohjaan sinut liikkeiden läpi, seuraan edistymistäsi ja päivitän ohjelmaa tarpeen mukaan.'}];
-const faqs = [{q:'Sopiiko yksilövalmennus aloittelijalle?',a:'Kyllä! Yksilövalmennus on erityisen sopiva aloittelijoille, koska saat henkilökohtaisen ohjauksen ja turvallisen startin liikuntaan.'},{q:'Kuinka usein pitäisi treenata?',a:'Se riippuu tavoitteistasi ja aikataulustasi. Yleensä 2–3 kertaa viikossa on hyvä aloituspiste.'},{q:'Mitä tarvitsen mukaan ensimmäiselle kerralle?',a:'Liikuntavaatteet, juomapullo ja avoimen mielen. Kaikki muu järjestyy!'},{q:'Missä treenit tapahtuvat?',a:'Treenipaikkoja ovat Turku-alueen kuntosalit ja ulkotiloissa Urheilupuisto. Voidaan sopia yhteisesti sopivasta paikasta.'}];
+const entry = await getEntry('palvelut', 'yksilovalmennus');
+const c = entry.data;
+
 const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
-const monthly_prices = [
-  { label: '60 min valmennus kerran kuukaudessa', price: '75 €/kk' },
-  { label: '60 min valmennus 2 kertaa kuukaudessa', price: '140 €/kk' },
-  { label: '60 min valmennus 4 kertaa kuukaudessa', price: '270 €/kk' },
-];
-const package_prices = [
-  { label: '5 kerran valmennuspaketti', price: '350 €' },
-  { label: '10 kerran valmennuspaketti', price: '690 €' },
-];
-const other_prices = [
-  { label: 'DUO-valmennus', price: '-30% hinnoista / hlö' },
-  { label: 'Onko mielessäsi jotain muuta?', price: 'Pyydä tarjous!' },
-];
 ---
 
 <PageLayout title="Yksilövalmennus Turku | IloFit — Personal Trainer" description="Henkilökohtainen yksilövalmennus Turussa. Räätälöity treeniohjelma ja jatkuva tuki. Varaa ilmainen alkukartoitus.">
 
-<section class="bg-off-white pt-36 pb-20">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <!-- Vasen: tekstit + nappi -->
-      <div>
-        <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">
-          Palvelut
-        </p>
-        <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">
-          Yksilövalmennus
-        </h1>
-        <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">Sinun tavoitteesi on minun tavoitteeni!</p> 
-        <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">Olipa kyseessä sitten painonpudotus, kiinteytys, lihasvoiman kasvatus tai yleinen terveyden edistys, teemme suunnitelman tavoitteen saavuttamiseksi ja olen tukenasi koko valmennuksen ajan.</p>  
-        </p>
-
-        <div class="flex flex-col items-start gap-3">
-          <Button href="/yhteystiedot" size="lg">
-            Varaa ilmainen konsultaatio
-          </Button>
-          <Button href="/taustatietolomake?palvelu=yksilovalmennus" variant="ghost" size="lg">
-            Täytä taustatietolomake
-          </Button>
+  <section class="bg-off-white pt-36 pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.hero_eyebrow}</p>
+          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">{c.hero_heading}</h1>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text1}</p>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text2}</p>
+          <div class="flex flex-col items-start gap-3">
+            <Button href="/yhteystiedot" size="lg">{c.hero_cta_primary}</Button>
+            <Button href="/taustatietolomake?palvelu=yksilovalmennus" variant="ghost" size="lg">{c.hero_cta_secondary}</Button>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-warm">
+            <img src={c.hero_image} alt="Yksilövalmennus Turussa – IloFit" class="w-full h-full object-cover object-top grayscale" />
+          </div>
         </div>
       </div>
-
-      <!-- Oikea: kuva -->
-      <div class="relative">
-<div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-warm">
-     <img
-       src="/images/skanssi-9717.webp"
-       alt="Yksilövalmennus Turussa – IloFit"
-       class="w-full h-full object-cover object-top grayscale"
-     />
-   </div>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section class="bg-white py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        <div class="rounded-2xl border border-soft-border bg-off-white p-8">
-                  <SectionHeader heading="Hinnat" class="mb-8" />
 
+        <div class="rounded-2xl border border-soft-border bg-off-white p-8">
+          <SectionHeader heading="Hinnat" class="mb-8" />
           <div class="mb-6 rounded-xl border border-pink/30 p-4">
             <p class="text-charcoal-mid text-sm mb-2">Huom: myös liikuntaedut käyvät!</p>
             <div class="mt-2 flex flex-wrap gap-2">
@@ -79,58 +49,67 @@ const other_prices = [
             </div>
           </div>
 
-         <p class="text-charcoal-mid text-lg font-semibold mb-6">Kuukausisopimukset</p>
-         <p class="text-charcoal-mid text-sm mb-6">Minimi 3 kuukautta. Hinnat toistaiseksi voimassa 1kk irtisanomisajalla.</p>
+          <p class="text-charcoal-mid text-lg font-semibold mb-3">{c.monthly_prices_heading}</p>
+          <p class="text-charcoal-mid text-sm mb-6">{c.monthly_prices_note}</p>
           <div class="space-y-4">
-            {monthly_prices.map((pkg) => (
+            {c.monthly_prices.map((pkg) => (
               <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
                 <span class="font-medium text-charcoal">{pkg.label}</span>
                 <span class="text-pink font-semibold">{pkg.price}</span>
               </div>
             ))}
+          </div>
+
           <p class="mb-6"></p>
-         <p class="text-charcoal-mid text-lg font-semibold mb-6">Valmennuspaketit</p>
-         <p class="text-charcoal-mid text-sm mb-6">Valmennuspaketit voimassa 3 kuukautta aloituksesta.</p>
+          <p class="text-charcoal-mid text-lg font-semibold mb-3">{c.package_prices_heading}</p>
+          <p class="text-charcoal-mid text-sm mb-6">{c.package_prices_note}</p>
           <div class="space-y-4">
-            {package_prices.map((pkg2) => (
+            {c.package_prices.map((pkg) => (
               <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
-                <span class="font-medium text-charcoal">{pkg2.label}</span>
-                <span class="text-pink font-semibold">{pkg2.price}</span>
+                <span class="font-medium text-charcoal">{pkg.label}</span>
+                <span class="text-pink font-semibold">{pkg.price}</span>
               </div>
             ))}
           </div>
+
           <p class="mb-6"></p>
-         <p class="text-charcoal-mid text-lg font-semibold mb-6">Muut hinnat</p>
+          <p class="text-charcoal-mid text-lg font-semibold mb-6">{c.other_prices_heading}</p>
           <div class="space-y-4">
-            {other_prices.map((pkg3) => (
+            {c.other_prices.map((pkg) => (
               <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
-                <span class="font-medium text-charcoal">{pkg3.label}</span>
-                <span class="text-pink font-semibold">{pkg3.price}</span>
+                <span class="font-medium text-charcoal">{pkg.label}</span>
+                <span class="text-pink font-semibold">{pkg.price}</span>
               </div>
             ))}
           </div>
-          <div class="mt-8"><Button href="/yhteystiedot" class="w-full justify-center">Kysy lisää tai varaa aika</Button></div>
+          <div class="mt-8">
+            <Button href="/yhteystiedot" class="w-full justify-center">Kysy lisää tai varaa aika</Button>
+          </div>
         </div>
-      </div>
 
         <div class="rounded-2xl border border-soft-border bg-white p-8">
-          <SectionHeader heading="Palvelun sisältö" class="mb-8" />
+          <SectionHeader heading={c.included_heading} class="mb-8" />
           <ul class="space-y-4">
-            {included.map((item) => (
-              <li class="flex items-start gap-3"><Fragment set:html={checkSvg} /><span class="text-charcoal-mid">{item}</span></li>
+            {c.included.map((item) => (
+              <li class="flex items-start gap-3">
+                <Fragment set:html={checkSvg} />
+                <span class="text-charcoal-mid">{item}</span>
+              </li>
             ))}
           </ul>
         </div>
 
-
+      </div>
     </div>
   </section>
 
   <section class="bg-off-white py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16"><SectionHeader eyebrow="Kenelle sopii" heading="Mihin tavoitteisiin?" centered /></div>
+      <div class="text-center mb-16">
+        <SectionHeader eyebrow={c.goals_eyebrow} heading={c.goals_heading} centered />
+      </div>
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {goals.map((goal) => (
+        {c.goals.map((goal) => (
           <div class="card-accent rounded-xl border border-soft-border bg-white p-6 shadow-warm">
             <h3 class="font-display text-xl font-semibold text-charcoal mb-3">{goal.title}</h3>
             <p class="text-sm text-charcoal-mid leading-relaxed">{goal.desc}</p>
@@ -142,9 +121,11 @@ const other_prices = [
 
   <section class="bg-white py-24">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16"><SectionHeader eyebrow="Prosessi" heading="Miten se toimii?" centered /></div>
+      <div class="text-center mb-16">
+        <SectionHeader eyebrow={c.steps_eyebrow} heading={c.steps_heading} centered />
+      </div>
       <div class="space-y-8">
-        {steps.map((step) => (
+        {c.steps.map((step) => (
           <div class="flex gap-6 items-start">
             <div class="flex-shrink-0 w-14 h-14 rounded-full bg-pink-light flex items-center justify-center">
               <span class="font-display text-lg font-semibold text-pink">{step.n}</span>
@@ -161,9 +142,11 @@ const other_prices = [
 
   <section class="bg-off-white py-24">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12"><SectionHeader eyebrow="Kysymyksiä" heading="Usein kysyttyä" centered /></div>
+      <div class="text-center mb-12">
+        <SectionHeader eyebrow={c.faq_eyebrow} heading={c.faq_heading} centered />
+      </div>
       <div class="space-y-4">
-        {faqs.map((faq) => (
+        {c.faqs.map((faq) => (
           <div class="rounded-xl border border-soft-border bg-white p-6 shadow-warm">
             <h3 class="font-semibold text-charcoal mb-2">{faq.q}</h3>
             <p class="text-sm text-charcoal-mid leading-relaxed">{faq.a}</p>
@@ -175,9 +158,9 @@ const other_prices = [
 
   <section class="bg-white py-24">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-      <SectionHeader eyebrow="Aloitetaan" heading="Valmis aloittamaan?" centered class="mb-6" />
-      <p class="text-charcoal-mid mb-8">Ilmainen alkukartoitus on maksuton ja sitoumukseton. Otetaan ensimmäinen askel yhdessä.</p>
-      <Button href="/yhteystiedot" size="lg">Varaa ilmainen konsultaatio</Button>
+      <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
+      <p class="text-charcoal-mid mb-8">{c.cta_text}</p>
+      <Button href="/yhteystiedot" size="lg">{c.cta_button}</Button>
     </div>
   </section>
 
