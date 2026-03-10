@@ -1,16 +1,24 @@
 ---
 const navLinks = [
+  { label: 'Treeniohjelma', href: '/palvelut/treeniohjelma' },
   { label: 'Tietoa Ilonasta', href: '/tietoa-ilonasta' },
   { label: 'Kokemuksia', href: '/kokemuksia' },
-  { label: 'Blogi', href: '/blogi' },
-  { label: 'UKK', href: '/ukk' },
+  { label: 'Blogi ja Kysymykset', href: '/blogi' },
 ];
 
-const services = [
-  { label: 'Yksilövalmennus', href: '/palvelut/yksilovalmennus' },
+const personal_services = [
+  { label: 'Henkilökohtainen valmennus', href: '/palvelut/yksilovalmennus' },
+  { label: 'Verkkovalmennus', href: '/palvelut/verkkovalmennus' },
+];
+
+const group_services = [
   { label: 'Pienryhmävalmennus', href: '/palvelut/pienryhmavalmennus' },
   { label: 'Ulkotreenit', href: '/palvelut/ulkotreenit' },
   { label: 'Yrityspalvelut', href: '/palvelut/yrityspalvelut' },
+];
+
+const training_programs = [
+  { label: 'Treeniohjelma', href: '/palvelut/treeniohjelma' },
 ];
 
 const pathname = Astro.url.pathname;
@@ -35,24 +43,53 @@ const isActive = (href: string) => pathname.includes(href);
       <!-- Desktop nav -->
       <div class="hidden lg:flex lg:items-center lg:gap-8">
 
-        <!-- Services dropdown -->
-        <div class="relative" id="services-dropdown">
+        <!-- Personal Services dropdown -->
+        <div class="relative" id="personal-services-dropdown">
           <button
-            id="services-btn"
+            id="personal-services-btn"
             class={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-pink ${pathname.includes('/palvelut') ? 'text-pink' : 'text-charcoal'}`}
           >
-            Palvelut
+            Yksilövalmennus
             <svg id="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
 
           <div
-            id="services-menu"
+            id="personal-services-menu"
             class="absolute top-full left-1/2 -translate-x-1/2 pt-2 hidden"
           >
             <div class="w-56 rounded-xl border border-soft-border bg-white p-2 shadow-warm-md">
-              {services.map((s) => (
+              {personal_services.map((s) => (
+                <a
+                  href={s.href}
+                  class={`block rounded-lg px-4 py-2.5 text-sm transition-colors hover:bg-pink-light hover:text-charcoal ${isActive(s.href) ? 'bg-pink-light text-charcoal font-medium' : 'text-charcoal-mid'}`}
+                >
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Group Services dropdown -->
+        <div class="relative" id="group-services-dropdown">
+          <button
+            id="group-services-btn"
+            class={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-pink ${pathname.includes('/palvelut') ? 'text-pink' : 'text-charcoal'}`}
+          >
+            Ryhmät ja Yritykset
+            <svg id="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <div
+            id="group-services-menu"
+            class="absolute top-full left-1/2 -translate-x-1/2 pt-2 hidden"
+          >
+            <div class="w-56 rounded-xl border border-soft-border bg-white p-2 shadow-warm-md">
+              {group_services.map((s) => (
                 <a
                   href={s.href}
                   class={`block rounded-lg px-4 py-2.5 text-sm transition-colors hover:bg-pink-light hover:text-charcoal ${isActive(s.href) ? 'bg-pink-light text-charcoal font-medium' : 'text-charcoal-mid'}`}
@@ -98,7 +135,7 @@ const isActive = (href: string) => pathname.includes(href);
     <!-- Mobile menu -->
     <div id="mobile-menu" class="lg:hidden border-t border-soft-border pb-6 pt-4 hidden">
 
-      <!-- Services accordion -->
+      <!-- Personal Services accordion -->
       <div class="mb-2">
         <button
           id="mobile-services-btn"
@@ -110,7 +147,30 @@ const isActive = (href: string) => pathname.includes(href);
           </svg>
         </button>
         <div id="mobile-services-menu" class="hidden ml-4 border-l-2 border-pink-light pl-4">
-          {services.map((s) => (
+          {personal_services.map((s) => (
+            <a
+              href={s.href}
+              class={`block py-2.5 text-sm transition-colors ${isActive(s.href) ? 'text-pink font-medium' : 'text-charcoal-mid'}`}
+            >
+              {s.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+     <!-- Group Services accordion -->
+      <div class="mb-2">
+        <button
+          id="mobile-services-btn"
+          class="flex w-full items-center justify-between px-2 py-3 text-sm font-medium text-charcoal"
+        >
+          Palvelut
+          <svg id="mobile-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div id="mobile-services-menu" class="hidden ml-4 border-l-2 border-pink-light pl-4">
+          {group_services.map((s) => (
             <a
               href={s.href}
               class={`block py-2.5 text-sm transition-colors ${isActive(s.href) ? 'text-pink font-medium' : 'text-charcoal-mid'}`}
@@ -148,8 +208,10 @@ const isActive = (href: string) => pathname.includes(href);
   const mobileMenu = document.getElementById('mobile-menu')!;
   const iconMenu = document.getElementById('icon-menu')!;
   const iconClose = document.getElementById('icon-close')!;
-  const servicesDropdown = document.getElementById('services-dropdown')!;
-  const servicesMenu = document.getElementById('services-menu')!;
+  const personal_servicesDropdown = document.getElementById('personal-services-dropdown')!;
+  const personal_servicesMenu = document.getElementById('personal-services-menu')!;
+  const group_servicesDropdown = document.getElementById('group-services-dropdown')!;
+  const group_servicesMenu = document.getElementById('group-services-menu')!;
   const chevron = document.getElementById('chevron')!;
   const mobileServicesBtn = document.getElementById('mobile-services-btn')!;
   const mobileServicesMenu = document.getElementById('mobile-services-menu')!;
@@ -178,12 +240,22 @@ const isActive = (href: string) => pathname.includes(href);
   });
 
   // Desktop services dropdown (hover)
-  servicesDropdown.addEventListener('mouseenter', () => {
-    servicesMenu.classList.remove('hidden');
+  personal_servicesDropdown.addEventListener('mouseenter', () => {
+    personal_servicesMenu.classList.remove('hidden');
     chevron.style.transform = 'rotate(180deg)';
   });
-  servicesDropdown.addEventListener('mouseleave', () => {
-    servicesMenu.classList.add('hidden');
+  personal_servicesDropdown.addEventListener('mouseleave', () => {
+    personal_servicesMenu.classList.add('hidden');
+    chevron.style.transform = 'rotate(0deg)';
+  });
+
+// Desktop services dropdown (hover)
+  group_servicesDropdown.addEventListener('mouseenter', () => {
+    group_servicesMenu.classList.remove('hidden');
+    chevron.style.transform = 'rotate(180deg)';
+  });
+  group_servicesDropdown.addEventListener('mouseleave', () => {
+    group_servicesMenu.classList.add('hidden');
     chevron.style.transform = 'rotate(0deg)';
   });
 

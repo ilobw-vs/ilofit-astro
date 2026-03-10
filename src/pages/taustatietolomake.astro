@@ -1,0 +1,356 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const goals = ['Painonpudotus', 'Kiinteytyminen', 'Lihasmassan kasvatus', 'Kunnon kohottaminen', 'Elämäntapamuutos', 'Muu tavoite'];
+const locations = ['Kuntosali', 'Kotona', 'Ulkona', 'Ei väliä'];
+
+const inputClass = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal placeholder-charcoal-mid/50 focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors';
+const labelClass = 'block text-sm font-medium text-charcoal mb-1.5';
+const selectClass = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors';
+---
+
+<PageLayout title="Taustatietolomake | IloFit — Personal Trainer" description="Täytä taustatietolomake ennen treeniohjelmatilauksen tai valmennuksen aloittamista. Tiedot auttavat minua suunnittelemaan sinulle parhaan mahdollisen ohjelman.">
+
+  <!-- Hero -->
+  <section class="bg-off-white pt-36 pb-16">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">IloFit</p>
+      <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-4">Taustatietolomake</h1>
+      <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed">
+        Vastauksesi auttavat minua suunnittelemaan sinulle parhaan mahdollisen ohjelman. Tiedot käsitellään luottamuksellisesti.
+      </p>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="bg-white py-16 pb-32">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+
+      <!-- Progress indicator -->
+      <div id="progress-container" class="mb-10">
+        <div class="flex items-center justify-between mb-2">
+          <span id="step-label" class="text-sm font-medium text-charcoal-mid">Vaihe 1 / 3</span>
+          <span id="step-title" class="text-sm font-medium text-pink">Perustiedot</span>
+        </div>
+        <div class="w-full bg-pink-light rounded-full h-1.5">
+          <div id="progress-bar" class="bg-pink h-1.5 rounded-full transition-all duration-300" style="width: 33%"></div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form id="taustatieto-form" novalidate>
+        <!-- Web3Forms — korvaa access_key omalla avaimellasi: https://web3forms.com -->
+        <input type="hidden" name="access_key" value="3f71f44b-0e26-479e-a32c-f6e9e61ef6f2" />
+        <input type="hidden" name="subject" value="Uusi taustatietolomake — IloFit" />
+        <input type="hidden" name="from_name" value="IloFit lomake" />
+        <input type="hidden" name="tavoitteet" id="tavoitteet-input" />
+        <input type="hidden" name="treenipaikka" id="location-input" />
+
+        <!-- ── Vaihe 1: Perustiedot ── -->
+        <div id="step-1" class="space-y-5">
+
+          <div>
+            <label class={labelClass}>Mistä palvelusta olet kiinnostunut?</label>
+            <select name="palvelu" id="palvelu-select" class={selectClass}>
+              <option value="">Valitse palvelu</option>
+              <option value="Treeniohjelma">Treeniohjelma</option>
+              <option value="Yksilövalmennus">Yksilövalmennus</option>
+              <option value="Verkkovalmennus">Verkkovalmennus</option>
+              <option value="En ole vielä varma">En ole vielä varma</option>
+            </select>
+          </div>
+
+          <div>
+            <label class={labelClass}>Nimi <span class="text-pink">*</span></label>
+            <input type="text" name="name" required class={inputClass} placeholder="Sinun nimesi" />
+          </div>
+
+          <div>
+            <label class={labelClass}>Sähköposti <span class="text-pink">*</span></label>
+            <input type="email" name="email" required class={inputClass} placeholder="sinun@email.fi" />
+          </div>
+
+          <div>
+            <label class={labelClass}>Puhelinnumero</label>
+            <input type="tel" name="phone" class={inputClass} placeholder="+358 40 000 0000" />
+          </div>
+
+          <div>
+            <label class={labelClass}>Ikä</label>
+            <input type="number" name="ika" min="16" max="99" class={inputClass} placeholder="Ikäsi vuosina" />
+          </div>
+
+        </div>
+
+        <!-- ── Vaihe 2: Tavoitteet ── -->
+        <div id="step-2" class="space-y-7 hidden">
+
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-3">
+              Mikä on päätavoitteesi?
+              <span class="text-charcoal-mid font-normal ml-1">(voit valita useita)</span>
+            </label>
+            <div class="flex flex-wrap gap-2">
+              {goals.map((goal) => (
+                <button
+                  type="button"
+                  data-goal={goal}
+                  class="goal-btn rounded-full border border-soft-border px-4 py-2 text-sm font-medium text-charcoal-mid transition-all hover:border-pink hover:text-pink"
+                >
+                  {goal}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label class={labelClass}>Treenikokemus</label>
+            <select name="treenikokemus" class={selectClass}>
+              <option value="">Valitse...</option>
+              <option value="Aloittelija">Aloittelija — en ole juurikaan treenannut</option>
+              <option value="Satunnainen">Satunnainen liikkuja — silloin tällöin</option>
+              <option value="Säännöllinen">Säännöllinen — treenaan jo aktiivisesti</option>
+              <option value="Kokenut">Kokenut — pitkä treenihistoria</option>
+            </select>
+          </div>
+
+          <div>
+            <label class={labelClass}>Kuinka monta kertaa viikossa haluat treenata?</label>
+            <select name="treenifrekvenssi" class={selectClass}>
+              <option value="">Valitse...</option>
+              <option value="1–2 kertaa">1–2 kertaa</option>
+              <option value="3–4 kertaa">3–4 kertaa</option>
+              <option value="5+ kertaa">5 tai enemmän</option>
+              <option value="En ole varma">En ole vielä varma</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-charcoal mb-3">Missä haluat treenata?</label>
+            <div class="flex flex-wrap gap-2">
+              {locations.map((loc) => (
+                <button
+                  type="button"
+                  data-location={loc}
+                  class="location-btn rounded-full border border-soft-border px-4 py-2 text-sm font-medium text-charcoal-mid transition-all hover:border-pink hover:text-pink"
+                >
+                  {loc}
+                </button>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── Vaihe 3: Terveystiedot ── -->
+        <div id="step-3" class="space-y-5 hidden">
+
+          <div class="rounded-xl border border-pink/20 bg-pink-light/40 p-4">
+            <p class="text-sm text-charcoal-mid leading-relaxed">
+              Nämä kysymykset auttavat minua huomioimaan mahdolliset rajoitteet ja suunnittelemaan sinulle turvallisen ohjelman. Vastauksesi käsitellään luottamuksellisesti.
+            </p>
+          </div>
+
+          <div>
+            <label class={labelClass}>Onko sinulla vammoja, kipuja tai fyysisiä rajoitteita?</label>
+            <textarea
+              name="vammat"
+              rows="3"
+              class={`${inputClass} resize-none`}
+              placeholder="Esim. selkäkipu, polvivaiva... tai kirjoita 'Ei' jos ei rajoitteita"
+            ></textarea>
+          </div>
+
+          <div>
+            <label class={labelClass}>Muita toiveita tai kommentteja?</label>
+            <textarea
+              name="lisatiedot"
+              rows="4"
+              class={`${inputClass} resize-none`}
+              placeholder="Kaikki lisätiedot ovat tervetulleita!"
+            ></textarea>
+          </div>
+
+        </div>
+
+        <!-- Navigointi -->
+        <div class="flex gap-3 mt-8">
+          <button
+            type="button"
+            id="btn-prev"
+            class="hidden flex-1 rounded-lg border border-soft-border px-6 py-3.5 text-sm font-medium text-charcoal hover:border-pink hover:text-pink transition-colors"
+          >
+            ← Edellinen
+          </button>
+          <button
+            type="button"
+            id="btn-next"
+            class="flex-1 rounded-lg bg-pink px-8 py-3.5 text-base font-medium text-white transition-all duration-200 hover:bg-pink-dark hover:scale-[1.01] active:scale-100"
+          >
+            Seuraava →
+          </button>
+          <button
+            type="submit"
+            id="btn-submit"
+            class="hidden flex-1 rounded-lg bg-pink px-8 py-3.5 text-base font-medium text-white transition-all duration-200 hover:bg-pink-dark hover:scale-[1.01] active:scale-100"
+          >
+            Lähetä lomake
+          </button>
+        </div>
+
+        <p id="form-error" class="hidden mt-4 text-sm text-center text-red-500">
+          Jokin meni pieleen. Yritä uudelleen tai ota yhteyttä suoraan sähköpostilla.
+        </p>
+      </form>
+
+      <!-- Onnistumisilmoitus -->
+      <div id="form-success" class="hidden text-center py-12">
+        <div class="w-16 h-16 rounded-full bg-pink-light flex items-center justify-center mx-auto mb-6">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h2 class="font-display text-3xl font-semibold text-charcoal mb-3">Kiitos!</h2>
+        <p class="text-charcoal-mid max-w-sm mx-auto leading-relaxed">
+          Lomake vastaanotettu. Otan sinuun yhteyttä yleensä 24 tunnin kuluessa.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</PageLayout>
+
+<script>
+  const steps = [
+    { id: 'step-1', label: 'Perustiedot' },
+    { id: 'step-2', label: 'Tavoitteet' },
+    { id: 'step-3', label: 'Terveystiedot' },
+  ];
+
+  let currentStep = 0;
+
+  const progressBar = document.getElementById('progress-bar') as HTMLElement;
+  const stepLabel = document.getElementById('step-label') as HTMLElement;
+  const stepTitle = document.getElementById('step-title') as HTMLElement;
+  const btnPrev = document.getElementById('btn-prev') as HTMLButtonElement;
+  const btnNext = document.getElementById('btn-next') as HTMLButtonElement;
+  const btnSubmit = document.getElementById('btn-submit') as HTMLButtonElement;
+
+  function showStep(index: number) {
+    steps.forEach((s, i) => {
+      document.getElementById(s.id)?.classList.toggle('hidden', i !== index);
+    });
+    const pct = ((index + 1) / steps.length) * 100;
+    progressBar.style.width = `${pct}%`;
+    stepLabel.textContent = `Vaihe ${index + 1} / ${steps.length}`;
+    stepTitle.textContent = steps[index].label;
+    btnPrev.classList.toggle('hidden', index === 0);
+    btnNext.classList.toggle('hidden', index === steps.length - 1);
+    btnSubmit.classList.toggle('hidden', index !== steps.length - 1);
+  }
+
+  // Esitäytä palvelu URL-parametrista (?palvelu=treeniohjelma)
+  const params = new URLSearchParams(window.location.search);
+  const palveluParam = params.get('palvelu');
+  if (palveluParam) {
+    const sel = document.getElementById('palvelu-select') as HTMLSelectElement;
+    if (sel) {
+      const opt = [...sel.options].find(o => o.value.toLowerCase().includes(palveluParam.toLowerCase()));
+      if (opt) sel.value = opt.value;
+    }
+  }
+
+  // Tavoite-napit (monivalinta)
+  const selectedGoals = new Set<string>();
+  document.querySelectorAll<HTMLButtonElement>('.goal-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const goal = btn.dataset.goal!;
+      if (selectedGoals.has(goal)) {
+        selectedGoals.delete(goal);
+        btn.classList.remove('bg-pink', 'text-white', 'border-pink');
+        btn.classList.add('text-charcoal-mid', 'border-soft-border');
+      } else {
+        selectedGoals.add(goal);
+        btn.classList.add('bg-pink', 'text-white', 'border-pink');
+        btn.classList.remove('text-charcoal-mid', 'border-soft-border');
+      }
+      (document.getElementById('tavoitteet-input') as HTMLInputElement).value = [...selectedGoals].join(', ');
+    });
+  });
+
+  // Treenipaikka-napit (yksi valinta)
+  document.querySelectorAll<HTMLButtonElement>('.location-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll<HTMLButtonElement>('.location-btn').forEach((b) => {
+        b.classList.remove('bg-pink', 'text-white', 'border-pink');
+        b.classList.add('text-charcoal-mid', 'border-soft-border');
+      });
+      btn.classList.add('bg-pink', 'text-white', 'border-pink');
+      btn.classList.remove('text-charcoal-mid', 'border-soft-border');
+      (document.getElementById('location-input') as HTMLInputElement).value = btn.dataset.location!;
+    });
+  });
+
+  // Edellinen
+  btnPrev.addEventListener('click', () => {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  // Seuraava — validoi vaihe 1 ennen etenemistä
+  btnNext.addEventListener('click', () => {
+    if (currentStep === 0) {
+      const nameEl = document.querySelector<HTMLInputElement>('[name="name"]')!;
+      const emailEl = document.querySelector<HTMLInputElement>('[name="email"]')!;
+      let valid = true;
+      [nameEl, emailEl].forEach((el) => {
+        if (!el.value.trim()) {
+          el.classList.add('border-red-400', 'ring-2', 'ring-red-200');
+          valid = false;
+        } else {
+          el.classList.remove('border-red-400', 'ring-2', 'ring-red-200');
+        }
+      });
+      if (!valid) return;
+    }
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  // Lähetys
+  const form = document.getElementById('taustatieto-form') as HTMLFormElement;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btnSubmit.textContent = 'Lähetetään...';
+    btnSubmit.disabled = true;
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.classList.add('hidden');
+        document.getElementById('progress-container')?.classList.add('hidden');
+        document.getElementById('form-success')?.classList.remove('hidden');
+      } else {
+        throw new Error('failed');
+      }
+    } catch {
+      document.getElementById('form-error')?.classList.remove('hidden');
+      btnSubmit.textContent = 'Lähetä lomake';
+      btnSubmit.disabled = false;
+    }
+  });
+
+  showStep(0);
+</script>
