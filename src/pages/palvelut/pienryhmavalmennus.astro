@@ -2,17 +2,12 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Button from '../../components/ui/Button.astro';
+import { getEntry } from 'astro:content';
 
-const benefits = ['Max. 10 henkilöä — yksilöllinen huomio taattu','Ryhmän energia ja motivaatio nostaa suoritusta','Edullisempi kuin yksilövalmennus','Hyvä tapa treenata kaverin kanssa','Monipuolinen ja vaihtelevainen treeni','Sopii kaikille kuntotasoille'];
-const suitableFor = [{title:'Kaveriryhmät',desc:'Treenaa parhaan kaverin kanssa ja pidä motivaatio korkealla.'},{title:'Äidit',desc:'Löydä aikaa itsellesi ja tapaa muita samassa elämäntilanteessa olevia.'},{title:'Kollegat',desc:'Tiimi, joka treenaa yhdessä, pysyy yhdessä. Hyvä vaihtoehto tyky-aktiviteeteille.'},{title:'Aloittelijat',desc:'Ryhmässä on matala kynnys aloittaa — ei pelottele kuten iso kuntosali.'}];
+const entry = await getEntry('palvelut', 'pienryhmavalmennus');
+const c = entry.data;
+
 const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
-
-const kettlebell_prices = [
-  { label: 'Kahvakuularyhmä', price: 'TÄYNNÄ' },
-];
-const bootcamp_prices = [
-  { label: 'Bootcamp-ryhmä', price: 'TÄYNNÄ' },
-];
 ---
 
 <PageLayout title="Pienryhmävalmennus Turku | IloFit — Personal Trainer" description="Pienryhmäliikuntaa Turussa enintään 10 henkilölle. Energinen ryhmätreeni ammattivalmentajan ohjauksessa.">
@@ -20,33 +15,15 @@ const bootcamp_prices = [
   <section class="bg-off-white pt-36 pb-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <!-- Vasen: tekstit + nappi -->
         <div>
-          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">
-            Palvelut
-          </p>
-          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">
-            Pienryhmät
-          </h1>
-          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">
-            Pienessä ryhmässä saat yksilöllistä ohjausta ja pääset haastamaan itsesi. Opit oikeat ja turvalliset liiketekniikat sekä tehokkaimmat liikkeet. Saat lisämotivaatiota treenaamiseen sekä kannustusta omien treenitavoitteiden saavuttamiseen. 
-          </p>
-
-          <div class="flex flex-col items-start gap-3">
-            <Button href="/yhteystiedot" size="lg">
-              Varaa paikka
-            </Button>
-          </div>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.hero_eyebrow}</p>
+          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">{c.hero_heading}</h1>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text}</p>
+          <Button href="/yhteystiedot" size="lg">{c.hero_cta}</Button>
         </div>
-
-        <!-- Oikea: kuva -->
         <div class="relative">
           <div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-warm">
-            <img
-              src="/images/small_groups.webp"
-              alt="Pienryhmävalmennus Turussa – IloFit"
-              class="w-full h-full object-cover object-center grayscale"
-            />
+            <img src={c.hero_image} alt="Pienryhmävalmennus Turussa – IloFit" class="w-full h-full object-cover object-center grayscale" />
           </div>
         </div>
       </div>
@@ -59,34 +36,34 @@ const bootcamp_prices = [
         <div class="rounded-2xl border border-soft-border bg-off-white p-8">
           <SectionHeader heading="Ryhmät ja hinnat" class="mb-8" />
 
-          
-
-         <p class="text-charcoal-mid text-lg font-semibold mb-6">Kahvakuularyhmä</p>
-         <p class="text-charcoal-mid text-sm mb-6">Paikka ja aika: 13.1.2026 alkaen tiistaisin klo 19-20, Syvälahdentie 31</p>
-
+          <p class="text-charcoal-mid text-lg font-semibold mb-3">{c.kettlebell_heading}</p>
+          <p class="text-charcoal-mid text-sm mb-6">{c.kettlebell_time}</p>
           <div class="space-y-4">
-            {kettlebell_prices.map((pkg) => (
+            {c.kettlebell_prices.map((pkg) => (
               <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
                 <span class="font-medium text-charcoal">{pkg.label}</span>
                 <span class="text-pink font-semibold">{pkg.price}</span>
               </div>
             ))}
+          </div>
+
           <p class="mb-6"></p>
-         <p class="text-charcoal-mid text-lg font-semibold mb-6">Bootcamp-ryhmä</p>
-         <p class="text-charcoal-mid text-sm mb-6">Näissä toiminnallisissa treeneissä treenataan lihaskuntoa ja voimaa modernissa ja privaatissa studioympäristössä, josta löytyvät monipuoliset vapaapainot sekä treenivälineet tehokkaaseen ja laadukkaaseen treeniin.</p>
-         <p class="text-charcoal-mid text-sm mb-1">Paikka ja aika: Sunnuntaisin, Mojo, Ilpoistentie 16 a
-         <p class="text-charcoal-mid text-sm mb-1">Ryhmä 1 klo 18-19</p>
-         <p class="text-charcoal-mid text-sm mb-6">Ryhmä 2 klo 19-20</p>
+          <p class="text-charcoal-mid text-lg font-semibold mb-3">{c.bootcamp_heading}</p>
+          <p class="text-charcoal-mid text-sm mb-3">{c.bootcamp_desc}</p>
+          <p class="text-charcoal-mid text-sm mb-1">{c.bootcamp_time1}</p>
+          <p class="text-charcoal-mid text-sm mb-1">{c.bootcamp_time2}</p>
+          <p class="text-charcoal-mid text-sm mb-6">{c.bootcamp_time3}</p>
           <div class="space-y-4">
-            {bootcamp_prices.map((pkg2) => (
+            {c.bootcamp_prices.map((pkg) => (
               <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
-                <span class="font-medium text-charcoal">{pkg2.label}</span>
-                <span class="text-pink font-semibold">{pkg2.price}</span>
+                <span class="font-medium text-charcoal">{pkg.label}</span>
+                <span class="text-pink font-semibold">{pkg.price}</span>
               </div>
             ))}
-          
-        <p class="mb-6"></p>
-<div class="mb-6 rounded-xl border border-pink/30 p-4">
+          </div>
+
+          <p class="mb-6"></p>
+          <div class="rounded-xl border border-pink/30 p-4">
             <p class="text-charcoal-mid text-sm mb-2">Huom: myös liikuntaedut käyvät!</p>
             <div class="mt-2 flex flex-wrap gap-2">
               <span class="rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">Smartum</span>
@@ -95,13 +72,11 @@ const bootcamp_prices = [
             </div>
           </div>
         </div>
-        </div>
-        </div>
 
         <div class="rounded-2xl border border-soft-border bg-white p-8">
-          <SectionHeader heading="Pienryhmän edut" class="mb-8" />
+          <SectionHeader heading={c.benefits_heading} class="mb-8" />
           <ul class="space-y-4">
-            {benefits.map((b) => (
+            {c.benefits.map((b) => (
               <li class="flex items-start gap-3">
                 <Fragment set:html={checkSvg} />
                 <span class="text-charcoal-mid">{b}</span>
@@ -115,9 +90,11 @@ const bootcamp_prices = [
 
   <section class="bg-off-white py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16"><SectionHeader eyebrow="Kenelle sopii" heading="Kenelle pienryhmävalmennus sopii?" centered /></div>
+      <div class="text-center mb-16">
+        <SectionHeader eyebrow={c.suitable_eyebrow} heading={c.suitable_heading} centered />
+      </div>
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {suitableFor.map((item) => (
+        {c.suitable_for.map((item) => (
           <div class="card-accent rounded-xl border border-soft-border bg-white p-6 shadow-warm">
             <h3 class="font-display text-xl font-semibold text-charcoal mb-2">{item.title}</h3>
             <p class="text-sm text-charcoal-mid leading-relaxed">{item.desc}</p>
@@ -129,8 +106,8 @@ const bootcamp_prices = [
 
   <section class="bg-off-white py-24">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-      <SectionHeader eyebrow="Aloitetaan" heading="Haluatko mukaan ryhmään?" centered class="mb-6" />
-      <Button href="/yhteystiedot" size="lg">Kysy vapaista paikoista</Button>
+      <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
+      <Button href="/yhteystiedot" size="lg">{c.cta_button}</Button>
     </div>
   </section>
 

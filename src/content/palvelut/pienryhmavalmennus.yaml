@@ -1,0 +1,53 @@
+title: Pienryhmävalmennus
+hero_eyebrow: Palvelut
+hero_heading: Pienryhmät
+hero_text: >-
+  Pienessä ryhmässä saat yksilöllistä ohjausta ja pääset haastamaan itsesi.
+  Opit oikeat ja turvalliset liiketekniikat sekä tehokkaimmat liikkeet. Saat
+  lisämotivaatiota treenaamiseen sekä kannustusta omien treenitavoitteiden
+  saavuttamiseen.
+hero_cta: Varaa paikka
+hero_image: /images/small_groups.webp
+
+kettlebell_heading: Kahvakuularyhmä
+kettlebell_time: "13.1.2026 alkaen tiistaisin klo 19-20, Syvälahdentie 31"
+kettlebell_prices:
+  - label: Kahvakuularyhmä
+    price: TÄYNNÄ
+
+bootcamp_heading: Bootcamp-ryhmä
+bootcamp_desc: >-
+  Näissä toiminnallisissa treeneissä treenataan lihaskuntoa ja voimaa modernissa
+  ja privaatissa studioympäristössä, josta löytyvät monipuoliset vapaapainot
+  sekä treenivälineet tehokkaaseen ja laadukkaaseen treeniin.
+bootcamp_time1: "Sunnuntaisin, Mojo, Ilpoistentie 16 a"
+bootcamp_time2: "Ryhmä 1 klo 18-19"
+bootcamp_time3: "Ryhmä 2 klo 19-20"
+bootcamp_prices:
+  - label: Bootcamp-ryhmä
+    price: TÄYNNÄ
+
+benefits_heading: Pienryhmän edut
+benefits:
+  - Max. 10 henkilöä — yksilöllinen huomio taattu
+  - Ryhmän energia ja motivaatio nostaa suoritusta
+  - Edullisempi kuin yksilövalmennus
+  - Hyvä tapa treenata kaverin kanssa
+  - Monipuolinen ja vaihtelevainen treeni
+  - Sopii kaikille kuntotasoille
+
+suitable_eyebrow: Kenelle sopii
+suitable_heading: Kenelle pienryhmävalmennus sopii?
+suitable_for:
+  - title: Kaveriryhmät
+    desc: Treenaa parhaan kaverin kanssa ja pidä motivaatio korkealla.
+  - title: Äidit
+    desc: Löydä aikaa itsellesi ja tapaa muita samassa elämäntilanteessa olevia.
+  - title: Kollegat
+    desc: Tiimi, joka treenaa yhdessä, pysyy yhdessä. Hyvä vaihtoehto tyky-aktiviteeteille.
+  - title: Aloittelijat
+    desc: Ryhmässä on matala kynnys aloittaa — ei pelottele kuten iso kuntosali.
+
+cta_eyebrow: Aloitetaan
+cta_heading: Haluatko mukaan ryhmään?
+cta_button: Kysy vapaista paikoista

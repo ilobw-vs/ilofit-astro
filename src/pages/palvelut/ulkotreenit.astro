@@ -2,15 +2,10 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Button from '../../components/ui/Button.astro';
+import { getEntry } from 'astro:content';
 
-const included = ['Henkilökohtainen alkukartoitus ja tavoitteiden asettaminen','Räätälöity treeniohjelma tavoitteidesi mukaan','Henkilökohtainen ohjaus jokaisessa harjoituksessa','Ravinto-ohjaus ja elämäntapamuutoksen tuki','Edistymisen seuranta ja ohjelman päivitys','Tavoitettavissa viestien välityksellä treenien välillä'];
-
-const locations = [{name:'Urheilupuisto — Paavo Nurmi -stadion',desc:'Monipuoliset ulkoliikuntamahdollisuudet Turun sydämessä. Juoksurata, leikkivälineitä ja avoimia nurmikenttiä.'},{name:'Syvälahden koulu / Hirvensalo',desc:'Luonnonkaunis ympäristö vesistön lähellä. Rauhalliset reitit ja upeat maisemat treenitaustaksi.'}];
-const whatToBring = ['Sopivat liikuntajalkineet (juoksutossut tai crossfit-kengät)','Säälle sopivat liikuntavaatteet','Juomapullo','Pyyhe','Hyvä asenne!'];
-const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
-const outdoor_prices = [
-  { label: 'Ulkotreenit', price: 'TULOSSA' },
-];
+const entry = await getEntry('palvelut', 'ulkotreenit');
+const c = entry.data;
 ---
 
 <PageLayout title="Ulkotreenit Turku | IloFit — Personal Trainer" description="Ulkoliikuntaa Turussa ammattivalmentajan ohjauksessa. Toiminnallinen harjoittelu Urheilupuistossa ja Hirvensalossa.">
@@ -18,33 +13,15 @@ const outdoor_prices = [
   <section class="bg-off-white pt-36 pb-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <!-- Vasen: tekstit + nappi -->
         <div>
-          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">
-            Palvelut
-          </p>
-          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">
-            Ulkotreenit
-          </h1>
-          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">
-            Ulkotreeneissä treenaamme monipuolisesti lihas- sekä kestävyyskuntoa omalla kehonpainolla, pienvälineitä ja ulkokuntosalin laitteita hyödyntäen. Tehokkaat ja hauskat treenit kaiken tasoisille treenaajille..
-          </p>
-
-          <div class="flex flex-col items-start gap-3">
-            <Button href="/yhteystiedot" size="lg">
-              Varaa paikka
-            </Button>
-          </div>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.hero_eyebrow}</p>
+          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">{c.hero_heading}</h1>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text}</p>
+          <Button href="/yhteystiedot" size="lg">{c.hero_cta}</Button>
         </div>
-
-        <!-- Oikea: kuva -->
         <div class="relative">
           <div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-warm">
-            <img
-              src="/images/outdoor_training.webp"
-              alt="Ulkotreenit Turussa – IloFit"
-              class="w-full h-full object-cover object-bottom grayscale"
-            />
+            <img src={c.hero_image} alt="Ulkotreenit Turussa – IloFit" class="w-full h-full object-cover object-bottom grayscale" />
           </div>
         </div>
       </div>
@@ -55,22 +32,19 @@ const outdoor_prices = [
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         <div class="rounded-2xl border border-soft-border bg-off-white p-8">
-                  <SectionHeader heading="Aikataulut ja hinnat" class="mb-8" />
-
-         <p class="text-charcoal-mid text-sm mb-6">Ulkotreenit alkavat taas maalis/huhtikuussa 2026 Turun Hirvensalossa.</p> 
-         <p class="text-charcoal-mid text-sm mb-6">Seuraa ilmoittelua lähempänä tai ilmoittaudu jo nyt ryhmään laittamalla viestiä :)​</p>
+          <SectionHeader heading={c.schedule_heading} class="mb-8" />
+          <p class="text-charcoal-mid text-sm mb-3">{c.schedule_text1}</p>
+          <p class="text-charcoal-mid text-sm mb-6">{c.schedule_text2}</p>
           <div class="space-y-4">
-            {outdoor_prices.map((pkg) => (
+            {c.prices.map((pkg) => (
               <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
                 <span class="font-medium text-charcoal">{pkg.label}</span>
                 <span class="text-pink font-semibold">{pkg.price}</span>
               </div>
             ))}
-  
+          </div>
           <p class="mb-6"></p>
-       
-
-            <div class="mb-6 rounded-xl border border-pink/30 p-4">
+          <div class="rounded-xl border border-pink/30 p-4">
             <p class="text-charcoal-mid text-sm mb-2">Huom: myös liikuntaedut käyvät!</p>
             <div class="mt-2 flex flex-wrap gap-2">
               <span class="rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">Smartum</span>
@@ -78,22 +52,20 @@ const outdoor_prices = [
               <span class="rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">Edenred</span>
             </div>
           </div>
-
-
-          <div class="mt-8"><Button href="/yhteystiedot" class="w-full justify-center">Kysy lisää tai varaa aika</Button></div>
-        </div>
-      </div>
-               <div class="rounded-2xl border border-soft-border bg-white p-8">
-          <SectionHeader heading="Treeniä ulkona, ympäri vuoden" class="mb-8" />
-                    <div class="space-y-4 text-charcoal-mid leading-relaxed">
-            <p>Ulkotreeni on monipuolinen ja tehokas tapa harjoitella. Kehonpainoliikkeet, toiminnallinen harjoittelu ja luovuus ovat kulmakiviä.</p>
-            <p>Treenit sopivat kaikille kuntotasoille — jokainen tekee omaan tahtiinsa, mutta yhdessä.</p>
+          <div class="mt-8">
+            <Button href="/yhteystiedot" class="w-full justify-center">Kysy lisää tai varaa aika</Button>
           </div>
+        </div>
 
+        <div class="rounded-2xl border border-soft-border bg-white p-8">
+          <SectionHeader heading={c.info_heading} class="mb-8" />
+          <div class="space-y-4 text-charcoal-mid leading-relaxed">
+            <p>{c.info_text1}</p>
+            <p>{c.info_text2}</p>
+          </div>
         </div>
       </div>
-</section>
-
-
+    </div>
+  </section>
 
 </PageLayout>

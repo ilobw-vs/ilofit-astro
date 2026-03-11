@@ -2,10 +2,11 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Button from '../../components/ui/Button.astro';
+import { getEntry } from 'astro:content';
 
-const serviceOptions = [{title:'Aamujooga',desc:'Rauhallinen joogasessio aamun aloitukseksi. Venyttää, rentouttaa ja virittää mielen päivään.'},{title:'HIIT-treeni',desc:'Tehokasta intervallitreeniä, joka sopii kaikille kuntotasoille. Energinen ja motivoiva kokemus.'},{title:'Taukojumppa',desc:'15–20 minuutin liikkuvuus- ja venyttelyhetki kesken työpäivän. Virkistää ja ehkäisee jännitystiloja.'},{title:'Ulkocircuit',desc:'Toiminnallinen kiertotreeni ulkona. Ryhmähenki paranee, keho liikkuu ja mieli virkistyy.'},{title:'Räätälöity paketti',desc:'Suunnitellaan yrityksellesi täysin yksilöllinen liikuntaohjelma — tarpeidesi mukaan.'}];
-const benefits = ['Parantaa henkilöstön työssä jaksamista','Vähentää sairauspoissaoloja','Lisää tiimien yhteisöllisyyttä','Parantaa työmotivaatiota ja -iloa','Positiivinen työnantajamielikuva','Kevytrakenteinen ja helppo järjestää'];
-const steps = [{n:'01',title:'Ota yhteyttä',desc:'Kerro tarpeistasi ja toiveistasi. Sovitaan tapaaminen tai puhelinkeskustelu.'},{n:'02',title:'Räätälöity tarjous',desc:'Suunnittelen yrityksellenne sopivan paketin — aikatauluun, budjettiin ja toiveisiin perustuen.'},{n:'03',title:'Treeni toteutuu',desc:'Tulen teille tai sovitulle paikalle. Kaikki tarvikkeet mukana — teidän ei tarvitse järjestää mitään.'}];
+const entry = await getEntry('palvelut', 'yrityspalvelut');
+const c = entry.data;
+
 const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
 ---
 
@@ -14,45 +15,28 @@ const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" st
   <section class="bg-off-white pt-36 pb-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <!-- Vasen: tekstit + nappi -->
         <div>
-          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">
-            Palvelut
-          </p>
-          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">
-            Yrityspalvelut
-          </h1>
-          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">
-            Tilaa Personal Trainer yrityksellesi tai kaveriporukalle. Tulen toteuttamaan treenitoiveenne!​
-            </p>
-
-          <div class="flex flex-col items-start gap-3">
-            <Button href="/yhteystiedot" size="lg">
-              Pyydä tarjous
-            </Button>
-          </div>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.hero_eyebrow}</p>
+          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">{c.hero_heading}</h1>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text}</p>
+          <Button href="/yhteystiedot" size="lg">{c.hero_cta}</Button>
         </div>
-
-        <!-- Oikea: kuva -->
         <div class="relative">
           <div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-warm">
-            <img
-              src="/images/companies.webp"
-              alt="Ulkotreenit Turussa – IloFit"
-              class="w-full h-full object-cover object-bottom grayscale"
-            />
+            <img src={c.hero_image} alt="Yrityspalvelut – IloFit" class="w-full h-full object-cover object-bottom grayscale" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-
   <section class="bg-white py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16"><SectionHeader heading="Palveluni yrityksille  " centered /></div>
+      <div class="text-center mb-16">
+        <SectionHeader heading={c.services_heading} centered />
+      </div>
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {serviceOptions.map((opt) => (
+        {c.services.map((opt) => (
           <div class="card-accent rounded-xl border border-soft-border bg-off-white p-6 shadow-warm">
             <div class="mb-4 w-10 h-10 rounded-lg bg-pink-light flex items-center justify-center">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C97A8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
@@ -69,15 +53,20 @@ const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" st
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
-          <SectionHeader eyebrow="Hyödyt" heading="Miksi panostaa henkilöstöliikuntaan?" class="mb-8" />
+          <SectionHeader eyebrow={c.benefits_eyebrow} heading={c.benefits_heading} class="mb-8" />
           <ul class="space-y-4">
-            {benefits.map((b) => (<li class="flex items-start gap-3"><Fragment set:html={checkSvg} /><span class="text-charcoal-mid">{b}</span></li>))}
+            {c.benefits.map((b) => (
+              <li class="flex items-start gap-3">
+                <Fragment set:html={checkSvg} />
+                <span class="text-charcoal-mid">{b}</span>
+              </li>
+            ))}
           </ul>
         </div>
         <div class="rounded-2xl bg-pink-light p-8">
-          <h3 class="font-display text-2xl font-semibold text-charcoal mb-4">Näin tilaat</h3>
+          <h3 class="font-display text-2xl font-semibold text-charcoal mb-4">{c.steps_heading}</h3>
           <div class="space-y-6">
-            {steps.map((step) => (
+            {c.steps.map((step) => (
               <div class="flex gap-4">
                 <div class="flex-shrink-0 w-10 h-10 rounded-full bg-pink flex items-center justify-center">
                   <span class="font-display text-sm font-semibold text-white">{step.n}</span>
@@ -96,9 +85,9 @@ const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" st
 
   <section class="bg-white py-24">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-      <SectionHeader eyebrow="Tarjous" heading="Pyydä tarjous yrityksellesi" centered class="mb-6" />
-      <p class="text-charcoal-mid mb-8">Kerro lyhyesti yrityksestäsi ja toiveistasi — palaan sinulle tarjouksen kanssa.</p>
-      <Button href="/yhteystiedot" size="lg">Pyydä tarjous</Button>
+      <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
+      <p class="text-charcoal-mid mb-8">{c.cta_text}</p>
+      <Button href="/yhteystiedot" size="lg">{c.cta_button}</Button>
     </div>
   </section>
 

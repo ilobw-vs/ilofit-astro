@@ -2,124 +2,63 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Button from '../../components/ui/Button.astro';
+import { getEntry } from 'astro:content';
 
-const included = [
-  'Alkuhaastattelu',
-  'Henkilökohtaisten toiveiden, tavoitteiden ja rajoitteiden huomioiminen',
-  'Yksilöllinen treeniohjelma (1–3 jakoinen ohjelma)',
-  'Kehonkoostumusmittaustulosten huomiointi ohjelmassa — kaupan päälle!',
-];
-
-const addons = [
-  {
-    title: 'Ravinto-osuus',
-    desc: 'Käytännönläheinen ravinto-ohje tukemaan treenitavoitteitasi. Ei tiukkaa dieettiä — järkeviä muutoksia.',
-    price: '[XX €]',
-    param: 'treeniohjelma+ravinto',
-  },
-  {
-    title: 'Liikkuvuus- ja venyttelyohjelma',
-    desc: 'Räätälöity ohjelma treeniohjelman tueksi. Parantaa palautumista ja ehkäisee vammoja.',
-    price: '[XX €]',
-    param: 'treeniohjelma+liikkuvuus',
-  },
-  {
-    title: 'Parivalmennus',
-    desc: 'Sama ohjelma kahdelle — kaverille tai puolisolle. Treenaaminen yhdessä on motivoivampaa.',
-    price: '[XX €]',
-    param: 'treeniohjelma+pari',
-  },
-
-  {
-    title: 'Opastettu valmennussessio',
-    desc: '75 minuutin sessio, jossa käymme ohjelman läpi yhdessä. Opit tekniikan oikein heti alusta.',
-    price: '[XX €]',
-    param: 'treeniohjelma+sessio',
-  },
-];
+const entry = await getEntry('palvelut', 'treeniohjelma');
+const c = entry.data;
 
 const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
 ---
 
-<PageLayout
-  title="Treeniohjelma | IloFit — Personal Trainer"
-  description="Yksilöllisesti räätälöity treeniohjelma kattavan taustatietolomakkeen ja haastattelun pohjalta."
->
+<PageLayout title="Treeniohjelma | IloFit — Personal Trainer" description="Yksilöllisesti räätälöity treeniohjelma kattavan taustatietolomakkeen ja haastattelun pohjalta.">
 
-  <!-- ═══════════════════════════════════════════
-       HERO
-  ════════════════════════════════════════════ -->
   <section class="bg-off-white pt-36 pb-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">Palvelut</p>
-          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">Treeniohjelma</h1>
-          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-4">
-            Teen sinulle yksilöllisen treeniohjelman, joka sopii juuri sinun tavoitteisiisi, arkeesi ja kuntotasoosi. Ohjelma laaditaan kattavan taustatietolomakkeen ja haastattelun pohjalta.
-          </p>
-          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">
-            Treeniohjelmalla voit harjoitella kotona ja kuntosalilla — mielesi mukaan.
-          </p>
-          <Button href="/taustatietolomake?palvelu=treeniohjelma" size="lg">
-            Täytä taustatietolomake
-          </Button>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.hero_eyebrow}</p>
+          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">{c.hero_heading}</h1>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-4">{c.hero_text1}</p>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text2}</p>
+          <Button href="/taustatietolomake?palvelu=treeniohjelma" size="lg">{c.hero_cta}</Button>
         </div>
         <div class="relative">
           <div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-warm">
-            <img
-              src="/images/training_program.webp"
-              alt="Treeniohjelma – IloFit"
-              class="w-full h-full object-cover object-bottom grayscale"
-            />
+            <img src={c.hero_image} alt="Treeniohjelma – IloFit" class="w-full h-full object-cover object-bottom grayscale" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       PERUSTUOTE — hinta + sisältö
-  ════════════════════════════════════════════ -->
   <section class="bg-white py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-        <!-- Hinta -->
         <div class="rounded-2xl border border-soft-border bg-off-white p-8">
           <SectionHeader heading="Hinnat" class="mb-8" />
           <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4 mb-4">
-            <span class="font-medium text-charcoal">Yksilöllinen treeniohjelma</span>
-            <span class="text-pink font-semibold">40 €</span>
+            <span class="font-medium text-charcoal">{c.base_price_label}</span>
+            <span class="text-pink font-semibold">{c.base_price}</span>
           </div>
 
-          <p class="mb-10"></p>
-
-         <p class="text-charcoal-mid text-lg font-semibold mb-6">Lisäpalvelut</p>
-
-          <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4 mb-4">
-            <span class="font-medium text-charcoal">Ravinto-ohjelma (valinnainen)</span>
-            <span class="text-pink font-semibold">+10 €</span>
+          <p class="mb-6"></p>
+          <p class="text-charcoal-mid text-lg font-semibold mb-6">{c.addons_heading}</p>
+          <div class="space-y-4">
+            {c.addons.map((addon) => (
+              <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
+                <span class="font-medium text-charcoal">{addon.label}</span>
+                <span class="text-pink font-semibold">{addon.price}</span>
+              </div>
+            ))}
           </div>
 
-          <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4 mb-4">
-            <span class="font-medium text-charcoal">Liikkuvuus- ja venyttelyohjelma (valinnainen)</span>
-            <span class="text-pink font-semibold">+10 €</span>
-          </div>
-
-          <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4 mb-4">
-            <span class="font-medium text-charcoal">Opastettu valmennussessio 75 minuuttia (valinnainen)</span>
-            <span class="text-pink font-semibold">+60 €</span>
-          </div>
-
-          <p class="mb-10"></p>
-
-         <p class="text-charcoal-mid text-lg font-semibold mb-6">Plus-palvelu kuukausitilauksena</p>
-         <p class="text-charcoal-mid text-sm mb-6">Palveluun kuuluu kuukausittainen palaveri, jossa käydään läpi onnistumiset ja kehitystarpeet sekä tarvittaessa muokataan ohjelmia. Minimikesto 3 kuukautta. Hinnat toistaiseksi voimassa 1kk irtisanomisajalla.</p>
-
-          <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4 mb-4">
-            <span class="font-medium text-charcoal">Plus-palvelu</span>
-            <span class="text-pink font-semibold">30 € / kk</span>
+          <p class="mb-6"></p>
+          <p class="text-charcoal-mid text-lg font-semibold mb-3">{c.plus_heading}</p>
+          <p class="text-charcoal-mid text-sm mb-6">{c.plus_desc}</p>
+          <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4 mb-6">
+            <span class="font-medium text-charcoal">{c.plus_price_label}</span>
+            <span class="text-pink font-semibold">{c.plus_price}</span>
           </div>
 
           <div class="rounded-xl border border-pink/30 p-4 mb-8">
@@ -130,29 +69,21 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
               <span class="rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">Edenred</span>
             </div>
           </div>
-          <Button href="/taustatietolomake?palvelu=treeniohjelma" class="w-full justify-center">
-            Tilaa treeniohjelma
-          </Button>
+          <Button href="/taustatietolomake?palvelu=treeniohjelma" class="w-full justify-center">Tilaa treeniohjelma</Button>
         </div>
 
-        <!-- Sisältää -->
         <div class="rounded-2xl border border-soft-border bg-white p-8">
-          <SectionHeader heading="Sisältää" class="mb-8" />
+          <SectionHeader heading={c.included_heading} class="mb-8" />
           <ul class="space-y-4">
-            {included.map((item, i) => (
+            {c.included.map((item) => (
               <li class="flex items-start gap-3">
                 <Fragment set:html={checkSvg} />
-                <span class={`text-charcoal-mid${i === included.length - 1 ? ' font-medium text-charcoal' : ''}`}>
-                  {item}
-                </span>
+                <span class="text-charcoal-mid">{item}</span>
               </li>
             ))}
           </ul>
-          <!-- Kehonkoostumus highlight -->
           <div class="mt-6 rounded-xl bg-pink-light border border-pink/20 px-4 py-3">
-            <p class="text-xs text-pink-dark font-medium">
-              💡 Jos sinulla on kehonkoostumusmittaustulokset, hyödynnän ne ohjelmassasi veloituksetta.
-            </p>
+            <p class="text-xs text-pink-dark font-medium">{c.included_highlight}</p>
           </div>
         </div>
 
@@ -160,37 +91,21 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       KERTALUONTEISET LISÄT
-  ════════════════════════════════════════════ -->
   <section class="bg-off-white py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <SectionHeader
-          eyebrow="Lisäpalvelut"
-          heading="Tee ohjelmasta täydellinen paketti"
-          centered
-        />
-        <p class="text-charcoal-mid mt-4 max-w-xl mx-auto">
-          Voit täydentää treeniohjelmaa yhdellä tai useammalla lisäpalvelulla. Tilaus tapahtuu samalla lomakkeella.
-        </p>
+        <SectionHeader eyebrow={c.addon_cards_eyebrow} heading={c.addon_cards_heading} centered />
+        <p class="text-charcoal-mid mt-4 max-w-xl mx-auto">{c.addon_cards_desc}</p>
       </div>
-
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {addons.map((addon) => (
+        {c.addon_cards.map((addon) => (
           <div class="card-accent rounded-xl border border-soft-border bg-white p-6 shadow-warm flex flex-col">
             <div class="flex-1">
               <h3 class="font-display text-xl font-semibold text-charcoal mb-2">{addon.title}</h3>
               <p class="text-sm text-charcoal-mid leading-relaxed mb-4">{addon.desc}</p>
             </div>
-            <div class="mt-auto pt-4 border-t border-soft-border flex items-center justify-between">
+            <div class="mt-auto pt-4 border-t border-soft-border">
               <span class="text-pink font-semibold">{addon.price}</span>
-              <a
-                href={`/taustatietolomake?palvelu=${addon.param}`}
-                class="text-xs font-medium text-charcoal-mid hover:text-pink transition-colors"
-              >
-                Lisää tilaukseen →
-              </a>
             </div>
           </div>
         ))}
@@ -198,26 +113,14 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       KUUKAUSITUKI
-  ════════════════════════════════════════════ -->
   <section class="bg-white py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
         <div>
-          <SectionHeader eyebrow="Jatkuva tuki" heading="Kuukausittainen checkpoint" class="mb-6" />
-          <p class="text-charcoal-mid leading-relaxed mb-6">
-            Tulokset syntyvät johdonmukaisesta harjoittelusta — ja siitä, että ohjelma pysyy ajan tasalla. Kuukausittaisessa checkpointissa käymme yhdessä läpi kehityksesi ja päivitämme ohjelman tarvittaessa.
-          </p>
+          <SectionHeader eyebrow={c.monthly_eyebrow} heading={c.monthly_heading} class="mb-6" />
+          <p class="text-charcoal-mid leading-relaxed mb-6">{c.monthly_text}</p>
           <ul class="space-y-3 mb-8">
-            {[
-              'Kuukausittainen tapaaminen tai etäsessio',
-              'Ohjelman päivitys kehityksen mukaan',
-              'Tuki ja kysymykset viestitse kuukauden aikana',
-              'Minimissään 3 kuukauden sitoutuminen',
-              'Irtisanominen 1 kk ennen seuraavaa jaksoa',
-            ].map((item) => (
+            {c.monthly_items.map((item) => (
               <li class="flex items-start gap-3">
                 <Fragment set:html={checkSvg} />
                 <span class="text-sm text-charcoal-mid">{item}</span>
@@ -226,16 +129,12 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
           </ul>
           <div class="flex items-center gap-4">
             <div>
-              <span class="font-display text-4xl font-semibold text-charcoal">[XX €]</span>
+              <span class="font-display text-4xl font-semibold text-charcoal">{c.monthly_price}</span>
               <span class="text-charcoal-mid text-sm"> / kk</span>
             </div>
-            <Button href="/taustatietolomake?palvelu=treeniohjelma+kuukausituki">
-              Aloita kuukausituki
-            </Button>
+            <Button href="/taustatietolomake?palvelu=treeniohjelma+kuukausituki">{c.monthly_cta}</Button>
           </div>
         </div>
-
-        <!-- Visuaalinen kortti -->
         <div class="rounded-2xl bg-charcoal p-8 text-white">
           <p class="text-xs font-medium uppercase tracking-widest text-pink mb-6">Esimerkki 3 kk jaksosta</p>
           <div class="space-y-6">
@@ -256,31 +155,22 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
             ))}
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       OHJELMAPÄIVITYS — erillinen huomiokortti
-  ════════════════════════════════════════════ -->
   <section class="bg-off-white py-16">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
       <div class="rounded-2xl border border-soft-border bg-white p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6">
         <div class="flex-1">
-          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-2">Vanha asiakas?</p>
-          <h3 class="font-display text-2xl font-semibold text-charcoal mb-2">Ohjelmapäivitys</h3>
-          <p class="text-charcoal-mid text-sm leading-relaxed">
-            Onko ohjelmasi jo muutaman kuukauden vanha? Päivitetään se vastaamaan nykytilannettasi ja uusia tavoitteitasi — ilman täyttä alkukartoitusta.
-          </p>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-2">{c.update_eyebrow}</p>
+          <h3 class="font-display text-2xl font-semibold text-charcoal mb-2">{c.update_heading}</h3>
+          <p class="text-charcoal-mid text-sm leading-relaxed">{c.update_desc}</p>
         </div>
         <div class="flex-shrink-0 text-right">
-          <p class="font-display text-3xl font-semibold text-charcoal mb-1">[XX €]</p>
-          <a
-            href="/taustatietolomake?palvelu=ohjelmapäivitys"
-            class="inline-block mt-3 rounded-lg border border-soft-border px-5 py-2.5 text-sm font-medium text-charcoal hover:border-pink hover:text-pink transition-colors"
-          >
-            Tilaa päivitys
+          <p class="font-display text-3xl font-semibold text-charcoal mb-1">{c.update_price}</p>
+          <a href="/taustatietolomake?palvelu=ohjelmapäivitys" class="inline-block mt-3 rounded-lg border border-soft-border px-5 py-2.5 text-sm font-medium text-charcoal hover:border-pink hover:text-pink transition-colors">
+            {c.update_cta}
           </a>
         </div>
       </div>

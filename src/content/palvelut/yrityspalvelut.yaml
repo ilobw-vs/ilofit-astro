@@ -1,0 +1,46 @@
+title: Yrityspalvelut
+hero_eyebrow: Palvelut
+hero_heading: Yrityspalvelut
+hero_text: Tilaa Personal Trainer yrityksellesi tai kaveriporukalle. Tulen toteuttamaan treenitoiveenne!
+hero_cta: Pyydä tarjous
+hero_image: /images/companies.webp
+
+services_heading: Palveluni yrityksille
+services:
+  - title: Aamujooga
+    desc: Rauhallinen joogasessio aamun aloitukseksi. Venyttää, rentouttaa ja virittää mielen päivään.
+  - title: HIIT-treeni
+    desc: Tehokasta intervallitreeniä, joka sopii kaikille kuntotasoille. Energinen ja motivoiva kokemus.
+  - title: Taukojumppa
+    desc: 15–20 minuutin liikkuvuus- ja venyttelyhetki kesken työpäivän. Virkistää ja ehkäisee jännitystiloja.
+  - title: Ulkocircuit
+    desc: Toiminnallinen kiertotreeni ulkona. Ryhmähenki paranee, keho liikkuu ja mieli virkistyy.
+  - title: Räätälöity paketti
+    desc: Suunnitellaan yrityksellesi täysin yksilöllinen liikuntaohjelma — tarpeidesi mukaan.
+
+benefits_eyebrow: Hyödyt
+benefits_heading: Miksi panostaa henkilöstöliikuntaan?
+benefits:
+  - Parantaa henkilöstön työssä jaksamista
+  - Vähentää sairauspoissaoloja
+  - Lisää tiimien yhteisöllisyyttä
+  - Parantaa työmotivaatiota ja -iloa
+  - Positiivinen työnantajamielikuva
+  - Kevytrakenteinen ja helppo järjestää
+
+steps_heading: Näin tilaat
+steps:
+  - n: "01"
+    title: Ota yhteyttä
+    desc: Kerro tarpeistasi ja toiveistasi. Sovitaan tapaaminen tai puhelinkeskustelu.
+  - n: "02"
+    title: Räätälöity tarjous
+    desc: Suunnittelen yrityksellenne sopivan paketin — aikatauluun, budjettiin ja toiveisiin perustuen.
+  - n: "03"
+    title: Treeni toteutuu
+    desc: Tulen teille tai sovitulle paikalle. Kaikki tarvikkeet mukana — teidän ei tarvitse järjestää mitään.
+
+cta_eyebrow: Tarjous
+cta_heading: Pyydä tarjous yrityksellesi
+cta_text: Kerro lyhyesti yrityksestäsi ja toiveistasi — palaan sinulle tarjouksen kanssa.
+cta_button: Pyydä tarjous
