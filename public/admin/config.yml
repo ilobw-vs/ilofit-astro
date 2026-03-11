@@ -78,3 +78,163 @@ collections:
           - { label: "CTA: otsikko", name: cta_heading, widget: string }
           - { label: "CTA: teksti", name: cta_text, widget: text }
           - { label: "CTA: nappi", name: cta_button, widget: string }
+
+      - name: pienryhmavalmennus
+        label: Pienryhmävalmennus
+        file: src/content/palvelut/pienryhmavalmennus.yaml
+        fields:
+          - { label: Otsikko, name: title, widget: string }
+          - { label: "Hero: yläotsikko", name: hero_eyebrow, widget: string }
+          - { label: "Hero: pääotsikko", name: hero_heading, widget: string }
+          - { label: "Hero: teksti", name: hero_text, widget: text }
+          - { label: "Hero: nappi", name: hero_cta, widget: string }
+          - { label: "Hero: kuva", name: hero_image, widget: image }
+          - { label: "Kahvakuula: otsikko", name: kettlebell_heading, widget: string }
+          - { label: "Kahvakuula: aika ja paikka", name: kettlebell_time, widget: string }
+          - label: Kahvakuulahinnat
+            name: kettlebell_prices
+            widget: list
+            fields:
+              - { label: Kuvaus, name: label, widget: string }
+              - { label: Hinta, name: price, widget: string }
+          - { label: "Bootcamp: otsikko", name: bootcamp_heading, widget: string }
+          - { label: "Bootcamp: kuvaus", name: bootcamp_desc, widget: text }
+          - { label: "Bootcamp: paikka", name: bootcamp_time1, widget: string }
+          - { label: "Bootcamp: ryhmä 1", name: bootcamp_time2, widget: string }
+          - { label: "Bootcamp: ryhmä 2", name: bootcamp_time3, widget: string }
+          - label: Bootcamphinnat
+            name: bootcamp_prices
+            widget: list
+            fields:
+              - { label: Kuvaus, name: label, widget: string }
+              - { label: Hinta, name: price, widget: string }
+          - { label: "Edut: otsikko", name: benefits_heading, widget: string }
+          - label: Edut
+            name: benefits
+            widget: list
+            field: { label: Etu, name: item, widget: string }
+          - { label: "Kenelle: yläotsikko", name: suitable_eyebrow, widget: string }
+          - { label: "Kenelle: otsikko", name: suitable_heading, widget: string }
+          - label: Kenelle sopii
+            name: suitable_for
+            widget: list
+            fields:
+              - { label: Otsikko, name: title, widget: string }
+              - { label: Kuvaus, name: desc, widget: text }
+          - { label: "CTA: yläotsikko", name: cta_eyebrow, widget: string }
+          - { label: "CTA: otsikko", name: cta_heading, widget: string }
+          - { label: "CTA: nappi", name: cta_button, widget: string }
+
+      - name: treeniohjelma
+        label: Treeniohjelma
+        file: src/content/palvelut/treeniohjelma.yaml
+        fields:
+          - { label: Otsikko, name: title, widget: string }
+          - { label: "Hero: yläotsikko", name: hero_eyebrow, widget: string }
+          - { label: "Hero: pääotsikko", name: hero_heading, widget: string }
+          - { label: "Hero: teksti 1", name: hero_text1, widget: text }
+          - { label: "Hero: teksti 2", name: hero_text2, widget: text }
+          - { label: "Hero: nappi", name: hero_cta, widget: string }
+          - { label: "Hero: kuva", name: hero_image, widget: image }
+          - { label: "Perushinta: nimi", name: base_price_label, widget: string }
+          - { label: "Perushinta: hinta", name: base_price, widget: string }
+          - { label: "Lisäpalvelut: otsikko", name: addons_heading, widget: string }
+          - label: Lisäpalvelut
+            name: addons
+            widget: list
+            fields:
+              - { label: Kuvaus, name: label, widget: string }
+              - { label: Hinta, name: price, widget: string }
+          - { label: "Plus: otsikko", name: plus_heading, widget: string }
+          - { label: "Plus: kuvaus", name: plus_desc, widget: text }
+          - { label: "Plus: nimi", name: plus_price_label, widget: string }
+          - { label: "Plus: hinta", name: plus_price, widget: string }
+          - { label: "Sisältää: otsikko", name: included_heading, widget: string }
+          - label: Sisältää
+            name: included
+            widget: list
+            field: { label: Kohta, name: item, widget: string }
+          - { label: "Sisältää: huomio", name: included_highlight, widget: text }
+          - { label: "Lisäkortit: yläotsikko", name: addon_cards_eyebrow, widget: string }
+          - { label: "Lisäkortit: otsikko", name: addon_cards_heading, widget: string }
+          - { label: "Lisäkortit: teksti", name: addon_cards_desc, widget: text }
+          - label: Lisäkortit
+            name: addon_cards
+            widget: list
+            fields:
+              - { label: Otsikko, name: title, widget: string }
+              - { label: Kuvaus, name: desc, widget: text }
+              - { label: Hinta, name: price, widget: string }
+          - { label: "Kuukausituki: yläotsikko", name: monthly_eyebrow, widget: string }
+          - { label: "Kuukausituki: otsikko", name: monthly_heading, widget: string }
+          - { label: "Kuukausituki: teksti", name: monthly_text, widget: text }
+          - label: Kuukausituki sisältää
+            name: monthly_items
+            widget: list
+            field: { label: Kohta, name: item, widget: string }
+          - { label: "Kuukausituki: hinta", name: monthly_price, widget: string }
+          - { label: "Kuukausituki: nappi", name: monthly_cta, widget: string }
+          - { label: "Päivitys: yläotsikko", name: update_eyebrow, widget: string }
+          - { label: "Päivitys: otsikko", name: update_heading, widget: string }
+          - { label: "Päivitys: kuvaus", name: update_desc, widget: text }
+          - { label: "Päivitys: hinta", name: update_price, widget: string }
+          - { label: "Päivitys: nappi", name: update_cta, widget: string }
+
+      - name: ulkotreenit
+        label: Ulkotreenit
+        file: src/content/palvelut/ulkotreenit.yaml
+        fields:
+          - { label: Otsikko, name: title, widget: string }
+          - { label: "Hero: yläotsikko", name: hero_eyebrow, widget: string }
+          - { label: "Hero: pääotsikko", name: hero_heading, widget: string }
+          - { label: "Hero: teksti", name: hero_text, widget: text }
+          - { label: "Hero: nappi", name: hero_cta, widget: string }
+          - { label: "Hero: kuva", name: hero_image, widget: image }
+          - { label: "Aikataulu: otsikko", name: schedule_heading, widget: string }
+          - { label: "Aikataulu: teksti 1", name: schedule_text1, widget: text }
+          - { label: "Aikataulu: teksti 2", name: schedule_text2, widget: text }
+          - label: Hinnat
+            name: prices
+            widget: list
+            fields:
+              - { label: Kuvaus, name: label, widget: string }
+              - { label: Hinta, name: price, widget: string }
+          - { label: "Info: otsikko", name: info_heading, widget: string }
+          - { label: "Info: teksti 1", name: info_text1, widget: text }
+          - { label: "Info: teksti 2", name: info_text2, widget: text }
+
+      - name: yrityspalvelut
+        label: Yrityspalvelut
+        file: src/content/palvelut/yrityspalvelut.yaml
+        fields:
+          - { label: Otsikko, name: title, widget: string }
+          - { label: "Hero: yläotsikko", name: hero_eyebrow, widget: string }
+          - { label: "Hero: pääotsikko", name: hero_heading, widget: string }
+          - { label: "Hero: teksti", name: hero_text, widget: text }
+          - { label: "Hero: nappi", name: hero_cta, widget: string }
+          - { label: "Hero: kuva", name: hero_image, widget: image }
+          - { label: "Palvelut: otsikko", name: services_heading, widget: string }
+          - label: Palvelut
+            name: services
+            widget: list
+            fields:
+              - { label: Otsikko, name: title, widget: string }
+              - { label: Kuvaus, name: desc, widget: text }
+          - { label: "Hyödyt: yläotsikko", name: benefits_eyebrow, widget: string }
+          - { label: "Hyödyt: otsikko", name: benefits_heading, widget: string }
+          - label: Hyödyt
+            name: benefits
+            widget: list
+            field: { label: Hyöty, name: item, widget: string }
+          - { label: "Tilaus: otsikko", name: steps_heading, widget: string }
+          - label: Tilausprosessi
+            name: steps
+            widget: list
+            fields:
+              - { label: Numero, name: n, widget: string }
+              - { label: Otsikko, name: title, widget: string }
+              - { label: Kuvaus, name: desc, widget: text }
+          - { label: "CTA: yläotsikko", name: cta_eyebrow, widget: string }
+          - { label: "CTA: otsikko", name: cta_heading, widget: string }
+          - { label: "CTA: teksti", name: cta_text, widget: text }
+          - { label: "CTA: nappi", name: cta_button, widget: string }
