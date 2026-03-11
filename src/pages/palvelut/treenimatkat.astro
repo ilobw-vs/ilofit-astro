@@ -1,0 +1,143 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Button from '../../components/ui/Button.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('palvelut', 'treenimatkat');
+const c = entry.data;
+
+const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+
+const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+---
+
+<PageLayout title="Treenimatkat | IloFit — Personal Trainer" description="Treeni- ja hyvinvointiloma Rodokselle 10–17.5.2026. Sopivasti treeniä, rentoutumista ja Välimeren tunnelmaa samanhenkisen ryhmän kanssa.">
+
+  <!-- Hero -->
+  <section class="relative bg-off-white pt-36 pb-20 overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.hero_eyebrow}</p>
+          <h1 class="font-display text-4xl font-semibold text-charcoal sm:text-5xl mb-6 leading-tight">{c.hero_heading}</h1>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text}</p>
+          <Button href="/yhteystiedot" size="lg">{c.hero_cta}</Button>
+        </div>
+        <div class="relative">
+          <div class="w-full h-[460px] rounded-3xl overflow-hidden shadow-warm">
+            <img
+              src={c.hero_image}
+              alt="Treenimatka Rodokselle – IloFit"
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+          <!-- Floating badge -->
+          <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-warm px-5 py-3 border border-soft-border">
+            <p class="text-xs text-charcoal-mid uppercase tracking-widest mb-1">Kohde</p>
+            <p class="font-display font-semibold text-charcoal">Rodos, Kreikka 🇬🇷</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hinta + Sisältö -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Hinta-kortti -->
+        <div class="rounded-2xl border border-soft-border bg-off-white p-8">
+          <SectionHeader heading={c.price_heading} class="mb-8" />
+
+          <div class="rounded-xl bg-pink text-white p-6 mb-6">
+            <p class="text-sm font-medium opacity-80 mb-1">Hinta per henkilö</p>
+            <p class="font-display text-2xl font-semibold">{c.price_per_person}</p>
+            <p class="text-sm opacity-80 mt-2">{c.price_single_supplement}</p>
+          </div>
+
+          <p class="text-charcoal font-semibold mb-4">{c.included_heading}</p>
+          <ul class="space-y-3 mb-8">
+            {c.included.map((item: string) => (
+              <li class="flex items-start gap-3">
+                <Fragment set:html={checkSvg} />
+                <span class="text-charcoal-mid text-sm">{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="rounded-xl border border-soft-border bg-white p-5">
+            <p class="text-sm font-semibold text-charcoal mb-3">{c.extra_heading}</p>
+            <ul class="space-y-2">
+              {c.extra_items.map((item: string) => (
+                <li class="flex items-start gap-3">
+                  <Fragment set:html={extraSvg} />
+                  <span class="text-charcoal-mid text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mt-8">
+            <Button href="/yhteystiedot" class="w-full justify-center">{c.hero_cta}</Button>
+          </div>
+        </div>
+
+        <!-- Hotelli-kortti -->
+        <div class="rounded-2xl border border-soft-border bg-white p-8">
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-2">{c.hotel_eyebrow}</p>
+          <h2 class="font-display text-2xl font-semibold text-charcoal mb-1">{c.hotel_heading}</h2>
+          <p class="text-pink mb-6">{'★'.repeat(c.hotel_stars)}</p>
+
+          <div class="w-full h-56 rounded-2xl overflow-hidden mb-6">
+            <img
+              src={c.hotel_image}
+              alt="Hotelli Levante by Playitas – Rodos"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <div class="space-y-4 text-charcoal-mid leading-relaxed text-sm">
+            <p>{c.hotel_text1}</p>
+            <p>{c.hotel_text2}</p>
+            <p>{c.hotel_text3}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Esimerkki päivän ohjelmasta -->
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <SectionHeader heading={c.program_heading} class="mb-6" />
+          <p class="text-charcoal-mid leading-relaxed">{c.program_text}</p>
+        </div>
+        <div class="w-full h-[380px] rounded-3xl overflow-hidden shadow-warm">
+          <img
+            src={c.program_image}
+            alt="Treeniä Rodoksella – IloFit"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
+      <p class="text-charcoal-mid mb-3">{c.cta_text}</p>
+      <p class="text-charcoal-mid mb-8">
+        Sähköposti: <a href={`mailto:${c.cta_email}`} class="text-pink hover:underline">{c.cta_email}</a>
+      </p>
+      <Button href="/yhteystiedot" size="lg">{c.cta_button}</Button>
+    </div>
+  </section>
+
+</PageLayout>

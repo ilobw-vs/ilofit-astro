@@ -1,0 +1,45 @@
+title: Treenimatkat
+hero_eyebrow: Treenimatkat
+hero_heading: Treeni- ja hyvinvointiloma Rodokselle 10–17.5.2026
+hero_text: Lähde viettämään aktiivista hyvinvointilomaa Rodokselle! Luvassa on sopivasti treeniä sekä rentoutumista, maukasta ja terveellistä Välimeren ruokaa sekä paljon erilaisia aktiviteetteja — unohtamatta omaa aikaa esim. altaalla löhöillen tai retkeillen. Samanhenkisen matkaseuran kanssa viikko on hauska ja ikimuistoinen. Treenit skaalataan kuntotason mukaan, eikä osallistuminen yhteisiin treeneihin ole pakollista.
+hero_cta: Ilmoittaudu mukaan
+hero_image: /images/rhodos_trip.avif
+
+hotel_eyebrow: Majoitus
+hotel_heading: Hotelli Levante by Playitas
+hotel_stars: 5
+hotel_text1: Hotelli sijaitsee noin 30 minuutin matkan päässä Rodoksen kaupungista etelään, rauhallisessa ympäristössä Afandoun rannalla.
+hotel_text2: Sporttihotellissa löytyy muun muassa iso kuntosali, 4 tenniskenttää, 2 padel-kenttää, tilava uima-allas ja erilaisia liikuntaryhmiä sekä kaunis uimaranta. Lisää urheilumahdollisuuksista löytyy paikan päältä.
+hotel_text3: Kävelymatkan päässä hotellista on Kolymbian kylä, ja sukkulabussit vievät Rodoksen kaupunkiin.
+hotel_image: /images/hotel_rhodos.avif
+
+price_heading: Hinta
+price_per_person: "1 525 € / hlö jaettuna 2 hengen huoneessa"
+price_single_supplement: Lisämaksu 1 hengen huoneesta — kysy hinta
+
+included_heading: Hinta sisältää
+included:
+  - Lennot Hki–Rodos–Hki (matkatavara + käsimatkatavara)
+  - "Meno: 10.5. HEL 6:05"
+  - "Paluu: 17.5. HEL 14:30"
+  - Majoitus 7 yötä Levante powered by Playitas -hotellissa
+  - All inclusive
+  - IloFit-ohjatut treenit — 2 treeniä per päivä oman ryhmän kanssa
+  - Kaikki sporttithotellin treenit ja aktiviteetit tason mukaan
+
+extra_heading: Lisämaksusta hotellilla
+extra_items:
+  - Tennis ja padel
+  - Vesurheilu ja pyörän vuokraus
+  - Omat liikuntakurssit
+  - 18-reikäinen golfkierros
+
+program_heading: Esimerkki päivän ohjelmasta
+program_text: Aamut alkavat joko Ilonan ohjaamalla treenillä tai joogalla taikka kehon herättelyllä aamulenkin tai -kävelyn muodossa. Päivän rankempi treeni on joko lihaskunto- tai kestävyysharjoitus. Lounaan jälkeen on aikaa rentoutumiselle, altaalla lojumiselle, retkeilylle tai kuntosalille. Venyttely kuuluu myös päiväohjelmaan.
+program_image: /images/rhodos_training.avif
+
+cta_eyebrow: Lähdetään yhdessä!
+cta_heading: Kiinnostuitko? Ilmoittaudu mukaan!
+cta_text: Ole rohkeasti yhteydessä, mikäli haluat lisätietoja matkasta. Matka järjestetään Apollomatkojen kanssa ja on heidän yleisten matkanjärjestäjäehtojen alainen.
+cta_email: ilona@ilofit.com
+cta_button: Ota yhteyttä

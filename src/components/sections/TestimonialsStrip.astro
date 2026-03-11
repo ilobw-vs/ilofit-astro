@@ -4,19 +4,45 @@ import SectionHeader from '../ui/SectionHeader.astro';
 const testimonials = [
   {
     name: 'Maria K.',
-    quote: 'Ilona on ihana valmentaja! Treenit ovat monipuolisia ja kannustava ote motivoi jatkamaan. Olen saavuttanut tavoitteeni nopeammin kuin uskoin. Suosittelen lämpimästi!',
-    service: 'Yksilövalmennus',
+    quote: 'Ehdottomasti yks viikon kohokohdista! Vaihtuvat, tehokkaat liikkeet - Ilonan treenit on ihan parasta',
+    service: 'Ulkotreenit',
   },
   {
     name: 'Sanna L.',
-    quote: 'Ulkotreenit Ilona kanssa ovat paras päätös mitä olen tehnyt. Treeni on tehokasta ja hauskaa samaan aikaan. Turkulainen luonto vielä bonuksena!',
+    quote: 'Saliharjoitteluni on Ilonan tekemillä ohjelmilla selvästi monipuolistunut. Aiemmin treenini on painottunut ylävartaloon, mutta nyt mukaan on tullut tehokkaita jalka- ja keskivartaloliikkeitä, jotka tukevat lajiharjoittelua.',
+    service: 'Treeniohjelmat',
+  },
+  {
+    name: 'Tiimi Yritys Oy',
+    quote: 'Ilonan yksilövalmennus muutti suhtautumistani treeniin ja uskon että nämä oivallukset kantavat pitkälle tulevaisuuteen. Sain juuri minulle sopivan, monipuolisen treeniohjelman niin sisä-  kuin ulkotreeneihin sekä parannusvinkkejä ruokavalioon. Olen ihan yllättynyt miten uskalsin haastaa itseäni fiksusti, ja olenkin alkanut nähdä tuloksia jo muutamassa viikossa. Oli todella kivaa harjoitella Ilonan kanssa - suosittelen lämpimästi!',
+    service: 'Yksilövalmennus',
+  },
+  {
+    name: 'Tiimi Yritys Oy',
+    quote: 'Oli niin tarpeellinen treeni viimeksi. Mulla tuntui vielä eilenkin pakaroissa ja rintalihaksissa.',
     service: 'Ulkotreenit',
   },
   {
     name: 'Tiimi Yritys Oy',
-    quote: 'Tilatimme tyky-päivän IloFitiltä ja se ylitti odotuksemme. Ilona huomioi eri kuntotasot ja kaikki lähtivät kotiin hyvällä mielellä. Tullaan tilaamaan uudelleen!',
-    service: 'Yrityspalvelut',
+    quote: 'Ilonan tekemissä kuntosaliohjelmissa liikkeet ovat hauskoja ja tehokkaita. Niissä on paljon uutta kokeneemallekin kuntosaliharrastajalle. Ohjelmien räätälöiminen yhteistyössä omiin tarpeisiin sopivaksi oli Ilonan kanssa sujuvaa"',
+    service: 'Treeniohjelmat',
   },
+  {
+    name: 'Tiimi Yritys Oy',
+    quote: 'Kiitos kovasti taas eilisestä! Tuntuu kamalan hyvältä!:) Tämä lihaskipu on koukuttavaa.',
+    service: 'Ulkotreenit',
+  },
+  {
+    name: 'Tiimi Yritys Oy',
+    quote: 'Ihana treenata ulkona porukalla! Monipuolista ja helppoa hikiliikuntaa',
+    service: 'Ulkotreenit',
+  },
+  {
+    name: 'Tiimi Yritys Oy',
+    quote: 'Huh, mikä ohjelma! Ihan huippu ja nyt mentiin sitten ihan uudelle levelille, kiitos! Hiki pinnassa täällä ihan eri tavalla, oli mukavasti haastetta. Palaan asiaan, kun tarvitsen taas päivitystä muutaman kuukauden päästä!',
+    service: 'Treeniohjelmat',
+  },
+
 ];
 
 const starSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="#E8A0B0" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
@@ -44,7 +70,6 @@ const starSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="#E8A0B0" 
             &ldquo;{t.quote}&rdquo;
           </blockquote>
           <div>
-            <p class="font-medium text-charcoal text-sm">{t.name}</p>
             <p class="text-xs text-pink mt-0.5">{t.service}</p>
           </div>
         </div>

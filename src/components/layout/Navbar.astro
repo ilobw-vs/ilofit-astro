@@ -3,6 +3,14 @@ const navLinks = [
   { label: 'Treeniohjelma', href: '/palvelut/treeniohjelma' },
 ];
 
+const ptLinks = [
+  { label: 'Yksilövalmennus', href: '/palvelut/yksilovalmennus' },
+];
+
+const ilonaLinks = [
+  { label: 'Ilona', href: '/#ilona' },
+];
+
 const personal_services = [
   { label: 'Henkilökohtainen valmennus', href: '/palvelut/yksilovalmennus' },
 ];
@@ -15,6 +23,10 @@ const group_services = [
 
 const training_programs = [
   { label: 'Treeniohjelma', href: '/palvelut/treeniohjelma' },
+];
+
+const training_trips = [
+  { label: 'Treenimatkat', href: '/palvelut/treenimatkat' },
 ];
 
 const pathname = Astro.url.pathname;
@@ -39,34 +51,23 @@ const isActive = (href: string) => pathname.includes(href);
       <!-- Desktop nav -->
       <div class="hidden lg:flex lg:items-center lg:gap-8">
 
-        <!-- Personal Services dropdown -->
-        <div class="relative" id="personal-services-dropdown">
-          <button
-            id="personal-services-btn"
-            class={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-pink ${pathname.includes('/palvelut') ? 'text-pink' : 'text-charcoal'}`}
+        {ilonaLinks.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-medium transition-colors hover:text-pink ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
           >
-            Yksilövalmennus
-            <svg id="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
+            {item.label}
+          </a>
+        ))}
 
-          <div
-            id="personal-services-menu"
-            class="absolute top-full left-1/2 -translate-x-1/2 pt-2 hidden"
+        {ptLinks.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-medium transition-colors hover:text-pink ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
           >
-            <div class="w-56 rounded-xl border border-soft-border bg-white p-2 shadow-warm-md">
-              {personal_services.map((s) => (
-                <a
-                  href={s.href}
-                  class={`block rounded-lg px-4 py-2.5 text-sm transition-colors hover:bg-pink-light hover:text-charcoal ${isActive(s.href) ? 'bg-pink-light text-charcoal font-medium' : 'text-charcoal-mid'}`}
-                >
-                  {s.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
+            {item.label}
+          </a>
+        ))}
 
         <!-- Group Services dropdown -->
         <div class="relative" id="group-services-dropdown">
@@ -106,11 +107,20 @@ const isActive = (href: string) => pathname.includes(href);
           </a>
         ))}
 
+        {training_trips.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-medium transition-colors hover:text-pink ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
+          >
+            {item.label}
+          </a>
+        ))}
+
         <a
           href="/yhteystiedot"
           class="rounded-lg bg-pink px-5 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:bg-pink-dark hover:scale-[1.02] active:scale-100"
         >
-          Varaa aika →
+          Ota yhteyttä →
         </a>
       </div>
 
@@ -233,16 +243,6 @@ const isActive = (href: string) => pathname.includes(href);
     iconMenu.classList.toggle('hidden', !isOpen);
     iconClose.classList.toggle('hidden', isOpen);
     updateNavbar();
-  });
-
-  // Desktop services dropdown (hover)
-  personal_servicesDropdown.addEventListener('mouseenter', () => {
-    personal_servicesMenu.classList.remove('hidden');
-    chevron.style.transform = 'rotate(180deg)';
-  });
-  personal_servicesDropdown.addEventListener('mouseleave', () => {
-    personal_servicesMenu.classList.add('hidden');
-    chevron.style.transform = 'rotate(0deg)';
   });
 
 // Desktop services dropdown (hover)
