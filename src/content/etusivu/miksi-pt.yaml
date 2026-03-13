@@ -1,0 +1,16 @@
+eyebrow: Personal Training
+heading: "Miksi PT?"
+subheading: "Sertifioidun personal trainerin kanssa saat enemmän kuin pelkän treeniohjelman."
+benefits:
+  - title: Turvallinen tekniikka
+    desc: "Oikeat liikeradat ja tekniikat alusta asti — minimoidaan loukkaantumisriski ja maksimoidaan harjoituksen teho."
+  - title: Henkilökohtainen sparraus
+    desc: "Valmennus ja kannustus räätälöidään juuri sinulle — harjoittelu tapahtuu siellä, mikä sinulle sopii."
+  - title: Kehityksen seuranta
+    desc: "Edistymistäsi seurataan aktiivisesti ja ohjelma päivittyy tavoitteidesi mukaan."
+  - title: Levon ja treenin tasapaino
+    desc: "Oikea suhde harjoittelun ja palautumisen välillä — keho kehittyy levon aikana."
+  - title: Nousujohteisuus
+    desc: "Progressiivinen harjoittelu vie sinut kohti tavoitteitasi ja tuottaa konkreettisia tuloksia."
+  - title: Kokonaisvaltainen hyvinvointi
+    desc: "Huomioidaan ravinto, uni, palautuminen ja arjen kokonaiskuormitus — ei vain treenitunnit."

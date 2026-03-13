@@ -6,6 +6,101 @@ media_folder: public/images/uploads
 public_folder: /images/uploads
 
 collections:
+  - name: etusivu
+    label: Etusivu
+    files:
+      - name: hero
+        label: Hero
+        file: src/content/etusivu/hero.yaml
+        fields:
+          - { label: Yläotsikko, name: eyebrow, widget: string }
+          - { label: Pääotsikko, name: heading, widget: string }
+          - { label: Alaotsikko, name: subheading, widget: text }
+          - { label: "Nappi 1: teksti", name: cta_primary, widget: string }
+          - { label: "Nappi 1: linkki", name: cta_primary_href, widget: string }
+          - { label: "Nappi 2: teksti", name: cta_secondary, widget: string }
+          - { label: "Nappi 2: linkki", name: cta_secondary_href, widget: string }
+          - { label: Kuva, name: image, widget: image }
+
+      - name: intro
+        label: "Hei, olen Ilona"
+        file: src/content/etusivu/intro.yaml
+        fields:
+          - { label: Yläotsikko, name: eyebrow, widget: string }
+          - { label: Pääotsikko, name: heading, widget: string }
+          - { label: Kuva, name: image, widget: image }
+          - label: Tekstikappaleet
+            name: paragraphs
+            widget: list
+            field: { label: Kappale, name: item, widget: text }
+
+      - name: miksi-pt
+        label: Miksi PT?
+        file: src/content/etusivu/miksi-pt.yaml
+        fields:
+          - { label: Yläotsikko, name: eyebrow, widget: string }
+          - { label: Pääotsikko, name: heading, widget: string }
+          - { label: Alaotsikko, name: subheading, widget: text }
+          - label: Hyödyt
+            name: benefits
+            widget: list
+            fields:
+              - { label: Otsikko, name: title, widget: string }
+              - { label: Kuvaus, name: desc, widget: text }
+
+      - name: palvelut
+        label: Palvelut (etusivu)
+        file: src/content/etusivu/palvelut.yaml
+        fields:
+          - { label: Yläotsikko, name: eyebrow, widget: string }
+          - { label: Pääotsikko, name: heading, widget: string }
+          - label: Palvelut
+            name: services
+            widget: list
+            fields:
+              - { label: Nimi, name: label, widget: string }
+              - { label: Kuvaus, name: description, widget: text }
+              - { label: Linkki, name: href, widget: string }
+
+      - name: tavoitteet
+        label: Tavoitteet
+        file: src/content/etusivu/tavoitteet.yaml
+        fields:
+          - { label: Yläotsikko, name: eyebrow, widget: string }
+          - { label: Pääotsikko, name: heading, widget: string }
+          - label: Tavoitteet
+            name: goals
+            widget: list
+            fields:
+              - { label: Teksti, name: label, widget: string }
+              - { label: Linkki, name: href, widget: string }
+
+      - name: kokemuksia
+        label: Asiakaskokemuksia
+        file: src/content/etusivu/kokemuksia.yaml
+        fields:
+          - { label: Yläotsikko, name: eyebrow, widget: string }
+          - { label: Pääotsikko, name: heading, widget: string }
+          - label: Asiakaspalautteet
+            name: testimonials
+            widget: list
+            fields:
+              - { label: Nimi, name: name, widget: string }
+              - { label: Palaute, name: quote, widget: text }
+              - { label: Palvelu, name: service, widget: string }
+
+      - name: cta
+        label: CTA-banneri
+        file: src/content/etusivu/cta.yaml
+        fields:
+          - { label: Yläotsikko, name: eyebrow, widget: string }
+          - { label: Pääotsikko, name: heading, widget: string }
+          - { label: Teksti, name: text, widget: text }
+          - { label: "Nappi: teksti", name: button, widget: string }
+          - { label: "Nappi: linkki", name: button_href, widget: string }
+          - { label: Puhelinnumero, name: phone, widget: string }
+          - { label: Sähköposti, name: email, widget: string }
+
   - name: palvelut
     label: Palvelut
     files:

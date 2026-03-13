@@ -14,21 +14,15 @@ included:
   - Alkuhaastattelu
   - Henkilökohtaisten toiveiden, tavoitteiden ja rajoitteiden huomioiminen
   - Yksilöllinen treeniohjelma (1–3 jakoinen ohjelma)
-  - Kehonkoostumusmittaustulosten huomiointi ohjelmassa — kaupan päälle!
-included_highlight: >-
-  💡 Jos sinulla on kehonkoostumusmittaustulokset, hyödynnän ne ohjelmassasi veloituksetta.
+  - Jos sinulla on kehonkoostumusmittaustulokset, hyödynnän ne ohjelmassasi veloituksetta
 
 base_price_label: Yksilöllinen treeniohjelma
-base_price: 40 €
+base_price: 35 €
 
 addons_heading: Lisäpalvelut
 addons:
-  - label: Ravinto-ohjelma (valinnainen)
-    price: "+10 €"
-  - label: Liikkuvuus- ja venyttelyohjelma (valinnainen)
-    price: "+10 €"
   - label: Opastettu valmennussessio 75 minuuttia (valinnainen)
-    price: "+60 €"
+    price: "60 €"
 
 plus_heading: Plus-palvelu kuukausitilauksena
 plus_desc: >-

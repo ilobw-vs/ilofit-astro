@@ -1,0 +1,21 @@
+eyebrow: Tavoitteet
+heading: "Mitkä ovat sinun tavoitteesi?"
+goals:
+  - label: Painonpudotus
+    href: /palvelut/yksilovalmennus
+  - label: Kiinteytyminen
+    href: /palvelut/yksilovalmennus
+  - label: Lihasmassan kasvatus
+    href: /palvelut/yksilovalmennus
+  - label: Elämäntapamuutos
+    href: /palvelut/yksilovalmennus
+  - label: Arjen energisyys
+    href: /palvelut/yksilovalmennus
+  - label: Kehonhuolto
+    href: /palvelut/yksilovalmennus
+  - label: Yritystreeni
+    href: /palvelut/yrityspalvelut
+  - label: Ryhmäliikunta
+    href: /palvelut/pienryhmavalmennus
+  - label: Ulkoilma-aktiviteetti
+    href: /palvelut/ulkotreenit

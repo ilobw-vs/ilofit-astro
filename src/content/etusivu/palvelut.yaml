@@ -1,0 +1,21 @@
+eyebrow: Palvelut
+heading: "Miten voin auttaa sinua?"
+services:
+  - label: Yksilövalmennus
+    description: "Henkilökohtainen valmennus räätälöidyllä ohjelmalla ja jatkuvalla tuella. Täydellinen juuri sinun tavoitteillesi."
+    href: /palvelut/yksilovalmennus
+  - label: Pienryhmävalmennus
+    description: "Energistä ryhmätreeniä enintään 10 hengen porukassa. Ryhmän motivaatio, yksilöllinen huomio."
+    href: /palvelut/pienryhmavalmennus
+  - label: Ulkotreenit
+    description: "Monipuolinen treeni kehonpainolla, pienvälineillä ja ulkokuntosalilla raittiissa ilmassa. Sopii kaikille kuntotasoille."
+    href: /palvelut/ulkotreenit
+  - label: Yrityspalvelut
+    description: "Tyky-päivät, taukojumpat ja yritystreenit. Hyvinvoiva henkilöstö on yrityksen voimavara."
+    href: /palvelut/yrityspalvelut
+  - label: Treenimatkat
+    description: "Aktiivinen hyvinvointiloma samanhenkisessä seurassa — sopivasti treeniä, rentoutumista ja elämyksiä."
+    href: /palvelut/treenimatkat
+  - label: Treeniohjelmat
+    description: "Yksilöllisesti räätälöity treeniohjelma kattavan taustatietolomakkeen ja haastattelun pohjalta."
+    href: /palvelut/treeniohjelma

@@ -1,42 +1,45 @@
 ---
+import { getEntry } from 'astro:content';
 import SectionHeader from '../ui/SectionHeader.astro';
+
+const { data: c } = await getEntry('etusivu', 'cta');
 ---
 
 <section class="bg-white py-24 lg:py-32">
   <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
     <SectionHeader
-      eyebrow="Aloitetaan"
-      heading="Aloitetaan yhdessä — ilmainen alkukartoitus"
+      eyebrow={c.eyebrow}
+      heading={c.heading}
       centered
       class="mb-6"
     />
     <p class="text-lg text-charcoal-mid leading-relaxed mb-10 max-w-xl mx-auto">
-      Alkukartoituksessa käymme läpi tavoitteesi, lähtötasosi ja toiveesi. Se on maksuton ja sitoumukseton — otetaan ensimmäinen askel yhdessä.
+      {c.text}
     </p>
 
     <a
-      href="/yhteystiedot"
+      href={c.button_href}
       class="inline-flex items-center justify-center gap-2 rounded-lg bg-pink px-10 py-4 text-base font-medium text-white transition-all duration-200 hover:bg-pink-dark hover:scale-[1.02] active:scale-100 mb-10"
     >
-      Varaa ilmainen konsultaatio
+      {c.button}
     </a>
 
     <div class="flex flex-wrap items-center justify-center gap-8 text-sm text-charcoal-mid">
-      <a href="tel:+358400315775" class="flex items-center gap-2 hover:text-pink transition-colors">
+      <a href={`tel:${c.phone.replace(/\s/g, '')}`} class="flex items-center gap-2 hover:text-pink transition-colors">
         <!-- Phone icon -->
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.37 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/>
         </svg>
-        +358 400 315 775
+        {c.phone}
       </a>
       <span class="hidden sm:block h-4 w-px bg-soft-border"></span>
-      <a href="mailto:ilona@ilofit.com" class="flex items-center gap-2 hover:text-pink transition-colors">
+      <a href={`mailto:${c.email}`} class="flex items-center gap-2 hover:text-pink transition-colors">
         <!-- Mail icon -->
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
           <polyline points="22,6 12,13 2,6"/>
         </svg>
-        ilona@ilofit.com
+        {c.email}
       </a>
     </div>
   </div>

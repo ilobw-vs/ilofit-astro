@@ -20,7 +20,7 @@ const { eyebrow, heading, subheading, centered = false, class: className = '' } 
     {heading}
   </h2>
   {subheading && (
-    <p class="mt-4 text-lg text-charcoal-mid leading-relaxed max-w-2xl">
+    <p class={`mt-4 text-lg text-charcoal-mid leading-relaxed max-w-2xl ${centered ? 'mx-auto' : ''}`}>
       {subheading}
     </p>
   )}

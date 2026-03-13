@@ -1,11 +1,13 @@
 ---
+import { getEntry } from 'astro:content';
+const { data: c } = await getEntry('etusivu', 'hero');
 ---
 
 <section class="relative min-h-screen flex items-center overflow-hidden">
   <!-- Background image -->
   <div class="absolute inset-0 z-0">
     <img
-      src="/images/ilona.webp"
+      src={c.image}
       alt="Ilona Salomäki — Personal Trainer Turku"
       class="w-full h-full object-cover object-center"
     />
@@ -22,29 +24,29 @@
   <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-32 pt-40">
     <div class="max-w-2xl hero-content">
       <p class="hero-eyebrow mb-4 text-xs font-medium uppercase tracking-widest text-pink opacity-0 translate-y-5">
-        Personal Trainer Turku
+        {c.eyebrow}
       </p>
 
       <h1 class="hero-heading font-display text-6xl font-semibold text-white sm:text-7xl lg:text-8xl leading-[1.05] mb-6 opacity-0 translate-y-8">
-        Voimaa. Iloa. Tuloksia.
+        {c.heading}
       </h1>
 
       <p class="hero-sub text-lg text-white/80 leading-relaxed mb-10 max-w-lg opacity-0 translate-y-5">
-        Henkilökohtainen valmennus, joka sopii sinulle — tavoitteistasi riippumatta.
+        {c.subheading}
       </p>
 
       <div class="hero-cta flex flex-wrap gap-4 opacity-0 translate-y-5">
         <a
-          href="/yhteystiedot"
+          href={c.cta_primary_href}
           class="rounded-lg bg-pink px-8 py-4 text-base font-medium text-white transition-all duration-200 hover:bg-pink-dark hover:scale-[1.02] active:scale-100"
         >
-          Varaa ilmainen konsultaatio
+          {c.cta_primary}
         </a>
         <a
-          href="/palvelut"
+          href={c.cta_secondary_href}
           class="rounded-lg border border-[1.5px] border-white/60 px-8 py-4 text-base font-medium text-white transition-all duration-200 hover:bg-white/10"
         >
-          Tutustu palveluihin
+          {c.cta_secondary}
         </a>
       </div>
     </div>
