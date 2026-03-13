@@ -1,5 +1,5 @@
 eyebrow: Tavoitteet
-heading: "Mitkä ovat sinun tavoitteesi?"
+heading: Mitkä ovat sinun tavoitteesi?
 goals:
   - label: Painonpudotus
     href: /palvelut/yksilovalmennus
@@ -17,5 +17,5 @@ goals:
     href: /palvelut/yrityspalvelut
   - label: Ryhmäliikunta
     href: /palvelut/pienryhmavalmennus
-  - label: Ulkoilma-aktiviteetti
+  - label: Ulkotreenit
     href: /palvelut/ulkotreenit
