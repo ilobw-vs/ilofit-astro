@@ -203,6 +203,45 @@ collections:
           - { label: "Info: teksti 1", name: info_text1, widget: text }
           - { label: "Info: teksti 2", name: info_text2, widget: text }
 
+      - name: treenimatkat
+        label: Treenimatkat
+        file: src/content/palvelut/treenimatkat.yaml
+        fields:
+          - { label: Otsikko, name: title, widget: string }
+          - { label: "Hero: yläotsikko", name: hero_eyebrow, widget: string }
+          - { label: "Hero: pääotsikko", name: hero_heading, widget: string }
+          - { label: "Hero: teksti", name: hero_text, widget: text }
+          - { label: "Hero: nappi", name: hero_cta, widget: string }
+          - { label: "Hero: kuva", name: hero_image, widget: image }
+          - { label: "Hotelli: yläotsikko", name: hotel_eyebrow, widget: string }
+          - { label: "Hotelli: otsikko", name: hotel_heading, widget: string }
+          - { label: "Hotelli: tähdet", name: hotel_stars, widget: number }
+          - { label: "Hotelli: teksti 1", name: hotel_text1, widget: text }
+          - { label: "Hotelli: teksti 2", name: hotel_text2, widget: text }
+          - { label: "Hotelli: teksti 3", name: hotel_text3, widget: text }
+          - { label: "Hotelli: kuva", name: hotel_image, widget: image }
+          - { label: "Hinta: otsikko", name: price_heading, widget: string }
+          - { label: "Hinta: per henkilö", name: price_per_person, widget: string }
+          - { label: "Hinta: yhden hengen lisämaksu", name: price_single_supplement, widget: string }
+          - { label: "Sisältää: otsikko", name: included_heading, widget: string }
+          - label: Sisältää
+            name: included
+            widget: list
+            field: { label: Kohta, name: item, widget: string }
+          - { label: "Lisämaksusta: otsikko", name: extra_heading, widget: string }
+          - label: Lisämaksusta
+            name: extra_items
+            widget: list
+            field: { label: Kohta, name: item, widget: string }
+          - { label: "Ohjelma: otsikko", name: program_heading, widget: string }
+          - { label: "Ohjelma: teksti", name: program_text, widget: text }
+          - { label: "Ohjelma: kuva", name: program_image, widget: image }
+          - { label: "CTA: yläotsikko", name: cta_eyebrow, widget: string }
+          - { label: "CTA: otsikko", name: cta_heading, widget: string }
+          - { label: "CTA: teksti", name: cta_text, widget: text }
+          - { label: "CTA: sähköposti", name: cta_email, widget: string }
+          - { label: "CTA: nappi", name: cta_button, widget: string }
+
       - name: yrityspalvelut
         label: Yrityspalvelut
         file: src/content/palvelut/yrityspalvelut.yaml
