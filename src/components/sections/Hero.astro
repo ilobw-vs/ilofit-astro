@@ -4,26 +4,27 @@ const { data: c } = await getEntry('etusivu', 'hero');
 ---
 
 <section class="relative min-h-screen flex items-center overflow-hidden">
-  <!-- Background image -->
-  <div class="absolute inset-0 z-0">
-    <!-- Background image -->
-    <div 
-      class="absolute inset-0 z-0"
-      style={`background-image: url(${c.image}); background-size: auto 100%; background-position: 70% 10%; background-repeat: no-repeat;`}
-    >
-      <!-- Gradient overlays -->
-      <div class="absolute inset-0 bg-charcoal/50"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/40 to-transparent"></div>
-      <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/5 to-transparent"></div>
-    </div>
-    <!-- Gradient overlays -->
-    <div class="absolute inset-0 bg-charcoal/50"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/40 to-transparent"></div>
-    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/5 to-transparent"></div>
-  </div>
+  <!-- Dark background -->
+  <div class="absolute inset-0 z-0 bg-charcoal"></div>
+
+  <!-- Person image — right half, zoomed to face+upper body on desktop -->
+  <img
+    src={c.image}
+    alt=""
+    class="absolute right-0 top-0 h-full w-full lg:w-1/2 object-cover object-top z-0 scale-[1.5] origin-top-left"
+  />
+  <!-- Mobile overlay for text readability -->
+  <div class="absolute inset-0 z-[1] bg-charcoal/65 lg:hidden"></div>
+  <!-- Mobile bottom fade — hides lower body below buttons -->
+  <div class="absolute bottom-0 inset-x-0 h-[50vh] z-[2] bg-gradient-to-t from-charcoal via-charcoal/80 to-transparent lg:hidden"></div>
+  <!-- Desktop: smooth gradient — solid charcoal left, fades to semi-transparent over image -->
+  <div
+    class="absolute inset-0 z-[1] hidden lg:block"
+    style="background: linear-gradient(to right, #2D2D2D 48%, rgba(45,45,45,0.80) 62%, rgba(45,45,45,0.60) 100%)"
+  ></div>
 
   <!-- Pink wash accent -->
-  <div class="absolute inset-0 z-0 opacity-10 bg-gradient-to-br from-pink via-transparent to-transparent"></div>
+  <div class="absolute inset-0 z-[1] opacity-10 bg-gradient-to-br from-pink via-transparent to-transparent"></div>
 
   <!-- Content -->
   <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-32 pt-40">

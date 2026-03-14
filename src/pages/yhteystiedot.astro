@@ -39,7 +39,7 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
             </div>
             <div>
               <label class="block text-sm font-medium text-charcoal mb-1.5">Palvelu</label>
-              <select name="service" class="w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors">
+              <select id="service-select" name="service" class="w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors">
                 <option value="">Valitse palvelu</option>
                 <option value="yksilovalmennus">Henkilökohtainen valmennus</option>
                 <option value="treeniohjelma">Treeniohjelma</option>
@@ -135,6 +135,17 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 
 
 <script>
+  // Pre-select service from URL param e.g. ?palvelu=pienryhmavalmennus
+  const params = new URLSearchParams(window.location.search);
+  const palvelu = params.get('palvelu');
+  if (palvelu) {
+    const sel = document.getElementById('service-select') as HTMLSelectElement;
+    if (sel) {
+      const match = [...sel.options].find(o => o.value === palvelu);
+      if (match) sel.value = match.value;
+    }
+  }
+
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const btn = document.getElementById('submit-btn') as HTMLButtonElement;
   const success = document.getElementById('form-success')!;

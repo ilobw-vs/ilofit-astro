@@ -8,8 +8,8 @@ const { data: c } = await getEntry('etusivu', 'intro');
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24 items-center">
 
-      <!-- Photo -->
-      <div class="relative">
+      <!-- Photo (hidden on mobile) -->
+      <div class="relative hidden lg:block">
         <div class="relative aspect-[4/5] max-w-md mx-auto lg:mx-0 overflow-hidden rounded-2xl shadow-warm-md">
           <img
             src={c.image}
