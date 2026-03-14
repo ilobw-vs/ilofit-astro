@@ -4,7 +4,7 @@ const navLinks = [
 ];
 
 const ptLinks = [
-  { label: 'Yksilövalmennus', href: '/palvelut/yksilovalmennus' },
+  { label: 'Henkilökohtainen valmennus', href: '/palvelut/yksilovalmennus' },
 ];
 
 const ilonaLinks = [
@@ -21,10 +21,6 @@ const group_services = [
   { label: 'Yrityspalvelut', href: '/palvelut/yrityspalvelut' },
 ];
 
-const training_programs = [
-  { label: 'Treeniohjelma', href: '/palvelut/treeniohjelma' },
-];
-
 const training_trips = [
   { label: 'Treenimatkat', href: '/palvelut/treenimatkat' },
 ];
@@ -37,13 +33,15 @@ const isActive = (href: string) => pathname.includes(href);
   <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-20 items-center justify-between">
 
-      <!-- Logo -->
+      <!-- Logo — WebP, fetchpriority high, explicit dimensions -->
       <a href="/" class="flex-shrink-0">
         <img
-          src="/images/IloFit_logo_musta_edited (1).png"
+          src="/images/ilofit-logo.webp"
           alt="IloFit"
           width="120"
-          height="48"
+          height="40"
+          fetchpriority="high"
+          decoding="async"
           class="h-10 w-auto object-contain"
         />
       </a>
@@ -73,22 +71,26 @@ const isActive = (href: string) => pathname.includes(href);
         <div class="relative" id="group-services-dropdown">
           <button
             id="group-services-btn"
+            aria-haspopup="true"
+            aria-expanded="false"
             class={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-pink ${pathname.includes('/palvelut') ? 'text-pink' : 'text-charcoal'}`}
           >
             Ryhmät ja Yritykset
-            <svg id="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200">
+            <svg id="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
 
           <div
             id="group-services-menu"
+            role="menu"
             class="absolute top-full left-1/2 -translate-x-1/2 pt-2 hidden"
           >
             <div class="w-56 rounded-xl border border-soft-border bg-white p-2 shadow-warm-md">
               {group_services.map((s) => (
                 <a
                   href={s.href}
+                  role="menuitem"
                   class={`block rounded-lg px-4 py-2.5 text-sm transition-colors hover:bg-pink-light hover:text-charcoal ${isActive(s.href) ? 'bg-pink-light text-charcoal font-medium' : 'text-charcoal-mid'}`}
                 >
                   {s.label}
@@ -125,13 +127,13 @@ const isActive = (href: string) => pathname.includes(href);
       </div>
 
       <!-- Mobile hamburger -->
-      <button id="mobile-btn" class="lg:hidden p-2 text-charcoal" aria-label="Avaa valikko">
-        <svg id="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button id="mobile-btn" class="lg:hidden p-2 text-charcoal" aria-label="Avaa valikko" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
-        <svg id="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+        <svg id="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -159,14 +161,16 @@ const isActive = (href: string) => pathname.includes(href);
         </a>
       ))}
 
-      <!-- Group Services accordion -->
+      <!-- Mobile group services accordion -->
       <div class="mb-2">
         <button
           id="mobile-group-btn"
+          aria-expanded="false"
+          aria-controls="mobile-group-menu"
           class="flex w-full items-center justify-between px-2 py-3 text-sm font-medium text-charcoal"
         >
           Ryhmät ja Yritykset
-          <svg id="mobile-group-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200">
+          <svg id="mobile-group-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200" aria-hidden="true">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
@@ -220,12 +224,12 @@ const isActive = (href: string) => pathname.includes(href);
   const iconClose = document.getElementById('icon-close')!;
   const groupServicesDropdown = document.getElementById('group-services-dropdown')!;
   const groupServicesMenu = document.getElementById('group-services-menu')!;
+  const groupServicesBtn = document.getElementById('group-services-btn')!;
   const chevron = document.getElementById('chevron')!;
   const mobileGroupBtn = document.getElementById('mobile-group-btn')!;
   const mobileGroupMenu = document.getElementById('mobile-group-menu')!;
   const mobileGroupChevron = document.getElementById('mobile-group-chevron')!;
 
-  // Scroll: add frosted glass when scrolled or mobile menu open
   const updateNavbar = () => {
     const scrolled = window.scrollY > 60;
     const mobileOpen = !mobileMenu.classList.contains('hidden');
@@ -238,29 +242,30 @@ const isActive = (href: string) => pathname.includes(href);
   window.addEventListener('scroll', updateNavbar, { passive: true });
   updateNavbar();
 
-  // Mobile hamburger toggle
   mobileBtn.addEventListener('click', () => {
     const isOpen = !mobileMenu.classList.contains('hidden');
     mobileMenu.classList.toggle('hidden');
     iconMenu.classList.toggle('hidden', !isOpen);
     iconClose.classList.toggle('hidden', isOpen);
+    mobileBtn.setAttribute('aria-expanded', String(!isOpen));
     updateNavbar();
   });
 
-  // Desktop dropdown (hover)
   groupServicesDropdown.addEventListener('mouseenter', () => {
     groupServicesMenu.classList.remove('hidden');
+    groupServicesBtn.setAttribute('aria-expanded', 'true');
     chevron.style.transform = 'rotate(180deg)';
   });
   groupServicesDropdown.addEventListener('mouseleave', () => {
     groupServicesMenu.classList.add('hidden');
+    groupServicesBtn.setAttribute('aria-expanded', 'false');
     chevron.style.transform = 'rotate(0deg)';
   });
 
-  // Mobile group services accordion
   mobileGroupBtn.addEventListener('click', () => {
     const isOpen = !mobileGroupMenu.classList.contains('hidden');
     mobileGroupMenu.classList.toggle('hidden');
+    mobileGroupBtn.setAttribute('aria-expanded', String(!isOpen));
     mobileGroupChevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
   });
 </script>
