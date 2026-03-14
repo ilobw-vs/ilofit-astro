@@ -6,14 +6,16 @@ const { data: c } = await getEntry('etusivu', 'hero');
 <section class="relative min-h-screen flex items-center overflow-hidden">
   <!-- Background image -->
   <div class="absolute inset-0 z-0">
-    <img
-      src={c.image}
-      alt="Ilona Salomäki — Personal Trainer Turku"
-        fetchpriority="high"
-        loading="eager"
-        decoding="async"
-      class="w-full h-full object-cover object-center"
-    />
+    <!-- Background image -->
+    <div 
+      class="absolute inset-0 z-0"
+      style={`background-image: url(${c.image}); background-size: auto 100%; background-position: 70% 10%; background-repeat: no-repeat;`}
+    >
+      <!-- Gradient overlays -->
+      <div class="absolute inset-0 bg-charcoal/50"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/40 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/5 to-transparent"></div>
+    </div>
     <!-- Gradient overlays -->
     <div class="absolute inset-0 bg-charcoal/50"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/40 to-transparent"></div>
