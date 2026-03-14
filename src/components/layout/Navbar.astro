@@ -141,41 +141,36 @@ const isActive = (href: string) => pathname.includes(href);
     <!-- Mobile menu -->
     <div id="mobile-menu" class="lg:hidden border-t border-soft-border pb-6 pt-4 hidden">
 
-      <!-- Personal Services accordion -->
-      <div class="mb-2">
-        <button
-          id="mobile-services-btn"
-          class="flex w-full items-center justify-between px-2 py-3 text-sm font-medium text-charcoal"
+      {ilonaLinks.map((item) => (
+        <a
+          href={item.href}
+          class={`block px-2 py-3 text-sm font-medium transition-colors ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
         >
-          Palvelut
-          <svg id="mobile-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div id="mobile-services-menu" class="hidden ml-4 border-l-2 border-pink-light pl-4">
-          {personal_services.map((s) => (
-            <a
-              href={s.href}
-              class={`block py-2.5 text-sm transition-colors ${isActive(s.href) ? 'text-pink font-medium' : 'text-charcoal-mid'}`}
-            >
-              {s.label}
-            </a>
-          ))}
-        </div>
-      </div>
+          {item.label}
+        </a>
+      ))}
 
-     <!-- Group Services accordion -->
+      {personal_services.map((item) => (
+        <a
+          href={item.href}
+          class={`block px-2 py-3 text-sm font-medium transition-colors ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
+        >
+          {item.label}
+        </a>
+      ))}
+
+      <!-- Group Services accordion -->
       <div class="mb-2">
         <button
-          id="mobile-services-btn"
+          id="mobile-group-btn"
           class="flex w-full items-center justify-between px-2 py-3 text-sm font-medium text-charcoal"
         >
-          Palvelut
-          <svg id="mobile-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200">
+          Ryhmät ja Yritykset
+          <svg id="mobile-group-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
-        <div id="mobile-services-menu" class="hidden ml-4 border-l-2 border-pink-light pl-4">
+        <div id="mobile-group-menu" class="hidden ml-4 border-l-2 border-pink-light pl-4">
           {group_services.map((s) => (
             <a
               href={s.href}
@@ -188,6 +183,15 @@ const isActive = (href: string) => pathname.includes(href);
       </div>
 
       {navLinks.map((item) => (
+        <a
+          href={item.href}
+          class={`block px-2 py-3 text-sm font-medium transition-colors ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
+        >
+          {item.label}
+        </a>
+      ))}
+
+      {training_trips.map((item) => (
         <a
           href={item.href}
           class={`block px-2 py-3 text-sm font-medium transition-colors ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
@@ -214,16 +218,14 @@ const isActive = (href: string) => pathname.includes(href);
   const mobileMenu = document.getElementById('mobile-menu')!;
   const iconMenu = document.getElementById('icon-menu')!;
   const iconClose = document.getElementById('icon-close')!;
-  const personal_servicesDropdown = document.getElementById('personal-services-dropdown')!;
-  const personal_servicesMenu = document.getElementById('personal-services-menu')!;
-  const group_servicesDropdown = document.getElementById('group-services-dropdown')!;
-  const group_servicesMenu = document.getElementById('group-services-menu')!;
+  const groupServicesDropdown = document.getElementById('group-services-dropdown')!;
+  const groupServicesMenu = document.getElementById('group-services-menu')!;
   const chevron = document.getElementById('chevron')!;
-  const mobileServicesBtn = document.getElementById('mobile-services-btn')!;
-  const mobileServicesMenu = document.getElementById('mobile-services-menu')!;
-  const mobileChevron = document.getElementById('mobile-chevron')!;
+  const mobileGroupBtn = document.getElementById('mobile-group-btn')!;
+  const mobileGroupMenu = document.getElementById('mobile-group-menu')!;
+  const mobileGroupChevron = document.getElementById('mobile-group-chevron')!;
 
-  // Scroll: transparent → frosted glass
+  // Scroll: add frosted glass when scrolled or mobile menu open
   const updateNavbar = () => {
     const scrolled = window.scrollY > 60;
     const mobileOpen = !mobileMenu.classList.contains('hidden');
@@ -236,7 +238,7 @@ const isActive = (href: string) => pathname.includes(href);
   window.addEventListener('scroll', updateNavbar, { passive: true });
   updateNavbar();
 
-  // Mobile toggle
+  // Mobile hamburger toggle
   mobileBtn.addEventListener('click', () => {
     const isOpen = !mobileMenu.classList.contains('hidden');
     mobileMenu.classList.toggle('hidden');
@@ -245,20 +247,20 @@ const isActive = (href: string) => pathname.includes(href);
     updateNavbar();
   });
 
-// Desktop services dropdown (hover)
-  group_servicesDropdown.addEventListener('mouseenter', () => {
-    group_servicesMenu.classList.remove('hidden');
+  // Desktop dropdown (hover)
+  groupServicesDropdown.addEventListener('mouseenter', () => {
+    groupServicesMenu.classList.remove('hidden');
     chevron.style.transform = 'rotate(180deg)';
   });
-  group_servicesDropdown.addEventListener('mouseleave', () => {
-    group_servicesMenu.classList.add('hidden');
+  groupServicesDropdown.addEventListener('mouseleave', () => {
+    groupServicesMenu.classList.add('hidden');
     chevron.style.transform = 'rotate(0deg)';
   });
 
-  // Mobile services accordion
-  mobileServicesBtn.addEventListener('click', () => {
-    const isOpen = !mobileServicesMenu.classList.contains('hidden');
-    mobileServicesMenu.classList.toggle('hidden');
-    mobileChevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+  // Mobile group services accordion
+  mobileGroupBtn.addEventListener('click', () => {
+    const isOpen = !mobileGroupMenu.classList.contains('hidden');
+    mobileGroupMenu.classList.toggle('hidden');
+    mobileGroupChevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
   });
 </script>
