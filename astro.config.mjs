@@ -8,6 +8,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
     build: {
       cssMinify: true,
+      cssCodeSplit: true,
+      // Inline CSS files smaller than 20KB directly into HTML
+      assetsInlineLimit: 20480,
     }
   },
 });
