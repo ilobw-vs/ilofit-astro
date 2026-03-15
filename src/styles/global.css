@@ -54,12 +54,14 @@ body {
   font-display: swap; /* already handled by Google Fonts URL but good practice */
 }
 
-/* Typography defaults */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  color: #2D2D2D;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+/* Typography defaults — in @layer base so utility classes (text-pink, text-white etc.) can override */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: #2D2D2D;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
 }
 
 /* Warm card shadow */
