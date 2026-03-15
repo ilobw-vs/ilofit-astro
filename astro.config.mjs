@@ -1,7 +1,10 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
+  site: 'https://ilofit.com',
+  integrations: [sitemap()],
   output: 'static',
   compressHTML: true,
   vite: {
