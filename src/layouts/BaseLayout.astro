@@ -6,14 +6,32 @@ interface Props {
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
+  schema?: object;
 }
 
 const {
   title,
-  description = 'Henkilökohtaista valmennusta Turussa.',
+  description = 'Sertifioitu Personal Trainer Turku — Ilona Salomäki tarjoaa yksilövalmennusta, pienryhmätreenejä ja yrityspalveluita. Varaa ilmainen alkukartoitus tänään.',
   ogImage = '/images/og-default.jpg',
   canonicalURL = Astro.url.href,
+  schema,
 } = Astro.props;
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "IloFit",
+  "description": "Personal Trainer Turku — yksilövalmennus, pienryhmät ja yrityspalvelut",
+  "@id": "https://ilofit.com",
+  "url": "https://ilofit.com",
+  "telephone": "+358400315775",
+  "email": "ilona@ilofit.com",
+  "image": "https://ilofit.com/images/ilona.webp",
+  "address": { "@type": "PostalAddress", "addressLocality": "Turku", "addressCountry": "FI" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 60.4518, "longitude": 22.2666 },
+  "areaServed": "Turku",
+  "priceRange": "€€",
+};
 ---
 
 <!doctype html>
@@ -40,6 +58,10 @@ const {
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- LocalBusiness schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
     <!-- Preconnect for fonts (DNS early) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

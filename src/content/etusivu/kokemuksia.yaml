@@ -1,18 +1,20 @@
 eyebrow: Asiakaskokemuksia
 heading: Mitä asiakkaat sanovat
-testimonials:
-  - name: Maria K.
-    quote: Ehdottomasti yks viikon kohokohdista! Vaihtuvat, tehokkaat liikkeet -
+reviews:
+  - author: Maria K.
+    text: Ehdottomasti yks viikon kohokohdista! Vaihtuvat, tehokkaat liikkeet -
       Ilonan treenit on ihan parasta
     service: Ulkotreenit
-  - name: Sanna L.
-    quote: Saliharjoitteluni on Ilonan tekemillä ohjelmilla selvästi
+    rating: 5
+  - author: Sanna L.
+    text: Saliharjoitteluni on Ilonan tekemillä ohjelmilla selvästi
       monipuolistunut. Aiemmin treenini on painottunut ylävartaloon, mutta nyt
       mukaan on tullut tehokkaita jalka- ja keskivartaloliikkeitä, jotka tukevat
       lajiharjoittelua.
     service: Treeniohjelmat
-  - name: Asiakas
-    quote: Ilonan yksilövalmennus muutti suhtautumistani treeniin ja uskon että nämä
+    rating: 5
+  - author: Asiakas
+    text: Ilonan yksilövalmennus muutti suhtautumistani treeniin ja uskon että nämä
       oivallukset kantavat pitkälle tulevaisuuteen. Sain juuri minulle sopivan,
       monipuolisen treeniohjelman niin sisä- kuin ulkotreeneihin sekä
       parannusvinkkejä ruokavalioon. Olen ihan yllättynyt miten uskalsin haastaa
@@ -20,30 +22,35 @@ testimonials:
       viikossa. Oli todella kivaa harjoitella Ilonan kanssa - suosittelen
       lämpimästi!
     service: Yksilövalmennus
-  - name: Heidi
-    quote: >
-      “Ilonan kuntosalivalmennus oli loistava ponnahduslauta aloittaa
+    rating: 5
+  - author: Heidi
+    text: >
+      Ilonan kuntosalivalmennus oli loistava ponnahduslauta aloittaa
       salitreenit n. 20v tauon jälkeen uudelleen. Opastus liikkeiden
       oikeaoppisessa tekniikassa sekä monipuoliset kuntosaliohjelmat ovat
       luoneet varmuutta tekemiseen. Eipä olisi tullut treenattua omatoimisesti
       kuin vyötäröstä ylöspäin, kun polvien kanssa on ollut haasteita. Ilona
       otti tämän hyvin huomioon ja löytyi sopivat liikkeet, jotka vahvistavat
       mm. niveliä ympäröiviä lihaksia. Siellä mä nyt kyykkään vailla
-      nivelkipuja! 
+      nivelkipuja!
 
 
-      Inspiroiva ja kannustava valmennus, suosittelen lämpimästi!”
+      Inspiroiva ja kannustava valmennus, suosittelen lämpimästi!
     service: Yksilövalmennus
-  - name: Asiakas
-    quote: Kiitos kovasti taas eilisestä! Tuntuu kamalan hyvältä! Tämä lihaskipu on
+    rating: 5
+  - author: Asiakas
+    text: Kiitos kovasti taas eilisestä! Tuntuu kamalan hyvältä! Tämä lihaskipu on
       koukuttavaa.
     service: Ulkotreenit
-  - name: Asiakas
-    quote: Ihana treenata ulkona porukalla! Monipuolista ja helppoa hikiliikuntaa
+    rating: 5
+  - author: Asiakas
+    text: Ihana treenata ulkona porukalla! Monipuolista ja helppoa hikiliikuntaa
     service: Ulkotreenit
-  - name: Asiakas
-    quote: Huh, mikä ohjelma! Ihan huippu ja nyt mentiin sitten ihan uudelle
+    rating: 5
+  - author: Asiakas
+    text: Huh, mikä ohjelma! Ihan huippu ja nyt mentiin sitten ihan uudelle
       levelille, kiitos! Hiki pinnassa täällä ihan eri tavalla, oli mukavasti
       haastetta. Palaan asiaan, kun tarvitsen taas päivitystä muutaman kuukauden
       päästä!
     service: Treeniohjelmat
+    rating: 5
