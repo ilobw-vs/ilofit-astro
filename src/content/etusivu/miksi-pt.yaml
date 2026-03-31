@@ -1,15 +1,15 @@
 eyebrow: Personal Training
-heading: Miksi PT?
+heading: Miksi Personal Trainer?
 subheading: Sertifioidun personal trainerin kanssa saat enemmän kuin pelkän treeniohjelman.
 benefits:
   - title: Turvallinen tekniikka
-    desc: Oikeat liikeradat ja tekniikat alusta asti — minimoidaan
-      loukkaantumisriski ja maksimoidaan harjoituksen teho.
+    desc: Oikeat liikeradat ja tekniikat alusta asti — personal trainer huomioi
+      loukkaantumisriskin ja maksimoi harjoituksesi tehokkuuden.
   - title: Henkilökohtainen sparraus
     desc: Valmennus ja kannustus räätälöidään juuri sinulle sopivaksi, tukemaan
       tavoitteitasi.
   - title: Kehityksen seuranta
-    desc: Edistymistäsi seurataan aktiivisesti ja ohjelma päivittyy tavoitteidesi
+    desc: Personal trainer seuraa edistymistäsi aktiivisesti ja päivittää ohjelman tavoitteidesi
       mukaan.
   - title: Levon ja treenin tasapaino
     desc: Oikea suhde harjoittelun ja palautumisen välillä — kehitys vaatii myös
@@ -18,5 +18,5 @@ benefits:
     desc: Progressiivinen harjoittelu vie sinut kohti tavoitteitasi ja tuottaa
       konkreettisia tuloksia.
   - title: Kokonaisvaltainen hyvinvointi
-    desc: Huomioidaan ravinto, uni, palautuminen ja arjen kokonaiskuormitus — ei
-      vain treenitunnit.
+    desc: Personal trainer osaa ottaa huomioon ravinnon, unen, palautumisen ja arjen kokonaiskuormituksen — ei
+      ainoastaan treenitunteja.
