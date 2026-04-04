@@ -11,7 +11,7 @@ kettlebell_heading: Kahvakuularyhmä
 kettlebell_time: 13.1.2026 alkaen tiistaisin klo 19-20, Syvälahdentie 31
 kettlebell_prices:
   - label: Kahvakuularyhmä
-    price: TÄYNNÄ
+    price: OTA YHTEYTTÄ
 bootcamp_heading: Bootcamp-ryhmä
 bootcamp_desc: Näissä toiminnallisissa treeneissä treenataan lihaskuntoa ja
   voimaa modernissa ja privaatissa studioympäristössä, josta löytyvät
@@ -22,7 +22,7 @@ bootcamp_time2: Ryhmä 1 klo 18-19
 bootcamp_time3: Ryhmä 2 klo 19-20
 bootcamp_prices:
   - label: Bootcamp-ryhmä
-    price: TÄYNNÄ
+    price: OTA YHTEYTTÄ
 benefits_heading: Pienryhmän edut
 benefits:
   - Max. 10 henkilöä — yksilöllinen huomio taattu
