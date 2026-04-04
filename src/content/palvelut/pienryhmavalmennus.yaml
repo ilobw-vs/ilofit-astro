@@ -7,6 +7,14 @@ hero_text: Pienessä ryhmässä saat yksilöllistä ohjausta ja pääset haastam
   saavuttamiseen.
 hero_cta: Varaa paikka
 hero_image: /images/small_groups.webp
+
+outdoor_heading: Ulkotreenit
+outdoor_time: Maaliskuusta 2026 alkaen Hirvensalossa
+outdoor_prices:
+  - label: Ulkotreenit
+    price: OTA YHTEYTTÄ
+
+
 kettlebell_heading: Kahvakuularyhmä
 kettlebell_time: 13.1.2026 alkaen tiistaisin klo 19-20, Syvälahdentie 31
 kettlebell_prices:

@@ -9,11 +9,11 @@ hero_cta: Varaa paikka
 hero_image: /images/ulkotreenit-hero.webp
 
 schedule_heading: Aikataulut ja hinnat
-schedule_text1: Ulkotreenit alkavat taas maalis/huhtikuussa 2026 Turun Hirvensalossa.
+schedule_text1: Ulkotreenit alkavat taas maaliskuussa 2026 Turun Hirvensalossa.
 schedule_text2: Seuraa ilmoittelua lähempänä tai ilmoittaudu jo nyt ryhmään laittamalla viestiä :)
 prices:
   - label: Ulkotreenit
-    price: TULOSSA
+    price: ILMOITTAUDU
 
 info_heading: Treeniä ulkona, ympäri vuoden
 info_text1: >-
