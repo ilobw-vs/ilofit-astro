@@ -43,6 +43,14 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
           </div>
 
           <p class="mb-6"></p>
+
+          <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4 mb-4">
+            <span class="font-medium text-charcoal">{c.plus_price_label}</span>
+            <span class="text-pink font-semibold">{c.plus_price}</span>
+          </div>
+
+
+          <p class="mb-6"></p>
           <p class="text-charcoal-mid text-lg font-semibold mb-6">{c.addons_heading}</p>
           <div class="space-y-4">
             {c.addons.map((addon) => (
