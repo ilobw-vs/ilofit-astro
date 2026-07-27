@@ -9,7 +9,7 @@ const c = {
     {
       label: 'Yksilövalmennus',
       description: 'Henkilökohtainen valmennus räätälöidyllä ohjelmalla ja jatkuvalla tuella. Täydellinen juuri sinun tavoitteillesi.',
-      href: '/palvelut/yksilovalmennus',
+      href: '/palvelut/yksilovalmennus#hinnat',
       price: '75 €/kk',
       cta: 'Hinnat ja sisältö',
     },
@@ -68,7 +68,7 @@ const iconMap: Record<string, string> = {
           class="card-accent group relative flex flex-col rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1"
         >
           <div class="mb-4 w-11 h-11 rounded-lg bg-pink-light flex items-center justify-center transition-colors group-hover:bg-pink text-pink-dark group-hover:text-white">
-            <Fragment set:html={iconMap[service.href] ?? iconMap['/palvelut/yksilovalmennus']} />
+            <Fragment set:html={iconMap[service.href.split('#')[0]] ?? iconMap['/palvelut/yksilovalmennus']} />
           </div>
           <h3 class="font-display text-xl font-semibold text-charcoal mb-2">
             {service.label}
@@ -85,9 +85,18 @@ const iconMap: Record<string, string> = {
                 <span class="text-xs whitespace-nowrap"> (sis. alv)</span>
               </p>
             )}
-            <span class="text-xs font-medium text-pink transition-colors group-hover:text-pink-dark">
-              {service.cta ?? 'Lue lisää'} →
-            </span>
+            {service.cta ? (
+              /* Styled as a span, not a Button — the whole card is already an
+                 <a>, and nesting interactive elements is invalid HTML.
+                 Matches Button.astro's `ghost` variant. */
+              <span class="inline-flex items-center justify-center gap-2 rounded-lg border border-[1.5px] border-pink px-4 py-2 text-xs font-medium text-charcoal transition-all duration-200 group-hover:bg-pink-light">
+                {service.cta} →
+              </span>
+            ) : (
+              <span class="text-xs font-medium text-pink transition-colors group-hover:text-pink-dark">
+                Lue lisää →
+              </span>
+            )}
           </div>
         </a>
       ))}
