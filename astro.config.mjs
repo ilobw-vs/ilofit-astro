@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
@@ -7,6 +7,31 @@ export default defineConfig({
   integrations: [sitemap()],
   output: 'static',
   compressHTML: true,
+  experimental: {
+    // Fonts are downloaded at build time and served from our own domain —
+    // visitors never hit Google's CDN. Only the weights actually used are
+    // fetched: Cormorant at 600 (all headings), DM Sans at 400/500.
+    fonts: [
+      {
+        provider: fontProviders.google(),
+        name: 'Cormorant Garamond',
+        cssVariable: '--font-cormorant',
+        weights: [600],
+        styles: ['normal'],
+        subsets: ['latin'],
+        fallbacks: ['Georgia', 'serif'],
+      },
+      {
+        provider: fontProviders.google(),
+        name: 'DM Sans',
+        cssVariable: '--font-dm-sans',
+        weights: [400, 500],
+        styles: ['normal'],
+        subsets: ['latin'],
+        fallbacks: ['system-ui', 'sans-serif'],
+      },
+    ],
+  },
   vite: {
     plugins: [tailwindcss()],
     build: {

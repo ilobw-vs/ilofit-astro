@@ -10,10 +10,11 @@
   --color-off-white: #FAF8F6;
   --color-soft-border: #EEDDE2;
 
-  /* Typography */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-  --font-sans: 'DM Sans', system-ui, sans-serif;
+  /* Typography — stacks come from experimental.fonts in astro.config.mjs and
+     already include metric-matched fallbacks, so don't re-append them here. */
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-dm-sans);
+  --font-sans: var(--font-dm-sans);
 
   /* Text sizes */
   --text-xs: 0.75rem;
@@ -51,7 +52,6 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-display: swap; /* already handled by Google Fonts URL but good practice */
 }
 
 /* Typography defaults — in @layer base so utility classes (text-pink, text-white etc.) can override */
