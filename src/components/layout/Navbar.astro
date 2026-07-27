@@ -3,10 +3,6 @@ const navLinks = [
   { label: 'Treeniohjelma', href: '/palvelut/treeniohjelma' },
 ];
 
-const ptLinks = [
-  { label: 'Yksilövalmennus', href: '/palvelut/yksilovalmennus' },
-];
-
 const ilonaLinks = [
   { label: 'Ilona', href: '/#ilona' },
 ];
@@ -16,11 +12,9 @@ const servicesLinks = [
   { label: 'Palvelut ja hinnat', href: '/#palvelut_taulukko' },
 ];
 
-const personal_services = [
+// "Valmennus" dropdown — every coaching service, desktop and mobile
+const valmennus_services = [
   { label: 'Yksilövalmennus', href: '/palvelut/yksilovalmennus' },
-];
-
-const group_services = [
   { label: 'Pienryhmävalmennus', href: '/palvelut/pienryhmavalmennus' },
   { label: 'Ulkotreenit', href: '/palvelut/ulkotreenit' },
   { label: 'Yrityspalvelut', href: '/palvelut/yrityspalvelut' },
@@ -32,6 +26,9 @@ const training_trips = [
 
 const pathname = Astro.url.pathname;
 const isActive = (href: string) => pathname.includes(href);
+// Only highlight "Valmennus" on its own pages — /palvelut also covers
+// treeniohjelma and treenimatkat, which sit outside this dropdown
+const inValmennus = valmennus_services.some((s) => pathname.includes(s.href));
 ---
 
 <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white">
@@ -52,9 +49,7 @@ const isActive = (href: string) => pathname.includes(href);
       </a>
 
       <!-- Desktop nav -->
-      <!-- 7 items at 1024px: gap-4 keeps them clear of the logo without flex
-           squeezing the labels. Roomier gaps from xl up. -->
-      <div class="hidden lg:flex lg:items-center lg:gap-4 xl:gap-8">
+      <div class="hidden lg:flex lg:items-center lg:gap-8">
 
         {ilonaLinks.map((item) => (
           <a
@@ -74,24 +69,15 @@ const isActive = (href: string) => pathname.includes(href);
           </a>
         ))}
 
-        {ptLinks.map((item) => (
-          <a
-            href={item.href}
-            class={`text-sm font-medium transition-colors hover:text-pink ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
-          >
-            {item.label}
-          </a>
-        ))}
-
-        <!-- Group Services dropdown -->
+        <!-- Valmennus dropdown (element ids kept for the inline script below) -->
         <div class="relative" id="group-services-dropdown">
           <button
             id="group-services-btn"
             aria-haspopup="true"
             aria-expanded="false"
-            class={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-pink ${pathname.includes('/palvelut') ? 'text-pink' : 'text-charcoal'}`}
+            class={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-pink ${inValmennus ? 'text-pink' : 'text-charcoal'}`}
           >
-            Ryhmät ja Yritykset
+            Valmennus
             <svg id="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -103,7 +89,7 @@ const isActive = (href: string) => pathname.includes(href);
             class="absolute top-full left-1/2 -translate-x-1/2 pt-2 hidden"
           >
             <div class="w-56 rounded-xl border border-soft-border bg-white p-2 shadow-warm-md">
-              {group_services.map((s) => (
+              {valmennus_services.map((s) => (
                 <a
                   href={s.href}
                   role="menuitem"
@@ -177,16 +163,7 @@ const isActive = (href: string) => pathname.includes(href);
         </a>
       ))}
 
-      {personal_services.map((item) => (
-        <a
-          href={item.href}
-          class={`block px-2 py-3 text-sm font-medium transition-colors ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
-        >
-          {item.label}
-        </a>
-      ))}
-
-      <!-- Mobile group services accordion -->
+      <!-- Mobile Valmennus accordion (ids kept for the inline script below) -->
       <div class="mb-2">
         <button
           id="mobile-group-btn"
@@ -194,13 +171,13 @@ const isActive = (href: string) => pathname.includes(href);
           aria-controls="mobile-group-menu"
           class="flex w-full items-center justify-between px-2 py-3 text-sm font-medium text-charcoal"
         >
-          Ryhmät ja Yritykset
+          Valmennus
           <svg id="mobile-group-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200" aria-hidden="true">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
         <div id="mobile-group-menu" class="hidden ml-4 border-l-2 border-pink-light pl-4">
-          {group_services.map((s) => (
+          {valmennus_services.map((s) => (
             <a
               href={s.href}
               class={`block py-2.5 text-sm transition-colors ${isActive(s.href) ? 'text-pink font-medium' : 'text-charcoal-mid'}`}
