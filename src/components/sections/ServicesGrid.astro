@@ -2,8 +2,8 @@
 import SectionHeader from '../ui/SectionHeader.astro';
 
 const c = {
-  eyebrow: 'Palvelut ja hinnat',
-  heading: 'Miten voin auttaa sinua?',
+  eyebrow: 'Miten voin auttaa sinua?',
+  heading: 'Palvelut ja hinnat',
   // `price` is optional — cards without it just show the "Lue lisää" link
   services: [
     {
@@ -80,7 +80,7 @@ const iconMap: Record<string, string> = {
               across the row whether or not the card shows a price */}
           <div class="mt-auto">
             {service.price && (
-              <p class="mb-1.5 text-sm text-charcoal-mid">
+              <p class="mb-3 text-sm text-charcoal-mid">
                 alkaen <span class="font-semibold text-charcoal">{service.price}</span>
                 <span class="text-xs whitespace-nowrap"> (sis. alv)</span>
               </p>
