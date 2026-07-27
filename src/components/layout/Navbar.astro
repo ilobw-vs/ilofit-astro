@@ -14,7 +14,8 @@ const servicesLinks = [
 
 // "Valmennus" dropdown — every coaching service, desktop and mobile
 const valmennus_services = [
-  { label: 'Yksilövalmennus', href: '/palvelut/yksilovalmennus' },
+  { label: 'Yksilövalmennus – Ole.Fit Manhattan', href: '/palvelut/yksilovalmennus' },
+  { label: 'Yksilövalmennus – asiakkaan tiloissa', href: '/palvelut/yksilovalmennus-asiakkaan-tiloissa' },
   { label: 'Pienryhmävalmennus', href: '/palvelut/pienryhmavalmennus' },
   { label: 'Ulkotreenit', href: '/palvelut/ulkotreenit' },
   { label: 'Yrityspalvelut', href: '/palvelut/yrityspalvelut' },
@@ -88,7 +89,7 @@ const inValmennus = valmennus_services.some((s) => pathname.includes(s.href));
             role="menu"
             class="absolute top-full left-1/2 -translate-x-1/2 pt-2 hidden"
           >
-            <div class="w-56 rounded-xl border border-soft-border bg-white p-2 shadow-warm-md">
+            <div class="w-72 rounded-xl border border-soft-border bg-white p-2 shadow-warm-md">
               {valmennus_services.map((s) => (
                 <a
                   href={s.href}
