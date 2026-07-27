@@ -1,0 +1,171 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import SectionHeader from '../../../components/ui/SectionHeader.astro';
+import Button from '../../../components/ui/Button.astro';
+
+const c = {
+  hero_eyebrow: 'Treenimatkat',
+  hero_heading: 'Treeni- ja hyvinvointilomat',
+  hero_text: 'Viikko treeniä, rentoutumista ja Välimeren tunnelmaa samanhenkisen porukan kanssa. Treenit skaalataan aina kuntotason mukaan, eikä osallistuminen yhteisiin treeneihin ole pakollista — matkalla on aikaa myös omalle tekemiselle.',
+  hero_cta: 'Ilmoita kiinnostuksesi',
+  hero_image: '/images/rhodos_trip.avif',
+
+  format_eyebrow: 'Näin se toimii',
+  format_heading: 'Mitä treenimatkalla tehdään?',
+  format: [
+    {
+      title: 'Kaksi ohjattua treeniä päivässä',
+      desc: 'Aamun herättely tai jooga ja päivän rankempi lihaskunto- tai kestävyysharjoitus, oman ryhmän kesken.',
+    },
+    {
+      title: 'Kaikille kuntotasoille',
+      desc: 'Liikkeet ja tehot skaalataan sinun tasollesi. Mukaan voi lähteä myös aloittelijana.',
+    },
+    {
+      title: 'Osallistuminen on vapaaehtoista',
+      desc: 'Voit valita mihin treeneihin osallistut. Halutessasi vietät päivän altaalla tai retkeillen.',
+    },
+    {
+      title: 'All inclusive -sporttihotelli',
+      desc: 'Majoitus, ruoat ja hotellin omat liikuntamahdollisuudet sisältyvät matkan hintaan.',
+    },
+    {
+      title: 'Pieni, samanhenkinen ryhmä',
+      desc: 'Matkaseura tekee viikosta. Moni lähtee yksin ja palaa kotiin uusien tuttavuuksien kanssa.',
+    },
+    {
+      title: 'Aikaa myös itselle',
+      desc: 'Lounaan jälkeen on vapaata. Retkeile, käy kuntosalilla tai löhöile altaalla — päivä on sinun.',
+    },
+  ],
+
+  next_eyebrow: 'Seuraava matka',
+  next_heading: 'Seuraava treenimatka toukokuussa 2027',
+  next_status: 'Kohde tarkentuu',
+  next_text: 'Seuraava treeni- ja hyvinvointiloma on suunnitteilla toukokuulle 2027. Kohde ja tarkat päivämäärät varmistuvat myöhemmin.',
+  next_note: 'Jätä yhteystietosi, niin olen sinuun yhteydessä heti kun matka varmistuu. Ilmoittautuminen ei sido sinua vielä mihinkään.',
+  next_cta: 'Ilmoita kiinnostuksesi',
+
+  past_eyebrow: 'Aiemmat matkat',
+  past_heading: 'Missä on jo käyty',
+  past_trips: [
+    {
+      title: 'Rodos, Kreikka',
+      dates: '10.–17.5.2026',
+      blurb: 'Viikko Levante by Playitas -sporttihotellissa Afandoun rannalla. Kaksi treeniä päivässä, all inclusive ja aikaa myös retkeilylle.',
+      image: '/images/rhodos_training.avif',
+      href: '/palvelut/treenimatkat/rodos-2026',
+    },
+  ],
+
+  cta_eyebrow: 'Lähdetään yhdessä',
+  cta_heading: 'Kiinnostaako treenimatka?',
+  cta_text: 'Kerro rohkeasti, jos treenimatka kiinnostaa — vastaan mielelläni kysymyksiin. Matkat järjestetään Apollomatkojen kanssa ja ovat heidän yleisten matkanjärjestäjäehtojensa alaisia.',
+  cta_button: 'Ota yhteyttä',
+};
+
+const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+---
+
+<PageLayout
+  title="Treenimatkat | IloFit — Personal Trainer Turku"
+  description="Treeni- ja hyvinvointilomat samanhenkisen ryhmän kanssa. Kaksi ohjattua treeniä päivässä, all inclusive ja aikaa myös itselle. Seuraava matka toukokuussa 2027."
+>
+
+  <!-- Hero -->
+  <section class="relative bg-off-white pt-36 pb-20 overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.hero_eyebrow}</p>
+          <h1 class="font-display text-4xl font-semibold text-charcoal sm:text-5xl mb-6 leading-tight">{c.hero_heading}</h1>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text}</p>
+          <Button href="/yhteystiedot?palvelu=treenimatkat" size="lg">{c.hero_cta}</Button>
+        </div>
+        <div class="relative">
+          <div class="w-full h-[460px] rounded-3xl overflow-hidden shadow-warm">
+            <img
+              src={c.hero_image}
+              alt="Treenimatka auringossa – IloFit"
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Miten se toimii -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <SectionHeader eyebrow={c.format_eyebrow} heading={c.format_heading} centered />
+      </div>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {c.format.map((item) => (
+          <div class="card-accent rounded-xl border border-soft-border bg-white p-6 shadow-warm">
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-3">{item.title}</h3>
+            <p class="text-sm text-charcoal-mid leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Seuraava matka -->
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-soft-border bg-white p-8 sm:p-12 shadow-warm text-center">
+        <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.next_eyebrow}</p>
+        <p class="mb-4">
+          <span class="inline-block rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">
+            {c.next_status}
+          </span>
+        </p>
+        <h2 class="font-display text-3xl font-semibold text-charcoal sm:text-4xl mb-6">{c.next_heading}</h2>
+        <p class="text-lg text-charcoal-mid leading-relaxed mb-4 max-w-2xl mx-auto">{c.next_text}</p>
+        <p class="text-charcoal-mid leading-relaxed mb-8 max-w-2xl mx-auto">{c.next_note}</p>
+        <Button href="/yhteystiedot?palvelu=treenimatkat" size="lg">{c.next_cta}</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aiemmat matkat -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <SectionHeader eyebrow={c.past_eyebrow} heading={c.past_heading} centered />
+      </div>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {c.past_trips.map((trip) => (
+          <a
+            href={trip.href}
+            class="group flex flex-col overflow-hidden rounded-2xl border border-soft-border bg-white shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1"
+          >
+            <div class="h-56 w-full overflow-hidden">
+              <img src={trip.image} alt={`Treenimatka ${trip.title} – IloFit`} class="h-full w-full object-cover" />
+            </div>
+            <div class="flex flex-col p-6">
+              <p class="text-xs font-medium uppercase tracking-widest text-pink mb-2">{trip.dates}</p>
+              <h3 class="font-display text-2xl font-semibold text-charcoal mb-3">{trip.title}</h3>
+              <p class="text-sm text-charcoal-mid leading-relaxed mb-4">{trip.blurb}</p>
+              <span class="text-xs font-medium text-pink transition-colors group-hover:text-pink-dark">
+                Katso matkan tiedot →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
+      <p class="text-charcoal-mid mb-8">{c.cta_text}</p>
+      <Button href="/yhteystiedot?palvelu=treenimatkat" size="lg">{c.cta_button}</Button>
+    </div>
+  </section>
+
+</PageLayout>
