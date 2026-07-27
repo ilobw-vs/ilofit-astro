@@ -11,6 +11,7 @@ const c = {
       description: 'Henkilökohtainen valmennus räätälöidyllä ohjelmalla ja jatkuvalla tuella. Täydellinen juuri sinun tavoitteillesi.',
       href: '/palvelut/yksilovalmennus',
       price: '75 €/kk',
+      cta: 'Hinnat ja sisältö',
     },
     {
       label: 'Pienryhmävalmennus',
@@ -61,10 +62,10 @@ const iconMap: Record<string, string> = {
     </div>
 
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {c.services.map((service: { href: string; label: string; description: string; price?: string }) => (
+      {c.services.map((service: { href: string; label: string; description: string; price?: string; cta?: string }) => (
         <a
           href={service.href}
-          class="card-accent group relative rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1"
+          class="card-accent group relative flex flex-col rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1"
         >
           <div class="mb-4 w-11 h-11 rounded-lg bg-pink-light flex items-center justify-center transition-colors group-hover:bg-pink text-pink-dark group-hover:text-white">
             <Fragment set:html={iconMap[service.href] ?? iconMap['/palvelut/yksilovalmennus']} />
@@ -75,14 +76,17 @@ const iconMap: Record<string, string> = {
           <p class="text-sm text-charcoal-mid leading-relaxed mb-4">
             {service.description}
           </p>
-          <div class="flex items-baseline gap-3">
+          {/* mt-auto pins this to the card bottom, so every "Lue lisää" lines up
+              across the row whether or not the card shows a price */}
+          <div class="mt-auto">
             {service.price && (
-              <span class="text-sm text-charcoal-mid">
+              <p class="mb-1.5 text-sm text-charcoal-mid">
                 alkaen <span class="font-semibold text-charcoal">{service.price}</span>
-              </span>
+                <span class="text-xs whitespace-nowrap"> (sis. alv)</span>
+              </p>
             )}
-            <span class="ml-auto text-xs font-medium text-pink transition-colors group-hover:text-pink-dark">
-              Lue lisää →
+            <span class="text-xs font-medium text-pink transition-colors group-hover:text-pink-dark">
+              {service.cta ?? 'Lue lisää'} →
             </span>
           </div>
         </a>
