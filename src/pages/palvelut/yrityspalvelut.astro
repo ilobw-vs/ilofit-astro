@@ -2,10 +2,47 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Button from '../../components/ui/Button.astro';
-import { getEntry } from 'astro:content';
 
-const entry = await getEntry('palvelut', 'yrityspalvelut');
-const c = entry.data;
+const c = {
+  title: 'Yrityspalvelut',
+  hero_eyebrow: 'Palvelut',
+  hero_heading: 'Yrityspalvelut',
+  hero_text: 'Tilaa Personal Trainer yrityksellesi tai kaveriporukalle. Tulen toteuttamaan treenitoiveenne!',
+  hero_cta: 'Pyydä tarjous',
+  hero_image: '/images/companies.webp',
+
+  services_heading: 'Palveluni yrityksille',
+  services: [
+    { title: 'Aamujooga', desc: 'Rauhallinen joogasessio aamun aloitukseksi. Venyttää, rentouttaa ja virittää mielen päivään.' },
+    { title: 'HIIT-treeni', desc: 'Tehokasta intervallitreeniä, joka sopii kaikille kuntotasoille. Energinen ja motivoiva kokemus.' },
+    { title: 'Taukojumppa', desc: '15–20 minuutin liikkuvuus- ja venyttelyhetki kesken työpäivän. Virkistää ja ehkäisee jännitystiloja.' },
+    { title: 'Ulkocircuit', desc: 'Toiminnallinen kiertotreeni ulkona. Ryhmähenki paranee, keho liikkuu ja mieli virkistyy.' },
+    { title: 'Räätälöity paketti', desc: 'Suunnitellaan yrityksellesi täysin yksilöllinen liikuntaohjelma — tarpeidesi mukaan.' },
+  ],
+
+  benefits_eyebrow: 'Hyödyt',
+  benefits_heading: 'Miksi panostaa henkilöstöliikuntaan?',
+  benefits: [
+    'Parantaa henkilöstön työssä jaksamista',
+    'Vähentää sairauspoissaoloja',
+    'Lisää tiimien yhteisöllisyyttä',
+    'Parantaa työmotivaatiota ja -iloa',
+    'Positiivinen työnantajamielikuva',
+    'Kevytrakenteinen ja helppo järjestää',
+  ],
+
+  steps_heading: 'Näin tilaat',
+  steps: [
+    { n: '01', title: 'Ota yhteyttä', desc: 'Kerro tarpeistasi ja toiveistasi. Sovitaan tapaaminen tai puhelinkeskustelu.' },
+    { n: '02', title: 'Räätälöity tarjous', desc: 'Suunnittelen yrityksellenne sopivan paketin — aikatauluun, budjettiin ja toiveisiin perustuen.' },
+    { n: '03', title: 'Treeni toteutuu', desc: 'Tulen teille tai sovitulle paikalle. Kaikki tarvikkeet mukana — teidän ei tarvitse järjestää mitään.' },
+  ],
+
+  cta_eyebrow: 'Tarjous',
+  cta_heading: 'Pyydä tarjous yrityksellesi',
+  cta_text: 'Kerro lyhyesti yrityksestäsi ja toiveistasi — palaan sinulle tarjouksen kanssa.',
+  cta_button: 'Pyydä tarjous',
+};
 
 const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
 ---

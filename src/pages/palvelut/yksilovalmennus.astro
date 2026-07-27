@@ -2,10 +2,72 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Button from '../../components/ui/Button.astro';
-import { getEntry } from 'astro:content';
 
-const entry = await getEntry('palvelut', 'yksilovalmennus');
-const c = entry.data;
+const c = {
+  hero_eyebrow: 'Palvelut',
+  hero_heading: 'Yksilövalmennus',
+  hero_text1: 'Sinun tavoitteesi on minun tavoitteeni!',
+  hero_text2: 'Olipa kyseessä sitten painonpudotus, kiinteytys, lihasvoiman kasvatus tai yleinen terveyden edistys, teemme suunnitelman tavoitteen saavuttamiseksi ja olen tukenasi koko valmennuksen ajan.',
+  hero_cta_primary: 'Varaa ilmainen konsultaatio',
+  hero_image: '/images/skanssi-9717.webp',
+
+  monthly_prices_heading: 'Kuukausisopimukset',
+  monthly_prices_note: 'Minimi 3 kuukautta. Hinnat toistaiseksi voimassa 1kk irtisanomisajalla.',
+  monthly_prices: [
+    { label: '60 min valmennus kerran kuukaudessa', price: '75 €/kk' },
+    { label: '60 min valmennus 2 kertaa kuukaudessa', price: '140 €/kk' },
+    { label: '60 min valmennus 4 kertaa kuukaudessa', price: '270 €/kk' },
+  ],
+
+  package_prices_heading: 'Valmennuspaketit',
+  package_prices_note: 'Valmennuspaketit voimassa 3 kuukautta aloituksesta.',
+  package_prices: [
+    { label: '5 kerran valmennuspaketti', price: '350 €' },
+    { label: '10 kerran valmennuspaketti', price: '690 €' },
+  ],
+
+  other_prices_heading: 'Muut hinnat',
+  other_prices: [
+    { label: 'DUO-valmennus', price: '-30% hinnoista / hlö' },
+    { label: 'Onko mielessäsi jotain muuta?', price: 'Pyydä tarjous!' },
+  ],
+
+  included_heading: 'Palvelun sisältö',
+  included: [
+    'Henkilökohtainen alkukartoitus ja tavoitteiden asettaminen',
+    'Räätälöity treeniohjelma tavoitteidesi mukaan',
+    'Henkilökohtainen ohjaus jokaisessa harjoituksessa',
+    'Ravinto-ohjaus ja elämäntapamuutoksen tuki',
+    'Edistymisen seuranta ja ohjelman päivitys',
+    'Tavoitettavissa viestien välityksellä treenien välillä',
+  ],
+
+  goals_eyebrow: 'Kenelle sopii',
+  goals_heading: 'Mihin tavoitteisiin?',
+  goals: [
+    {
+      title: 'Painonpudotus',
+      desc: 'Tehokas ja kestävä painonpudotus oikean harjoittelun ja ravinto-ohjauksen avulla. Ei pikadieettejä — pysyviä elämäntapamuutoksia.',
+    },
+    {
+      title: 'Kiinteytyminen',
+      desc: 'Kiinteä ja sporttinen kroppa kehon koostumusta parantamalla. Yhdistetään sopiva lihaskuntoharjoittelu sekä cardio.',
+    },
+    {
+      title: 'Lihasmassan kasvatus',
+      desc: 'Progressiivinen harjoittelu, joka rakentaa lihasta tehokkaasti ja turvallisesti.',
+    },
+    {
+      title: 'Elämäntapamuutos',
+      desc: 'Liikunnasta pysyvä osa arkeasi. Löydät liikunnan ilon ja rakennat terveet, kestävät rutiinit.',
+    },
+  ],
+
+  cta_eyebrow: 'Aloitetaan',
+  cta_heading: 'Valmis aloittamaan?',
+  cta_text: 'Ilmainen alkukartoitus on maksuton ja sitoumukseton. Otetaan ensimmäinen askel yhdessä.',
+  cta_button: 'Varaa ilmainen konsultaatio',
+};
 
 const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
 ---

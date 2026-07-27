@@ -1,8 +1,42 @@
 ---
-import { getEntry } from 'astro:content';
 import SectionHeader from '../ui/SectionHeader.astro';
 
-const { data: c } = await getEntry('etusivu', 'palvelut');
+const c = {
+  eyebrow: 'Palvelut',
+  heading: 'Miten voin auttaa sinua?',
+  services: [
+    {
+      label: 'Yksilövalmennus',
+      description: 'Henkilökohtainen valmennus räätälöidyllä ohjelmalla ja jatkuvalla tuella. Täydellinen juuri sinun tavoitteillesi.',
+      href: '/palvelut/yksilovalmennus',
+    },
+    {
+      label: 'Pienryhmävalmennus',
+      description: 'Energistä ryhmätreeniä enintään 10 hengen porukassa. Ryhmän motivaatio, yksilöllinen huomio.',
+      href: '/palvelut/pienryhmavalmennus',
+    },
+    {
+      label: 'Ulkotreenit',
+      description: 'Monipuolinen treeni kehonpainolla, pienvälineillä ja ulkokuntosalilla raittiissa ilmassa. Sopii kaikille kuntotasoille.',
+      href: '/palvelut/ulkotreenit',
+    },
+    {
+      label: 'Yrityspalvelut',
+      description: 'Tyky-päivät, taukojumpat ja treenit yrityksen henkilöstölle. Hyvinvoiva henkilöstö on yrityksen voimavara.',
+      href: '/palvelut/yrityspalvelut',
+    },
+    {
+      label: 'Treenimatkat',
+      description: 'Aktiivinen hyvinvointiloma samanhenkisessä seurassa — sopivasti treeniä, rentoutumista ja elämyksiä.',
+      href: '/palvelut/treenimatkat',
+    },
+    {
+      label: 'Treeniohjelmat',
+      description: 'Yksilöllisesti räätälöity treeniohjelma kattavan taustatietolomakkeen ja haastattelun pohjalta.',
+      href: '/palvelut/treeniohjelma',
+    },
+  ],
+};
 
 const iconMap: Record<string, string> = {
   '/palvelut/yksilovalmennus': `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,

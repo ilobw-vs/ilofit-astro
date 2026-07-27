@@ -1,6 +1,14 @@
 ---
-import { getEntry } from 'astro:content';
-const { data: c } = await getEntry('etusivu', 'hero');
+const c = {
+  eyebrow: 'Personal Trainer Turku',
+  heading: 'Voimaa. Iloa. Tuloksia.',
+  subheading: 'Henkilökohtainen valmennus, joka sopii sinulle — tavoitteistasi riippumatta.',
+  cta_primary: 'Varaa ilmainen konsultaatio',
+  cta_primary_href: '/yhteystiedot',
+  cta_secondary: 'Tutustu palveluihin',
+  cta_secondary_href: '/#palvelut_taulukko',
+  image: '/images/ilona.webp',
+};
 ---
 
 <section class="relative min-h-screen flex items-center overflow-hidden">

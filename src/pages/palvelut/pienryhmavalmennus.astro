@@ -2,10 +2,49 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Button from '../../components/ui/Button.astro';
-import { getEntry } from 'astro:content';
 
-const entry = await getEntry('palvelut', 'pienryhmavalmennus');
-const c = entry.data;
+const c = {
+  hero_eyebrow: 'Palvelut',
+  hero_heading: 'Pienryhmät',
+  hero_text: 'Pienessä ryhmässä saat yksilöllistä ohjausta ja pääset haastamaan itsesi. Opit oikeat ja turvalliset liiketekniikat sekä tehokkaimmat liikkeet. Saat lisämotivaatiota treenaamiseen sekä kannustusta omien treenitavoitteiden saavuttamiseen.',
+  hero_cta: 'Varaa paikka',
+  hero_image: '/images/small_groups.webp',
+
+  outdoor_heading: 'Ulkotreenit',
+  outdoor_time: 'Maaliskuusta 2026 alkaen Hirvensalossa',
+  outdoor_prices: [
+    { label: 'Ulkotreenit', price: 'OTA YHTEYTTÄ' },
+  ],
+
+  kettlebell_heading: 'Kahvakuularyhmä',
+  kettlebell_time: '13.1.2026 alkaen tiistaisin klo 19-20, Syvälahdentie 31',
+  kettlebell_prices: [
+    { label: 'Kahvakuularyhmä', price: 'OTA YHTEYTTÄ' },
+  ],
+
+  bootcamp_heading: 'Bootcamp-ryhmä',
+  bootcamp_desc: 'Näissä toiminnallisissa treeneissä treenataan lihaskuntoa ja voimaa modernissa ja privaatissa studioympäristössä, josta löytyvät monipuoliset vapaapainot sekä treenivälineet tehokkaaseen ja laadukkaaseen treeniin.',
+  bootcamp_time1: 'Sunnuntaisin, Mojo, Ilpoistentie 16 a',
+  bootcamp_time2: 'Ryhmä 1 klo 18-19',
+  bootcamp_time3: 'Ryhmä 2 klo 19-20',
+  bootcamp_prices: [
+    { label: 'Bootcamp-ryhmä', price: 'OTA YHTEYTTÄ' },
+  ],
+
+  benefits_heading: 'Pienryhmän edut',
+  benefits: [
+    'Max. 10 henkilöä — yksilöllinen huomio taattu',
+    'Ryhmän energia ja motivaatio nostaa suoritusta',
+    'Edullisempi kuin yksilövalmennus',
+    'Hyvä tapa treenata kaverin kanssa',
+    'Monipuolinen ja vaihtelevainen treeni',
+    'Sopii kaikille kuntotasoille',
+  ],
+
+  cta_eyebrow: 'Aloitetaan',
+  cta_heading: 'Haluatko mukaan ryhmään?',
+  cta_button: 'Kysy vapaista paikoista',
+};
 
 const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
 ---

@@ -2,10 +2,35 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Button from '../../components/ui/Button.astro';
-import { getEntry } from 'astro:content';
 
-const entry = await getEntry('palvelut', 'treeniohjelma');
-const c = entry.data;
+const c = {
+  hero_eyebrow: 'Palvelut',
+  hero_heading: 'Treeniohjelma',
+  hero_text1: 'Teen sinulle yksilöllisen treeniohjelman, joka sopii juuri sinun tavoitteisiisi, arkeesi ja kuntotasoosi. Ohjelma laaditaan kattavan taustatietolomakkeen ja haastattelun pohjalta.',
+  hero_text2: 'Treeniohjelmalla voit harjoitella kotona ja kuntosalilla — mielesi mukaan.',
+  hero_cta: 'Täytä taustatietolomake',
+  hero_image: '/images/training_program.webp',
+
+  base_price_label: 'Yksilöllinen treeniohjelma',
+  base_price: '39€',
+
+  addons_heading: 'Lisäpalvelut',
+  addons: [
+    { label: 'Opastettu valmennussessio 75 minuuttia (valinnainen)', price: '60 €' },
+  ],
+
+  plus_heading: 'Plus-palvelu kuukausitilauksena',
+  plus_desc: 'Plus-palveluun kuuluu valmentajan jatkuva tuki (s-posti/whatsap) sekä kuukausittainen seuranta, jossa käydään läpi onnistumiset ja haasteet sekä tarvittaessa muokataan ohjelmia. Minimikesto 3 kuukautta. Hinnat toistaiseksi voimassa 1kk irtisanomisajalla.',
+  plus_price: '30 € / kk',
+
+  included_heading: 'Sisältää',
+  included: [
+    'Alkuhaastattelu',
+    'Henkilökohtaisten toiveiden, tavoitteiden ja rajoitteiden huomioiminen',
+    'Yksilöllinen treeniohjelma (1–3 jakoinen ohjelma)',
+    'Jos sinulla on kehonkoostumusmittaustulokset, hyödynnän ne ohjelmassasi veloituksetta',
+  ],
+};
 
 const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
 ---

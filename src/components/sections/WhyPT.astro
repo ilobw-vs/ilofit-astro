@@ -1,8 +1,37 @@
 ---
-import { getEntry } from 'astro:content';
 import SectionHeader from '../ui/SectionHeader.astro';
 
-const { data: c } = await getEntry('etusivu', 'miksi-pt');
+const c = {
+  eyebrow: 'Personal Training',
+  heading: 'Miksi Personal Trainer?',
+  subheading: 'Sertifioidun personal trainerin kanssa saat enemmän kuin pelkän treeniohjelman.',
+  benefits: [
+    {
+      title: 'Turvallinen tekniikka',
+      desc: 'Oikeat liikeradat ja tekniikat alusta asti — personal trainer huomioi loukkaantumisriskin ja maksimoi harjoituksesi tehokkuuden.',
+    },
+    {
+      title: 'Henkilökohtainen sparraus',
+      desc: 'Valmennus ja kannustus räätälöidään juuri sinulle sopivaksi, tukemaan tavoitteitasi.',
+    },
+    {
+      title: 'Kehityksen seuranta',
+      desc: 'Personal trainer seuraa edistymistäsi aktiivisesti ja päivittää ohjelman tavoitteidesi mukaan.',
+    },
+    {
+      title: 'Levon ja treenin tasapaino',
+      desc: 'Oikea suhde harjoittelun ja palautumisen välillä — kehitys vaatii myös lepoa.',
+    },
+    {
+      title: 'Nousujohteisuus',
+      desc: 'Progressiivinen harjoittelu vie sinut kohti tavoitteitasi ja tuottaa konkreettisia tuloksia.',
+    },
+    {
+      title: 'Kokonaisvaltainen hyvinvointi',
+      desc: 'Personal trainer osaa ottaa huomioon ravinnon, unen, palautumisen ja arjen kokonaiskuormituksen — ei ainoastaan treenitunteja.',
+    },
+  ],
+};
 
 const icons = [
   `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>`,

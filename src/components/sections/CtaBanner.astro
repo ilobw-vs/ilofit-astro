@@ -1,8 +1,15 @@
 ---
-import { getEntry } from 'astro:content';
 import SectionHeader from '../ui/SectionHeader.astro';
 
-const { data: c } = await getEntry('etusivu', 'cta');
+const c = {
+  eyebrow: 'Aloitetaan',
+  heading: 'Aloitetaan yhdessä — ilmainen alkukartoitus',
+  text: 'Alkukartoituksessa käymme läpi tavoitteesi, lähtötasosi ja toiveesi. Se on maksuton ja sitoumukseton — otetaan ensimmäinen askel yhdessä.',
+  button: 'Varaa ilmainen konsultaatio',
+  button_href: '/yhteystiedot',
+  phone: '+358 400 315 775',
+  email: 'ilona@ilofit.com',
+};
 ---
 
 <section class="bg-white py-24 lg:py-32">

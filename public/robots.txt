@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
 
-# Decap CMS admin — no reason to index
-Disallow: /admin/
-
 Sitemap: https://ilofit.com/sitemap-index.xml

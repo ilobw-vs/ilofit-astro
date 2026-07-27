@@ -1,8 +1,21 @@
 ---
-import { getEntry } from 'astro:content';
 import SectionHeader from '../ui/SectionHeader.astro';
 
-const { data: c } = await getEntry('etusivu', 'tavoitteet');
+const c = {
+  eyebrow: 'Tavoitteet',
+  heading: 'Mitkä ovat sinun tavoitteesi?',
+  goals: [
+    { label: 'Painonpudotus', href: '/palvelut/yksilovalmennus' },
+    { label: 'Kiinteytyminen', href: '/palvelut/yksilovalmennus' },
+    { label: 'Lihasmassan kasvatus', href: '/palvelut/yksilovalmennus' },
+    { label: 'Elämäntapamuutos', href: '/palvelut/yksilovalmennus' },
+    { label: 'Arjen energisyys', href: '/palvelut/yksilovalmennus' },
+    { label: 'Kehonhuolto', href: '/palvelut/yksilovalmennus' },
+    { label: 'Yritystreeni', href: '/palvelut/yrityspalvelut' },
+    { label: 'Ryhmäliikunta', href: '/palvelut/pienryhmavalmennus' },
+    { label: 'Ulkotreenit', href: '/palvelut/ulkotreenit' },
+  ],
+};
 ---
 
 <section class="bg-white py-24">
