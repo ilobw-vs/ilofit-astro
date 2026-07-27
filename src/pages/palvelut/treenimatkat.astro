@@ -5,9 +5,10 @@ import Button from '../../components/ui/Button.astro';
 
 const c = {
   hero_eyebrow: 'Treenimatkat',
-  hero_heading: 'Treeni- ja hyvinvointiloma Rodokselle 10–17.5.2026',
-  hero_text: 'Lähde viettämään aktiivista hyvinvointilomaa Rodokselle! Luvassa on sopivasti treeniä sekä rentoutumista, maukasta ja terveellistä Välimeren ruokaa sekä paljon erilaisia aktiviteetteja — unohtamatta omaa aikaa esim. altaalla löhöillen tai retkeillen. Samanhenkisen matkaseuran kanssa viikko on hauska ja ikimuistoinen. Treenit skaalataan kuntotason mukaan, eikä osallistuminen yhteisiin treeneihin ole pakollista.',
-  hero_cta: 'Ilmoittaudu mukaan',
+  hero_status: 'Matka on jo toteutunut',
+  hero_heading: 'Treeni- ja hyvinvointiloma Rodoksella 10.–17.5.2026',
+  hero_text: 'Keväällä 2026 vietimme viikon aktiivista hyvinvointilomaa Rodoksella. Luvassa oli sopivasti treeniä ja rentoutumista, maukasta ja terveellistä Välimeren ruokaa sekä paljon erilaisia aktiviteetteja — unohtamatta omaa aikaa altaalla löhöillen tai retkeillen. Samanhenkisen matkaseuran kanssa viikosta tuli hauska ja ikimuistoinen. Treenit skaalattiin kuntotason mukaan, eikä osallistuminen yhteisiin treeneihin ollut pakollista.',
+  hero_cta: 'Kysy seuraavasta matkasta',
   hero_image: '/images/rhodos_trip.avif',
 
   hotel_eyebrow: 'Majoitus',
@@ -18,11 +19,11 @@ const c = {
   hotel_text3: 'Kävelymatkan päässä hotellista on Kolymbian kylä, ja sukkulabussit vievät Rodoksen kaupunkiin.',
   hotel_image: '/images/hotel_rhodos.avif',
 
-  price_heading: 'Hinta',
+  price_heading: 'Matkan hinta oli',
   price_per_person: '1 525 € / hlö jaettuna 2 hengen huoneessa',
   price_single_supplement: 'Lisämaksu 1 hengen huoneesta — kysy hinta',
 
-  included_heading: 'Hinta sisältää',
+  included_heading: 'Hintaan sisältyi',
   included: [
     'Lennot Hki–Rodos–Hki (matkatavara + käsimatkatavara)',
     'Meno: 10.5. HEL 6:05',
@@ -41,13 +42,13 @@ const c = {
     '18-reikäinen golfkierros',
   ],
 
-  program_heading: 'Esimerkki päivän ohjelmasta',
-  program_text: 'Aamut alkavat joko Ilonan ohjaamalla treenillä tai joogalla taikka kehon herättelyllä aamulenkin tai -kävelyn muodossa. Päivän rankempi treeni on joko lihaskunto- tai kestävyysharjoitus. Lounaan jälkeen on aikaa rentoutumiselle, altaalla lojumiselle, retkeilylle tai kuntosalille. Venyttely kuuluu myös päiväohjelmaan.',
+  program_heading: 'Näin päivät kuluivat',
+  program_text: 'Aamut alkoivat joko Ilonan ohjaamalla treenillä tai joogalla taikka kehon herättelyllä aamulenkin tai -kävelyn muodossa. Päivän rankempi treeni oli joko lihaskunto- tai kestävyysharjoitus. Lounaan jälkeen oli aikaa rentoutumiselle, altaalla lojumiselle, retkeilylle tai kuntosalille. Venyttely kuului myös päiväohjelmaan.',
   program_image: '/images/rhodos_training.avif',
 
-  cta_eyebrow: 'Lähdetään yhdessä!',
-  cta_heading: 'Kiinnostuitko? Ilmoittaudu mukaan!',
-  cta_text: 'Ole rohkeasti yhteydessä, mikäli haluat lisätietoja matkasta. Matka järjestetään Apollomatkojen kanssa ja on heidän yleisten matkanjärjestäjäehtojen alainen.',
+  cta_eyebrow: 'Seuraava matka',
+  cta_heading: 'Kiinnostaako seuraava treenimatka?',
+  cta_text: 'Seuraavan matkan ajankohta ja kohde tarkentuvat myöhemmin. Ole rohkeasti yhteydessä, niin kerron heti kun uusi matka on suunnitteilla. Matkat järjestetään Apollomatkojen kanssa ja ovat heidän yleisten matkanjärjestäjäehtojensa alaisia.',
   cta_email: 'ilona@ilofit.com',
   cta_button: 'Ota yhteyttä',
 };
@@ -57,7 +58,7 @@ const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" st
 const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
 ---
 
-<PageLayout title="Treenimatkat | IloFit — Personal Trainer" description="Treeni- ja hyvinvointiloma Rodokselle 10–17.5.2026. Sopivasti treeniä, rentoutumista ja Välimeren tunnelmaa samanhenkisen ryhmän kanssa.">
+<PageLayout title="Treenimatkat | IloFit — Personal Trainer Turku" description="IloFitin treeni- ja hyvinvointiloma Rodoksella toteutui 10.–17.5.2026. Katso millainen viikko oli ja kysy seuraavasta treenimatkasta.">
 
   <!-- Hero -->
   <section class="relative bg-off-white pt-36 pb-20 overflow-hidden">
@@ -65,9 +66,15 @@ const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.hero_eyebrow}</p>
+          {/* Makes it unmistakable that this trip has already run */}
+          <p class="mb-4">
+            <span class="inline-block rounded-full border border-soft-border bg-white px-3 py-1 text-xs font-medium text-charcoal-mid">
+              {c.hero_status}
+            </span>
+          </p>
           <h1 class="font-display text-4xl font-semibold text-charcoal sm:text-5xl mb-6 leading-tight">{c.hero_heading}</h1>
           <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text}</p>
-          <Button href="https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=nmEN8VRh5EWYeSg2QJINyh6C-EaHMSdJolcfY2C88wBUN1JIVkVKWlUyRUhCWjA2Tk5GTjBZNU5RRi4u" size="lg">{c.hero_cta}</Button>
+          <Button href="/yhteystiedot?palvelu=treenimatkat" size="lg">{c.hero_cta}</Button>
         </div>
         <div class="relative">
           <div class="w-full h-[460px] rounded-3xl overflow-hidden shadow-warm">
@@ -125,7 +132,7 @@ const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
           </div>
 
           <div class="mt-8">
-            <Button href="https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=nmEN8VRh5EWYeSg2QJINyh6C-EaHMSdJolcfY2C88wBUN1JIVkVKWlUyRUhCWjA2Tk5GTjBZNU5RRi4u" class="w-full justify-center">{c.hero_cta}</Button>
+            <Button href="/yhteystiedot?palvelu=treenimatkat" class="w-full justify-center">{c.hero_cta}</Button>
           </div>
         </div>
 
@@ -181,7 +188,7 @@ const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
       <p class="text-charcoal-mid mb-8">
         Sähköposti: <a href={`mailto:${c.cta_email}`} class="text-pink hover:underline">{c.cta_email}</a>
       </p>
-      <Button href="https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=nmEN8VRh5EWYeSg2QJINyh6C-EaHMSdJolcfY2C88wBUN1JIVkVKWlUyRUhCWjA2Tk5GTjBZNU5RRi4u" size="lg">{c.cta_button}</Button>
+      <Button href="/yhteystiedot?palvelu=treenimatkat" size="lg">{c.cta_button}</Button>
     </div>
   </section>
 
