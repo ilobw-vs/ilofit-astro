@@ -33,8 +33,25 @@ const localBusinessSchema = {
   "image": "https://ilofit.com/images/ilona.webp",
   "address": { "@type": "PostalAddress", "addressLocality": "Turku", "addressCountry": "FI" },
   "geo": { "@type": "GeoCoordinates", "latitude": 60.4518, "longitude": 22.2666 },
-  "areaServed": "Turku",
+  "areaServed": { "@type": "City", "name": "Turku" },
   "priceRange": "€€",
+  "knowsLanguage": "fi",
+  // Confirms to search engines that these profiles are the same entity as this site
+  "sameAs": [
+    "https://www.facebook.com/IloFit.Ilona",
+    "https://www.instagram.com/ilofit_ilona",
+  ],
+  // Solo personal brand — Ilona is the entity people search for
+  "founder": {
+    "@type": "Person",
+    "name": "Ilona Salomäki",
+    "jobTitle": "Personal Trainer",
+    "image": "https://ilofit.com/images/ilona.webp",
+    "sameAs": [
+      "https://www.facebook.com/IloFit.Ilona",
+      "https://www.instagram.com/ilofit_ilona",
+    ],
+  },
 };
 ---
 
