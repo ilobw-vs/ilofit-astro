@@ -11,6 +11,11 @@ const ilonaLinks = [
   { label: 'Ilona', href: '/#ilona' },
 ];
 
+// Jumps to the ServicesGrid on the homepage
+const servicesLinks = [
+  { label: 'Palvelut ja hinnat', href: '/#palvelut_taulukko' },
+];
+
 const personal_services = [
   { label: 'Yksilövalmennus', href: '/palvelut/yksilovalmennus' },
 ];
@@ -47,12 +52,23 @@ const isActive = (href: string) => pathname.includes(href);
       </a>
 
       <!-- Desktop nav -->
-      <div class="hidden lg:flex lg:items-center lg:gap-8">
+      <!-- 7 items at 1024px: gap-4 keeps them clear of the logo without flex
+           squeezing the labels. Roomier gaps from xl up. -->
+      <div class="hidden lg:flex lg:items-center lg:gap-4 xl:gap-8">
 
         {ilonaLinks.map((item) => (
           <a
             href={item.href}
             class={`text-sm font-medium transition-colors hover:text-pink ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
+          >
+            {item.label}
+          </a>
+        ))}
+
+        {servicesLinks.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-medium text-charcoal transition-colors hover:text-pink"
           >
             {item.label}
           </a>
@@ -147,6 +163,15 @@ const isActive = (href: string) => pathname.includes(href);
         <a
           href={item.href}
           class={`block px-2 py-3 text-sm font-medium transition-colors ${isActive(item.href) ? 'text-pink' : 'text-charcoal'}`}
+        >
+          {item.label}
+        </a>
+      ))}
+
+      {servicesLinks.map((item) => (
+        <a
+          href={item.href}
+          class="block px-2 py-3 text-sm font-medium text-charcoal transition-colors"
         >
           {item.label}
         </a>
