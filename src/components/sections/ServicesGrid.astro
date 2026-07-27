@@ -2,13 +2,15 @@
 import SectionHeader from '../ui/SectionHeader.astro';
 
 const c = {
-  eyebrow: 'Palvelut',
+  eyebrow: 'Palvelut ja hinnat',
   heading: 'Miten voin auttaa sinua?',
+  // `price` is optional — cards without it just show the "Lue lisää" link
   services: [
     {
       label: 'Yksilövalmennus',
       description: 'Henkilökohtainen valmennus räätälöidyllä ohjelmalla ja jatkuvalla tuella. Täydellinen juuri sinun tavoitteillesi.',
       href: '/palvelut/yksilovalmennus',
+      price: '75 €/kk',
     },
     {
       label: 'Pienryhmävalmennus',
@@ -59,7 +61,7 @@ const iconMap: Record<string, string> = {
     </div>
 
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {c.services.map((service: { href: string; label: string; description: string }) => (
+      {c.services.map((service: { href: string; label: string; description: string; price?: string }) => (
         <a
           href={service.href}
           class="card-accent group relative rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1"
@@ -73,9 +75,16 @@ const iconMap: Record<string, string> = {
           <p class="text-sm text-charcoal-mid leading-relaxed mb-4">
             {service.description}
           </p>
-          <span class="text-xs font-medium text-pink transition-colors group-hover:text-pink-dark">
-            Lue lisää →
-          </span>
+          <div class="flex items-baseline gap-3">
+            {service.price && (
+              <span class="text-sm text-charcoal-mid">
+                alkaen <span class="font-semibold text-charcoal">{service.price}</span>
+              </span>
+            )}
+            <span class="ml-auto text-xs font-medium text-pink transition-colors group-hover:text-pink-dark">
+              Lue lisää →
+            </span>
+          </div>
         </a>
       ))}
     </div>
