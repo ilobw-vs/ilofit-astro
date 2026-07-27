@@ -39,6 +39,11 @@ const c = {
       label: 'Treenimatkat',
       description: 'Aktiivinen hyvinvointiloma samanhenkisessä seurassa — sopivasti treeniä, rentoutumista ja elämyksiä.',
       href: '/palvelut/treenimatkat',
+      trips: [
+        { year: '2025', place: 'Sivota, Kreikka 🇬🇷' },
+        { year: '2026', place: 'Rodos, Kreikka 🇬🇷' },
+        { year: '2027', place: 'tulossa!', upcoming: true },
+      ],
     },
     {
       label: 'Treeniohjelmat',
@@ -81,7 +86,7 @@ const iconMap: Record<string, string> = {
     </div>
 
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {c.services.map((service: { href: string; label: string; description: string; location?: string; price?: string; price_exact?: boolean; cta?: string }) => (
+      {c.services.map((service: { href: string; label: string; description: string; location?: string; price?: string; price_exact?: boolean; cta?: string; trips?: { year: string; place: string; upcoming?: boolean }[] }) => (
         <a
           href={service.href}
           class="card-accent group relative flex flex-col rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1"
@@ -104,6 +109,16 @@ const iconMap: Record<string, string> = {
           <p class="text-sm text-charcoal-mid leading-relaxed mb-4">
             {service.description}
           </p>
+          {service.trips && (
+            <ul class="mb-4 space-y-1.5">
+              {service.trips.map((trip) => (
+                <li class="flex gap-2 text-xs leading-snug">
+                  <span class="shrink-0 font-medium text-charcoal-mid tabular-nums">{trip.year}</span>
+                  <span class={trip.upcoming ? 'font-medium text-pink' : 'text-charcoal'}>{trip.place}</span>
+                </li>
+              ))}
+            </ul>
+          )}
           {/* mt-auto pins this to the card bottom, so every "Lue lisää" lines up
               across the row whether or not the card shows a price */}
           <div class="mt-auto">
