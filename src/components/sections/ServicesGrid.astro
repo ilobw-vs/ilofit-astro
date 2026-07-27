@@ -7,14 +7,16 @@ const c = {
   // `price` is optional — cards without it just show the "Lue lisää" link
   services: [
     {
-      label: 'Yksilövalmennus – Ole.Fit Manhattan',
-      description: 'Henkilökohtainen valmennus Ole.Fit Manhattanin salilla. Räätälöity ohjelma ja jatkuva tuki.',
+      label: 'Yksilövalmennus',
+      location: 'Ole.Fit Manhattan',
+      description: 'Henkilökohtainen valmennus salilla. Räätälöity ohjelma ja jatkuva tuki.',
       href: '/palvelut/yksilovalmennus#hinnat',
       price: '75 €/kk',
       cta: 'Hinnat ja sisältö',
     },
     {
-      label: 'Yksilövalmennus – asiakkaan tiloissa',
+      label: 'Yksilövalmennus',
+      location: 'Asiakkaan tiloissa',
       description: 'Tulen luoksesi – treenataan kotona, työpaikalla tai ulkona. Ei salijäsenyyttä.',
       href: '/palvelut/yksilovalmennus-asiakkaan-tiloissa',
     },
@@ -68,7 +70,7 @@ const iconMap: Record<string, string> = {
     </div>
 
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {c.services.map((service: { href: string; label: string; description: string; price?: string; cta?: string }) => (
+      {c.services.map((service: { href: string; label: string; description: string; location?: string; price?: string; cta?: string }) => (
         <a
           href={service.href}
           class="card-accent group relative flex flex-col rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1"
@@ -79,6 +81,15 @@ const iconMap: Record<string, string> = {
           <h3 class="font-display text-xl font-semibold text-charcoal mb-2">
             {service.label}
           </h3>
+          {service.location && (
+            /* Location as a label rather than part of the heading — keeps the
+               two yksilövalmennus cards scannable at a glance */
+            <p class="mb-3">
+              <span class="inline-block rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">
+                {service.location}
+              </span>
+            </p>
+          )}
           <p class="text-sm text-charcoal-mid leading-relaxed mb-4">
             {service.description}
           </p>
