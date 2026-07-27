@@ -129,18 +129,12 @@ const iconMap: Record<string, string> = {
                 <span class="text-xs whitespace-nowrap"> (sis. alv)</span>
               </p>
             )}
-            {service.cta ? (
-              /* Styled as a span, not a Button — the whole card is already an
-                 <a>, and nesting interactive elements is invalid HTML.
-                 Matches Button.astro's `ghost` variant. */
-              <span class="inline-flex items-center justify-center gap-2 rounded-lg border border-[1.5px] border-pink px-4 py-2 text-xs font-medium text-charcoal transition-all duration-200 group-hover:bg-pink-light">
-                {service.cta} →
-              </span>
-            ) : (
-              <span class="text-xs font-medium text-pink transition-colors group-hover:text-pink-dark">
-                Lue lisää →
-              </span>
-            )}
+            {/* Styled as a span, not a Button — the whole card is already an
+                <a>, and nesting interactive elements is invalid HTML.
+                Matches Button.astro's `ghost` variant. */}
+            <span class="inline-flex items-center justify-center gap-2 rounded-lg border border-[1.5px] border-pink px-4 py-2 text-xs font-medium text-charcoal transition-all duration-200 group-hover:bg-pink-light">
+              {service.cta ?? 'Lisätiedot'} →
+            </span>
           </div>
         </a>
       ))}
