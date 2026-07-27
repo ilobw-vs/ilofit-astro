@@ -1,6 +1,10 @@
 https://www.ilofit.com/* https://ilofit.com/:splat 301!
 
 # Removed pages -> nearest equivalent content (2026-07-27)
-/tietoa-ilonasta  /#ilona       301
-/kokemuksia       /#kokemuksia  301
-/ukk              /palvelut     301
+/tietoa-ilonasta            /#ilona              301
+/kokemuksia                 /#kokemuksia         301
+/ukk                        /#palvelut_taulukko       301
+/blogi                      /                         301
+# more specific first, so /palvelut never shadows a child path
+/palvelut/verkkovalmennus   /palvelut/treeniohjelma   301
+/palvelut                   /#palvelut_taulukko       301

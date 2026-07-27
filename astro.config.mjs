@@ -4,7 +4,13 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://ilofit.com',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Utility form — reachable from /yhteystiedot and /palvelut/treeniohjelma,
+      // but not a page anyone should land on from search. Also carries noindex.
+      filter: (page) => !page.includes('/taustatietolomake'),
+    }),
+  ],
   output: 'static',
   compressHTML: true,
   experimental: {

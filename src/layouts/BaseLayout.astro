@@ -8,6 +8,8 @@ interface Props {
   ogImage?: string;
   canonicalURL?: string;
   schema?: object;
+  /** Keep the page out of search results — for utility pages like forms. */
+  noindex?: boolean;
 }
 
 const {
@@ -16,6 +18,7 @@ const {
   ogImage = '/images/og-default.jpg',
   canonicalURL = Astro.url.href,
   schema,
+  noindex = false,
 } = Astro.props;
 
 const localBusinessSchema = {
@@ -42,6 +45,7 @@ const localBusinessSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    {noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />
