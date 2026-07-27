@@ -7,11 +7,16 @@ const c = {
   // `price` is optional — cards without it just show the "Lue lisää" link
   services: [
     {
-      label: 'Yksilövalmennus',
-      description: 'Henkilökohtainen valmennus räätälöidyllä ohjelmalla ja jatkuvalla tuella. Täydellinen juuri sinun tavoitteillesi.',
+      label: 'Yksilövalmennus – Ole.Fit Manhattan',
+      description: 'Henkilökohtainen valmennus Ole.Fit Manhattanin salilla. Räätälöity ohjelma ja jatkuva tuki.',
       href: '/palvelut/yksilovalmennus#hinnat',
       price: '75 €/kk',
       cta: 'Hinnat ja sisältö',
+    },
+    {
+      label: 'Yksilövalmennus – asiakkaan tiloissa',
+      description: 'Tulen luoksesi – treenataan kotona, työpaikalla tai ulkona. Ei salijäsenyyttä.',
+      href: '/palvelut/yksilovalmennus-asiakkaan-tiloissa',
     },
     {
       label: 'Pienryhmävalmennus',
@@ -43,6 +48,7 @@ const c = {
 
 const iconMap: Record<string, string> = {
   '/palvelut/yksilovalmennus': `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+  '/palvelut/yksilovalmennus-asiakkaan-tiloissa': `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
   '/palvelut/pienryhmavalmennus': `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
   '/palvelut/ulkotreenit': `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`,
   '/palvelut/yrityspalvelut': `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
