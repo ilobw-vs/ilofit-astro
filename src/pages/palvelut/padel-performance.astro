@@ -1,0 +1,106 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Button from '../../components/ui/Button.astro';
+
+const c = {
+  hero_eyebrow: 'Ryhmävalmennus',
+  hero_heading: 'Padel Performance',
+  hero_location: 'Boost Sports Club',
+  hero_text1: 'Padelissa tarvitaan räjähtävää voimaa, nopeita suunnanmuutoksia, keskivartalon kiertovoimaa, tasapainoa sekä hyvää kestävyyttä. Padel Performance on toiminnallinen kiertoharjoittelu, joka kehittää näitä ominaisuuksia tehokkaasti ja hauskasti.',
+  hero_text2: 'Harjoittelu sopii erinomaisesti padelin oheisharjoitteluksi esimerkiksi kerran viikossa tukemaan suorituskykyä ilman, että se kuormittaa palautumista liikaa. Tunnit on suunniteltu kehittämään juuri niitä fyysisiä ominaisuuksia, joita padelkentällä tarvitaan nopeampaan liikkumiseen, parempaan tasapainoon ja tehokkaampiin lyönteihin.',
+  hero_cta: 'Varaa nyt',
+  // Booking is handled by Boost's own Matchi system, not by IloFit
+  booking_url: 'https://www.matchi.se/facilities/Boost?lang=fi',
+  hero_image: '/images/small_groups.webp',
+
+  price_heading: 'Hinta',
+  price: '9,90 €',
+  price_note: 'Varaukset ja maksu Boost Sports Clubin Matchi-järjestelmän kautta.',
+
+  benefits_heading: 'Mitä tunnilla kehitetään',
+  benefits: [
+    'Räjähtävä voima',
+    'Nopeat suunnanmuutokset',
+    'Keskivartalon kiertovoima',
+    'Tasapaino',
+    'Kestävyys',
+  ],
+
+  cta_eyebrow: 'Tule mukaan',
+  cta_heading: 'Varaa paikkasi Padel Performance -tunnille',
+  cta_text: 'Tunnit järjestetään Boost Sports Clubilla. Varaukset tehdään Boostin omassa varausjärjestelmässä.',
+  cta_button: 'Varaa nyt',
+};
+
+const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+---
+
+<PageLayout
+  title="Padel Performance | IloFit — Personal Trainer Turku"
+  description="Padelin oheisharjoittelua Boost Sports Clubilla. Toiminnallinen kiertoharjoittelu, joka kehittää räjähtävää voimaa, suunnanmuutoksia ja tasapainoa. 9,90 € / tunti."
+>
+
+  <section class="bg-off-white pt-36 pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.hero_eyebrow}</p>
+          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-4">{c.hero_heading}</h1>
+          <p class="mb-6">
+            <span class="inline-block rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">
+              {c.hero_location}
+            </span>
+          </p>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-6">{c.hero_text1}</p>
+          <p class="text-lg text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text2}</p>
+          <Button href={c.booking_url} size="lg" external>{c.hero_cta}</Button>
+        </div>
+        <div class="relative">
+          <div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-warm">
+            <img src={c.hero_image} alt="Padel Performance -kiertoharjoittelu Boost Sports Clubilla – IloFit" class="w-full h-full object-cover object-center grayscale" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <div class="rounded-2xl border border-soft-border bg-off-white p-8">
+          <SectionHeader heading={c.price_heading} class="mb-8" />
+          <div class="rounded-xl bg-pink text-white p-6 mb-6">
+            <p class="text-sm font-medium opacity-80 mb-1">Padel Performance -tunti</p>
+            <p class="font-display text-3xl font-semibold">{c.price}</p>
+          </div>
+          <p class="text-charcoal-mid text-sm mb-8">{c.price_note}</p>
+          <Button href={c.booking_url} class="w-full justify-center" external>{c.hero_cta}</Button>
+        </div>
+
+        <div class="rounded-2xl border border-soft-border bg-white p-8">
+          <SectionHeader heading={c.benefits_heading} class="mb-8" />
+          <ul class="space-y-4">
+            {c.benefits.map((item) => (
+              <li class="flex items-start gap-3">
+                <Fragment set:html={checkSvg} />
+                <span class="text-charcoal-mid">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
+      <p class="text-charcoal-mid mb-8">{c.cta_text}</p>
+      <Button href={c.booking_url} size="lg" external>{c.cta_button}</Button>
+    </div>
+  </section>
+
+</PageLayout>
