@@ -1,6 +1,5 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import SectionHeader from '../components/ui/SectionHeader.astro';
 
 /* Values must match the ?palvelu= params used in service-page CTAs.
    Only services booked this way — ulkotreenit uses Acuity, padel uses Matchi,
@@ -19,18 +18,16 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
   description="Varaa aika IloFitin valmennukseen. Kerro nimesi ja sähköpostisi, niin otan sinuun yhteyttä ja sovitaan sopiva aika."
 >
 
-  <section class="bg-off-white pt-36 pb-20">
-    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-      <SectionHeader eyebrow="Varaus" heading="Varaa aika" class="mb-6" />
-      <p class="text-lg text-charcoal-mid leading-relaxed">
-        Jätä yhteystietosi, niin otan sinuun yhteyttä ja sovitaan sinulle sopiva aika.
-        Varaus ei sido sinua vielä mihinkään.
-      </p>
-    </div>
-  </section>
-
-  <section class="bg-white py-20">
+  {/* Heading and form share one section: two sections meant pb-20 + py-20 of
+      dead space between them, pushing the submit button below the fold. */}
+  <section class="bg-off-white pt-24 pb-20">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
+      <h1 class="font-display text-4xl font-semibold text-charcoal sm:text-5xl mb-3">Varaa aika</h1>
+      <p class="text-lg text-charcoal-mid leading-relaxed mb-8 max-w-2xl">
+        Jätä yhteystietosi, niin otan sinuun yhteyttä ja sovitaan sinulle sopiva aika. Varaus ei sido sinua vielä mihinkään.
+      </p>
+
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
 
       <form
@@ -39,7 +36,7 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
-        class="lg:col-span-2 rounded-2xl border border-soft-border bg-off-white p-8"
+        class="lg:col-span-2 rounded-2xl border border-soft-border bg-white p-6 sm:p-8"
       >
         <input type="hidden" name="form-name" value="varaus" />
         <p class="hidden"><label>Älä täytä tätä: <input name="bot-field" /></label></p>
@@ -77,11 +74,11 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
           <input id="phone" type="tel" name="phone" autocomplete="tel" class={field} placeholder="040 123 4567" />
         </div>
 
-        <div class="mb-8">
+        <div class="mb-6">
           <label for="info" class="block text-sm font-medium text-charcoal mb-2">
             Lisätiedot <span class="font-normal text-charcoal-mid">(vapaaehtoinen)</span>
           </label>
-          <textarea id="info" name="info" rows="4" class={field} placeholder="Esim. toiveet aikatauluista tai kysymykset"></textarea>
+          <textarea id="info" name="info" rows="3" class={field} placeholder="Esim. toiveet aikatauluista tai kysymykset"></textarea>
         </div>
 
         <button
@@ -101,7 +98,7 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
         </p>
       </form>
 
-      <aside class="rounded-2xl border border-soft-border bg-off-white p-8">
+      <aside class="rounded-2xl border border-soft-border bg-white p-8">
         <h2 class="font-display text-xl font-semibold text-charcoal mb-6">Suora yhteys</h2>
         <ul class="space-y-5">
           <li class="flex items-start gap-3">
