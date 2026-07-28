@@ -19,30 +19,25 @@ const c = {
     {
       heading: 'Kuukausisopimukset',
       rows: [
-        { label: '1 tapaaminen kuukaudessa (sisältää 10 tapaamista)', price: 'alkaen* 72 €/kk' },
-        { label: '2 tapaamista kuukaudessa (sisältää 20 tapaamista)', price: 'alkaen* 138 €/kk' },
-        { label: '3 tapaamista kuukaudessa (sisältää 30 tapaamista)', price: 'alkaen* 200 €/kk' },
-        { label: '4 tapaamista kuukaudessa (sisältää 40 tapaamista)', price: 'alkaen* 250 €/kk' },
+        { label: '1-4 tapaamista kuukaudessa', price: 'Tiedustele hintaa' },
       ],
       included: 'Sisältää treeniohjelman ja ruokavalion, mahdolliset muutokset niihin, sekä valmentajan jatkuvan tuen.',
-      footnote: '*Alkaen-hinta perustuu 12 maksuerään.',
     },
     {
       heading: 'Valmennuspaketit',
       rows: [
-        { label: 'Kickstart, 5 tapaamisen valmennuspaketti', price: 'alkaen* 94 €/kk' },
+        { label: 'Kickstart, 5 tapaamisen valmennuspaketti', price: 'Tiedustele hintaa' },
       ],
       included: 'Sisältää treeniohjelman ja ruokavalion, mahdolliset muutokset niihin, sekä valmentajan jatkuvan tuen.',
-      footnote: '*Alkaen-hinta perustuu 5 maksuerään.',
     },
     {
       heading: 'Kertatapaaminen',
-      price: '90 €',
+      price: 'Tiedustele hintaa',
       included: 'Ei sisällä treeniohjelmaa eikä ruokavaliota.',
     },
     {
       heading: 'Treeniohjelma',
-      price: '119 €',
+      price: 'Tiedustele hintaa',
       included: 'Sisältää ohjauksen, ei sisällä ruokavaliota.',
     },
   ],
@@ -128,7 +123,7 @@ const [monthlyGroup, ...otherGroups] = c.price_groups;
           {monthlyGroup.footnote && <p class="text-charcoal-mid/70 text-xs mt-2">{monthlyGroup.footnote}</p>}
 
           <div class="mt-8">
-            <Button href="/varaa?palvelu=yksilovalmennus" class="w-full justify-center">Tee varaus tästä</Button>
+            <Button href="/varaa?palvelu=yksilovalmennus" class="w-full justify-center">Kysy palvelusta ja hinnoista</Button>
           </div>
         </div>
 
