@@ -1,0 +1,161 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+
+/* Values must match the ?palvelu= params used in service-page CTAs. */
+const services = [
+  { value: 'yksilovalmennus', label: 'Yksilövalmennus – Ole.Fit Manhattan' },
+  { value: 'yksilovalmennus-asiakkaan-tiloissa', label: 'Yksilövalmennus – asiakkaan tiloissa tai ulkona' },
+  { value: 'pienryhmavalmennus', label: 'Pienryhmävalmennus' },
+  { value: 'ulkotreenit', label: 'Ulkotreenit' },
+  { value: 'yrityspalvelut', label: 'Yrityspalvelut' },
+  { value: 'treeniohjelma', label: 'Treeniohjelma' },
+  { value: 'treenimatkat', label: 'Treenimatkat' },
+  { value: 'muu', label: 'Muu / en ole vielä varma' },
+];
+
+const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal placeholder-charcoal-mid/50 focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors';
+---
+
+<PageLayout
+  title="Varaa aika | IloFit — Personal Trainer Turku"
+  description="Varaa aika IloFitin valmennukseen. Kerro nimesi ja sähköpostisi, niin otan sinuun yhteyttä ja sovitaan sopiva aika."
+>
+
+  <section class="bg-off-white pt-36 pb-20">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+      <SectionHeader eyebrow="Varaus" heading="Varaa aika" class="mb-6" />
+      <p class="text-lg text-charcoal-mid leading-relaxed">
+        Jätä yhteystietosi, niin otan sinuun yhteyttä ja sovitaan sinulle sopiva aika.
+        Varaus ei sido sinua vielä mihinkään.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+
+      <form
+        id="booking-form"
+        name="varaus"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        class="rounded-2xl border border-soft-border bg-off-white p-8"
+      >
+        <input type="hidden" name="form-name" value="varaus" />
+        <p class="hidden"><label>Älä täytä tätä: <input name="bot-field" /></label></p>
+
+        <div class="mb-6">
+          <label for="service-select" class="block text-sm font-medium text-charcoal mb-2">Palvelu</label>
+          <select id="service-select" name="service" class={field}>
+            {services.map((s) => <option value={s.value}>{s.label}</option>)}
+          </select>
+          {/* Filled by the inline script when arriving via ?palvelu= */}
+          <p id="service-prefilled" class="mt-2 hidden text-xs text-charcoal-mid">
+            Valittu palvelu tuli linkistä — voit vaihtaa sen yllä.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="name" class="block text-sm font-medium text-charcoal mb-2">
+              Nimi <span class="text-pink-dark">*</span>
+            </label>
+            <input id="name" type="text" name="name" required autocomplete="name" class={field} placeholder="Sinun nimesi" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-charcoal mb-2">
+              Sähköposti <span class="text-pink-dark">*</span>
+            </label>
+            <input id="email" type="email" name="email" required autocomplete="email" class={field} placeholder="nimi@esimerkki.fi" />
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label for="phone" class="block text-sm font-medium text-charcoal mb-2">
+            Puhelinnumero <span class="font-normal text-charcoal-mid">(vapaaehtoinen)</span>
+          </label>
+          <input id="phone" type="tel" name="phone" autocomplete="tel" class={field} placeholder="040 123 4567" />
+        </div>
+
+        <div class="mb-8">
+          <label for="info" class="block text-sm font-medium text-charcoal mb-2">
+            Lisätiedot <span class="font-normal text-charcoal-mid">(vapaaehtoinen)</span>
+          </label>
+          <textarea id="info" name="info" rows="4" class={field} placeholder="Esim. toiveet aikatauluista tai kysymykset"></textarea>
+        </div>
+
+        <button
+          id="submit-btn"
+          type="submit"
+          class="w-full rounded-lg bg-pink px-8 py-3.5 text-base font-medium text-white transition-all duration-200 hover:bg-pink-dark disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Lähetä varauspyyntö
+        </button>
+
+        <p id="form-success" class="mt-6 hidden rounded-lg border border-pink/30 bg-white p-4 text-sm text-charcoal">
+          Kiitos! Varauspyyntösi on lähetetty. Otan sinuun yhteyttä pian.
+        </p>
+        <p id="form-error" class="mt-6 hidden rounded-lg border border-soft-border bg-white p-4 text-sm text-charcoal">
+          Lähetys ei onnistunut. Voit myös laittaa sähköpostia osoitteeseen
+          <a href="mailto:ilona@ilofit.com" class="text-pink-dark underline">ilona@ilofit.com</a>.
+        </p>
+      </form>
+
+      <p class="mt-6 text-center text-sm text-charcoal-mid">
+        Haluatko kysyä jotain ensin? <a href="/yhteystiedot" class="text-pink-dark underline hover:text-charcoal transition-colors">Ota yhteyttä</a>
+      </p>
+
+    </div>
+  </section>
+
+<script>
+  // Pre-select the service when arriving from a service page CTA (?palvelu=…)
+  const params = new URLSearchParams(window.location.search);
+  const palvelu = params.get('palvelu');
+  const sel = document.getElementById('service-select') as HTMLSelectElement | null;
+  if (palvelu && sel) {
+    const match = [...sel.options].find((o) => o.value === palvelu);
+    if (match) {
+      sel.value = match.value;
+      document.getElementById('service-prefilled')?.classList.remove('hidden');
+    }
+  }
+
+  const form = document.getElementById('booking-form') as HTMLFormElement;
+  const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const success = document.getElementById('form-success')!;
+  const error = document.getElementById('form-error')!;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Lähetetään...';
+    success.classList.add('hidden');
+    error.classList.add('hidden');
+
+    const data = new URLSearchParams(new FormData(form) as any).toString();
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data,
+      });
+      if (res.ok) {
+        success.classList.remove('hidden');
+        form.reset();
+      } else {
+        error.classList.remove('hidden');
+      }
+    } catch {
+      error.classList.remove('hidden');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Lähetä varauspyyntö';
+    }
+  });
+</script>
+
+</PageLayout>

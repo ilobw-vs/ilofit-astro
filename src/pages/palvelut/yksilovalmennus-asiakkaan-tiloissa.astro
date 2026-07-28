@@ -92,7 +92,7 @@ const [monthlyGroup, ...otherGroups] = c.price_groups;
           <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text1}</p>
           <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text2}</p>
           <div class="flex flex-col items-start gap-3">
-            <Button href="/yhteystiedot?palvelu=yksilovalmennus" size="lg">{c.hero_cta_primary}</Button>
+            <Button href="/varaa?palvelu=yksilovalmennus-asiakkaan-tiloissa" size="lg">{c.hero_cta_primary}</Button>
           </div>
         </div>
         <div class="relative">
@@ -138,7 +138,7 @@ const [monthlyGroup, ...otherGroups] = c.price_groups;
           {monthlyGroup.footnote && <p class="text-charcoal-mid/70 text-xs mt-2">{monthlyGroup.footnote}</p>}
 
           <div class="mt-8">
-            <Button href="/yhteystiedot?palvelu=yksilovalmennus" class="w-full justify-center">Kysy lisää tai varaa aika</Button>
+            <Button href="/varaa?palvelu=yksilovalmennus-asiakkaan-tiloissa" class="w-full justify-center">Kysy lisää tai varaa aika</Button>
           </div>
         </div>
 
@@ -195,7 +195,7 @@ const [monthlyGroup, ...otherGroups] = c.price_groups;
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
       <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
       <p class="text-charcoal-mid mb-8">{c.cta_text}</p>
-      <Button href="/yhteystiedot?palvelu=yksilovalmennus" size="lg">{c.cta_button}</Button>
+      <Button href="/varaa?palvelu=yksilovalmennus-asiakkaan-tiloissa" size="lg">{c.cta_button}</Button>
     </div>
   </section>
 
