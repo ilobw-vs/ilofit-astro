@@ -2,16 +2,13 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 
-/* Values must match the ?palvelu= params used in service-page CTAs. */
+/* Values must match the ?palvelu= params used in service-page CTAs.
+   Only services booked this way — ulkotreenit uses Acuity, padel uses Matchi,
+   treeniohjelma the taustatietolomake, and the rest go via /yhteystiedot. */
 const services = [
   { value: 'yksilovalmennus', label: 'Yksilövalmennus – Ole.Fit Manhattan' },
-  { value: 'yksilovalmennus-asiakkaan-tiloissa', label: 'Yksilövalmennus – asiakkaan tiloissa tai ulkona' },
-  { value: 'pienryhmavalmennus', label: 'Pienryhmävalmennus' },
-  { value: 'ulkotreenit', label: 'Ulkotreenit' },
+  { value: 'yksilovalmennus-asiakkaan-tiloissa', label: 'Yksilövalmennus – asiakkaan tiloissa' },
   { value: 'yrityspalvelut', label: 'Yrityspalvelut' },
-  { value: 'treeniohjelma', label: 'Treeniohjelma' },
-  { value: 'treenimatkat', label: 'Treenimatkat' },
-  { value: 'muu', label: 'Muu / en ole vielä varma' },
 ];
 
 const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal placeholder-charcoal-mid/50 focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors';
@@ -33,7 +30,8 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
   </section>
 
   <section class="bg-white py-20">
-    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
 
       <form
         id="booking-form"
@@ -41,7 +39,7 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
-        class="rounded-2xl border border-soft-border bg-off-white p-8"
+        class="lg:col-span-2 rounded-2xl border border-soft-border bg-off-white p-8"
       >
         <input type="hidden" name="form-name" value="varaus" />
         <p class="hidden"><label>Älä täytä tätä: <input name="bot-field" /></label></p>
@@ -103,10 +101,36 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
         </p>
       </form>
 
-      <p class="mt-6 text-center text-sm text-charcoal-mid">
-        Haluatko kysyä jotain ensin? <a href="/yhteystiedot" class="text-pink-dark underline hover:text-charcoal transition-colors">Ota yhteyttä</a>
-      </p>
+      <aside class="rounded-2xl border border-soft-border bg-off-white p-8">
+        <h2 class="font-display text-xl font-semibold text-charcoal mb-6">Suora yhteys</h2>
+        <ul class="space-y-5">
+          <li class="flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A85870" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.37 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/>
+            </svg>
+            <div>
+              <p class="text-xs uppercase tracking-widest text-charcoal-mid mb-1">Puhelin</p>
+              <a href="tel:+358400315775" class="text-sm font-medium text-charcoal hover:text-pink-dark transition-colors">
+                +358 400 315 775
+              </a>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A85870" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <div>
+              <p class="text-xs uppercase tracking-widest text-charcoal-mid mb-1">Sähköposti</p>
+              <a href="mailto:ilona@ilofit.com" class="text-sm font-medium text-charcoal hover:text-pink-dark transition-colors break-all">
+                ilona@ilofit.com
+              </a>
+            </div>
+          </li>
+        </ul>
+      </aside>
 
+      </div>
     </div>
   </section>
 
