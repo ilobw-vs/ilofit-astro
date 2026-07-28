@@ -6,7 +6,7 @@ import Button from '../../components/ui/Button.astro';
 const c = {
   hero_eyebrow: 'Yksilövalmennus',
   hero_heading: 'Yksilövalmennus – Asiakkaan tiloissa tai ulkona',
-  hero_text1: 'Tulen sinun luoksesi. Treenataan kotonasi, työpaikan tiloissa tai ulkona – ilman salijäsenyyttä ja ilman matkaa salille.',
+  hero_text1: 'Tulen sinun luoksesi. Treenataan kotonasi, työpaikan tiloissa tai ulkokuntosalilla.',
   hero_text2: 'Sama henkilökohtainen ohjaus ja räätälöity ohjelma kuin salivalmennuksessa, mutta sinulle sopivassa paikassa ja sinun aikataulullasi.',
   hero_cta_primary: 'Varaa ilmainen konsultaatio',
   hero_image: '/images/ulkotreenit-hero.webp',
@@ -105,7 +105,7 @@ const [monthlyGroup, ...otherGroups] = c.price_groups;
   </section>
 
   {/* scroll-mt clears the fixed 80px navbar when linked to via #hinnat */}
-  <section id="hinnat" class="scroll-mt-24 bg-white py-24">
+  <section id="hinnat" class="scroll-mt-24 bg-white py-12">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
       <SectionHeader heading={c.prices_heading} class="mb-4" />
@@ -138,7 +138,7 @@ const [monthlyGroup, ...otherGroups] = c.price_groups;
           {monthlyGroup.footnote && <p class="text-charcoal-mid/70 text-xs mt-2">{monthlyGroup.footnote}</p>}
 
           <div class="mt-8">
-            <Button href="/varaa?palvelu=yksilovalmennus-asiakkaan-tiloissa" class="w-full justify-center">Kysy lisää tai varaa aika</Button>
+            <Button href="/varaa?palvelu=yksilovalmennus-asiakkaan-tiloissa" class="w-full justify-center">Tee varaus tästä</Button>
           </div>
         </div>
 
