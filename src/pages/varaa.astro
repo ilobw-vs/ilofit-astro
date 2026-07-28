@@ -23,10 +23,6 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
   <section class="bg-off-white pt-24 pb-20">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 
-      <p class="text-lg text-charcoal-mid leading-relaxed mb-8 max-w-2xl">
-        Jätä yhteystietosi, niin otan sinuun yhteyttä ja sovitaan sinulle sopiva aika.
-      </p>
-
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
 
       <form
@@ -40,6 +36,10 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
         <input type="hidden" name="form-name" value="varaus" />
         <p class="hidden"><label>Älä täytä tätä: <input name="bot-field" /></label></p>
 
+        <div class="mb-6">
+          <label class="block text-sm font-medium text-charcoal mb-2">Jätä yhteystietosi, niin otan sinuun yhteyttä ja sovitaan sinulle sopiva aika.</label>
+        </div>
+        
         <div class="mb-6">
           <label for="service-select" class="block text-sm font-medium text-charcoal mb-2">Palvelu</label>
           <select id="service-select" name="service" class={field}>
