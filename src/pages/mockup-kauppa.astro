@@ -1,0 +1,142 @@
+---
+/* THROWAWAY MOCKUP — not linked from anywhere, noindex + excluded from the
+   sitemap. Delete once a direction is chosen. Uses the real design tokens so
+   what you see here is what the components would actually look like. */
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+
+const programmes = [
+  {
+    name: 'Voimaohjelma',
+    blurb: '12 viikon nousujohteinen ohjelma kuntosalille. Sopii myös aloittelijalle.',
+    price: '49 €',
+    image: '/images/training_program.webp',
+  },
+  {
+    name: 'Kotitreeniohjelma',
+    blurb: '8 viikkoa kehonpainotreeniä ilman välineitä. Treenaat missä vain.',
+    price: '39 €',
+    image: '/images/remote_training.webp',
+  },
+  {
+    name: 'Padel Performance -ohjelma',
+    blurb: 'Oheisharjoittelu padelin pelaajalle. Räjähtävyys, liikkuvuus ja kestävyys.',
+    price: '59 €',
+    image: '/images/small_groups.webp',
+  },
+];
+
+const products = [
+  { name: 'Kahvakuula 12 kg', partner: 'Gymstick' },
+  { name: 'Joogamatto Pro', partner: 'Casall' },
+  { name: 'Vastuskuminauhat', partner: 'Gymstick' },
+  { name: 'Proteiinijauhe, 1 kg', partner: 'Puhdistamo' },
+];
+
+const outboundSvg = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M7 17L17 7"/><polyline points="7 7 17 7 17 17"/></svg>`;
+const boxSvg = `<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`;
+---
+
+<PageLayout title="Mockup — kauppa & varustesuositukset" noindex>
+
+  <section class="bg-charcoal py-6">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-xs uppercase tracking-widest text-pink mb-1">Mockup</p>
+      <p class="text-sm text-white/70">
+        Ei linkitetty mistään, ei hakukoneille. Tuotekuvat ovat paikanvaraajia.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ A: OHJELMAT (oma tuote) ============ -->
+  <section class="bg-white pt-20 pb-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeader eyebrow="Ostat suoraan minulta" heading="Treeniohjelmat" class="mb-4" />
+      <p class="text-charcoal-mid mb-12 max-w-2xl">
+        Oma tuote: hinta näkyvissä, ostotapahtuma pysyy omalla sivustolla.
+      </p>
+
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {programmes.map((p) => (
+          <a
+            href="#"
+            class="card-accent group relative flex flex-col overflow-hidden rounded-xl border border-soft-border bg-white shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1 [--card-accent:var(--color-teal)]"
+          >
+            <div class="h-48 w-full overflow-hidden bg-off-white">
+              <img src={p.image} alt="" class="h-full w-full object-cover grayscale" />
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="font-display text-xl font-semibold text-charcoal mb-2">{p.name}</h3>
+              <p class="text-sm text-charcoal-mid leading-relaxed mb-4">{p.blurb}</p>
+              <div class="mt-auto">
+                <p class="mb-3 text-sm text-charcoal-mid">
+                  <span class="font-semibold text-charcoal text-lg">{p.price}</span>
+                  <span class="text-xs whitespace-nowrap"> (sis. alv)</span>
+                </p>
+                <span class="inline-flex items-center justify-center gap-2 rounded-lg bg-teal px-5 py-2.5 text-xs font-medium text-white transition-all duration-200 group-hover:bg-teal-dark">
+                  Osta ohjelma →
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B: VARUSTESUOSITUKSET (kumppanin tuote) ============ -->
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeader eyebrow="Suosituksia" heading="Varustesuositukset" class="mb-4" />
+      <p class="text-charcoal-mid mb-6 max-w-2xl">
+        Kumppanin tuote: ei hintaa, kumppanin nimi esillä, linkki vie pois sivustolta.
+      </p>
+
+      <!-- Disclosure — vaatimus, ei valinnainen -->
+      <div class="mb-12 flex items-start gap-3 rounded-xl border border-soft-border bg-white p-4 max-w-2xl">
+        <span class="mt-0.5 rounded bg-charcoal px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
+          Mainos
+        </span>
+        <p class="text-sm text-charcoal-mid leading-relaxed">
+          Sivulla on kaupallisia yhteistyölinkkejä. Saan pienen komission, jos ostat linkin kautta — hinta on sinulle sama.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-6 lg:grid-cols-4">
+        {products.map((p) => (
+          <a
+            href="#"
+            class="group flex flex-col rounded-xl border border-soft-border bg-white p-4 transition-all duration-300 hover:border-charcoal-mid/30 hover:shadow-warm"
+          >
+            <div class="mb-4 flex h-32 w-full items-center justify-center rounded-lg bg-off-white text-charcoal-mid/30">
+              <Fragment set:html={boxSvg} />
+            </div>
+            <h3 class="text-sm font-medium text-charcoal leading-snug mb-1">{p.name}</h3>
+            <p class="text-xs text-charcoal-mid mb-4">{p.partner}</p>
+            <span class="mt-auto inline-flex items-center gap-1.5 text-xs font-medium text-charcoal-mid transition-colors group-hover:text-charcoal">
+              Siirry kauppaan
+              <Fragment set:html={outboundSvg} />
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Vertailu ============ -->
+  <section class="bg-white pb-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-soft-border bg-off-white p-8">
+        <h2 class="font-display text-2xl font-semibold text-charcoal mb-6">Mikä erottaa kortit</h2>
+        <ul class="space-y-3 text-sm text-charcoal-mid">
+          <li><span class="font-semibold text-charcoal">Väri:</span> ohjelmilla teal-aksentti (oma palvelu), varusteilla ei aksenttiviivaa lainkaan.</li>
+          <li><span class="font-semibold text-charcoal">Hinta:</span> vain ohjelmilla. Varusteiden hinta elää kumppanin sivulla.</li>
+          <li><span class="font-semibold text-charcoal">Nappi:</span> ohjelmilla täytetty nappi (osto täällä), varusteilla hillitty tekstilinkki + ulos-ikoni.</li>
+          <li><span class="font-semibold text-charcoal">Koko:</span> ohjelmat 3 palstaa ja isot kuvat, varusteet 4 palstaa ja kompakti.</li>
+          <li><span class="font-semibold text-charcoal">Kumppani:</span> nimi aina näkyvissä varustekortissa.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

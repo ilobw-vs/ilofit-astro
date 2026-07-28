@@ -8,7 +8,7 @@ export default defineConfig({
     sitemap({
       // Utility form — reachable from /yhteystiedot and /palvelut/treeniohjelma,
       // but not a page anyone should land on from search. Also carries noindex.
-      filter: (page) => !page.includes('/taustatietolomake'),
+      filter: (page) => !page.includes('/taustatietolomake') && !page.includes('/mockup-'),
     }),
   ],
   output: 'static',
