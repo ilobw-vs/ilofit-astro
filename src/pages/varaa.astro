@@ -42,12 +42,13 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
         
         <div class="mb-6">
           <label for="service-select" class="block text-sm font-medium text-charcoal mb-2">Palvelu</label>
-          {/* value=slug so ?palvelu= matching below still works; the readable
-              label is what actually gets submitted, via the hidden input */}
-          <select id="service-select" class={field}>
+          {/* option value stays the slug, for ?palvelu= matching below. The
+              submit handler swaps in the readable label at send time — this
+              keeps the field itself (name="service") exactly as Netlify
+              already detected it, unlike the previous hidden-input version. */}
+          <select id="service-select" name="service" class={field}>
             {services.map((s) => <option value={s.value}>{s.label}</option>)}
           </select>
-          <input type="hidden" id="service-label-field" name="service" value={services[0].label} />
           {/* Filled by the inline script when arriving via ?palvelu= */}
           <p id="service-prefilled" class="mt-2 hidden text-xs text-charcoal-mid">
             Valittu palvelu tuli linkistä — voit vaihtaa sen yllä.
@@ -135,15 +136,6 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
 
 <script>
   const sel = document.getElementById('service-select') as HTMLSelectElement | null;
-  const labelField = document.getElementById('service-label-field') as HTMLInputElement | null;
-
-  // The visible <select> only carries the slug (needed to match ?palvelu=);
-  // the hidden field mirrors the chosen option's readable label, since that
-  // is what actually gets submitted to Netlify under the name "service".
-  const syncLabelField = () => {
-    if (sel && labelField) labelField.value = sel.options[sel.selectedIndex].text;
-  };
-  sel?.addEventListener('change', syncLabelField);
 
   // Pre-select the service when arriving from a service page CTA (?palvelu=…)
   const params = new URLSearchParams(window.location.search);
@@ -155,7 +147,6 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
       document.getElementById('service-prefilled')?.classList.remove('hidden');
     }
   }
-  syncLabelField();
 
   const form = document.getElementById('booking-form') as HTMLFormElement;
   const btn = document.getElementById('submit-btn') as HTMLButtonElement;
@@ -169,7 +160,13 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
     success.classList.add('hidden');
     error.classList.add('hidden');
 
-    const data = new URLSearchParams(new FormData(form) as any).toString();
+    // Submit the readable label rather than the option's slug value —
+    // swapped in here, at send time, rather than by changing the <select>
+    // or adding another field, so the form's field set stays exactly what
+    // Netlify already detected.
+    const fd = new FormData(form);
+    if (sel) fd.set('service', sel.options[sel.selectedIndex].text);
+    const data = new URLSearchParams(fd as any).toString();
 
     try {
       const res = await fetch('/', {
