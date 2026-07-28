@@ -14,7 +14,7 @@ const selectClass = 'w-full rounded-lg border border-soft-border bg-off-white px
   <!-- Hero -->
   <section class="bg-off-white pt-36 pb-16">
     <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-      <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">IloFit</p>
+      <p class="text-xs font-medium uppercase tracking-widest text-pink-dark mb-3">IloFit</p>
       <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-4">Taustatietolomake</h1>
       <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed">
         Vastauksesi auttavat minua suunnittelemaan sinulle parhaan mahdollisen ohjelman. Tiedot käsitellään luottamuksellisesti.
@@ -30,7 +30,7 @@ const selectClass = 'w-full rounded-lg border border-soft-border bg-off-white px
       <div id="progress-container" class="mb-10">
         <div class="flex items-center justify-between mb-2">
           <span id="step-label" class="text-sm font-medium text-charcoal-mid">Vaihe 1 / 3</span>
-          <span id="step-title" class="text-sm font-medium text-pink">Perustiedot</span>
+          <span id="step-title" class="text-sm font-medium text-pink-dark">Perustiedot</span>
         </div>
         <div class="w-full bg-pink-light rounded-full h-1.5">
           <div id="progress-bar" class="bg-pink h-1.5 rounded-full transition-all duration-300" style="width: 33%"></div>
@@ -61,12 +61,12 @@ const selectClass = 'w-full rounded-lg border border-soft-border bg-off-white px
           </div>
 
           <div>
-            <label class={labelClass}>Nimi <span class="text-pink">*</span></label>
+            <label class={labelClass}>Nimi <span class="text-pink-dark">*</span></label>
             <input type="text" name="name" required class={inputClass} placeholder="Sinun nimesi" />
           </div>
 
           <div>
-            <label class={labelClass}>Sähköposti <span class="text-pink">*</span></label>
+            <label class={labelClass}>Sähköposti <span class="text-pink-dark">*</span></label>
             <input type="email" name="email" required class={inputClass} placeholder="sinun@email.fi" />
           </div>
 
@@ -95,7 +95,7 @@ const selectClass = 'w-full rounded-lg border border-soft-border bg-off-white px
                 <button
                   type="button"
                   data-goal={goal}
-                  class="goal-btn rounded-full border border-soft-border px-4 py-2 text-sm font-medium text-charcoal-mid transition-all hover:border-pink hover:text-pink"
+                  class="goal-btn rounded-full border border-soft-border px-4 py-2 text-sm font-medium text-charcoal-mid transition-all hover:border-pink hover:text-pink-dark"
                 >
                   {goal}
                 </button>
@@ -132,7 +132,7 @@ const selectClass = 'w-full rounded-lg border border-soft-border bg-off-white px
                 <button
                   type="button"
                   data-location={loc}
-                  class="location-btn rounded-full border border-soft-border px-4 py-2 text-sm font-medium text-charcoal-mid transition-all hover:border-pink hover:text-pink"
+                  class="location-btn rounded-full border border-soft-border px-4 py-2 text-sm font-medium text-charcoal-mid transition-all hover:border-pink hover:text-pink-dark"
                 >
                   {loc}
                 </button>
@@ -178,7 +178,7 @@ const selectClass = 'w-full rounded-lg border border-soft-border bg-off-white px
           <button
             type="button"
             id="btn-prev"
-            class="hidden flex-1 rounded-lg border border-soft-border px-6 py-3.5 text-sm font-medium text-charcoal hover:border-pink hover:text-pink transition-colors"
+            class="hidden flex-1 rounded-lg border border-soft-border px-6 py-3.5 text-sm font-medium text-charcoal hover:border-pink hover:text-pink-dark transition-colors"
           >
             ← Edellinen
           </button>

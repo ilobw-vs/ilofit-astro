@@ -65,7 +65,7 @@ const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <a href="/palvelut/treenimatkat" class="inline-flex items-center gap-1 text-xs font-medium uppercase tracking-widest text-pink mb-3 transition-colors hover:text-pink-dark">
+          <a href="/palvelut/treenimatkat" class="inline-flex items-center gap-1 text-xs font-medium uppercase tracking-widest text-pink-dark mb-3 transition-colors hover:text-charcoal">
             ← {c.hero_eyebrow}
           </a>
           {/* Makes it unmistakable that this trip has already run */}
@@ -140,9 +140,9 @@ const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
 
         <!-- Hotelli-kortti -->
         <div class="rounded-2xl border border-soft-border bg-white p-8">
-          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-2">{c.hotel_eyebrow}</p>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink-dark mb-2">{c.hotel_eyebrow}</p>
           <h2 class="font-display text-2xl font-semibold text-charcoal mb-1">{c.hotel_heading}</h2>
-          <p class="text-pink mb-6">{'★'.repeat(c.hotel_stars)}</p>
+          <p class="text-pink-dark mb-6">{'★'.repeat(c.hotel_stars)}</p>
 
           <div class="w-full h-56 rounded-2xl overflow-hidden mb-6">
             <img
@@ -188,7 +188,7 @@ const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
       <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
       <p class="text-charcoal-mid mb-3">{c.cta_text}</p>
       <p class="text-charcoal-mid mb-8">
-        Sähköposti: <a href={`mailto:${c.cta_email}`} class="text-pink hover:underline">{c.cta_email}</a>
+        Sähköposti: <a href={`mailto:${c.cta_email}`} class="text-pink-dark hover:underline">{c.cta_email}</a>
       </p>
       <Button href="/yhteystiedot?palvelu=treenimatkat" size="lg">{c.cta_button}</Button>
     </div>

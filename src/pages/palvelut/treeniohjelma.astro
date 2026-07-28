@@ -41,7 +41,7 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p class="text-xs font-medium uppercase tracking-widest text-pink mb-3">{c.hero_eyebrow}</p>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink-dark mb-3">{c.hero_eyebrow}</p>
           <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">{c.hero_heading}</h1>
           <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-4">{c.hero_text1}</p>
           <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text2}</p>
@@ -64,14 +64,14 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
           <SectionHeader heading="Hinnat" class="mb-8" />
           <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4 mb-4">
             <span class="font-medium text-charcoal">{c.base_price_label}</span>
-            <span class="text-pink font-semibold">{c.base_price}</span>
+            <span class="text-pink-dark font-semibold">{c.base_price}</span>
           </div>
 
           <p class="mb-6"></p>
 
           <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4 mb-4">
             <span class="font-medium text-charcoal">{c.plus_heading}</span>
-            <span class="text-pink font-semibold">{c.plus_price}</span>
+            <span class="text-pink-dark font-semibold">{c.plus_price}</span>
           </div>
           <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4 mb-4">
             <p class="text-charcoal-mid text-sm mb-2">{c.plus_desc}</p>
@@ -84,7 +84,7 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
             {c.addons.map((addon) => (
               <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
                 <span class="font-medium text-charcoal">{addon.label}</span>
-                <span class="text-pink font-semibold">{addon.price}</span>
+                <span class="text-pink-dark font-semibold">{addon.price}</span>
               </div>
             ))}
           </div>

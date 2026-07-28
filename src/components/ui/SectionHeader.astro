@@ -5,14 +5,24 @@ interface Props {
   subheading?: string;
   centered?: boolean;
   class?: string;
+  /** Override the eyebrow colour where pink-dark lacks contrast — e.g. on a
+      pink-light section, where it only reaches 3.59:1 against the 4.5:1 AA bar. */
+  eyebrowClass?: string;
 }
 
-const { eyebrow, heading, subheading, centered = false, class: className = '' } = Astro.props;
+const {
+  eyebrow,
+  heading,
+  subheading,
+  centered = false,
+  class: className = '',
+  eyebrowClass = 'text-pink-dark',
+} = Astro.props;
 ---
 
 <div class={`${centered ? 'text-center' : ''} ${className}`}>
   {eyebrow && (
-    <p class="mb-3 text-xs font-medium uppercase tracking-widest text-pink">
+    <p class={`mb-3 text-xs font-medium uppercase tracking-widest ${eyebrowClass}`}>
       {eyebrow}
     </p>
   )}
