@@ -42,9 +42,12 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
         
         <div class="mb-6">
           <label for="service-select" class="block text-sm font-medium text-charcoal mb-2">Palvelu</label>
-          <select id="service-select" name="service" class={field}>
+          {/* value=slug so ?palvelu= matching below still works; the readable
+              label is what actually gets submitted, via the hidden input */}
+          <select id="service-select" class={field}>
             {services.map((s) => <option value={s.value}>{s.label}</option>)}
           </select>
+          <input type="hidden" id="service-label-field" name="service" value={services[0].label} />
           {/* Filled by the inline script when arriving via ?palvelu= */}
           <p id="service-prefilled" class="mt-2 hidden text-xs text-charcoal-mid">
             Valittu palvelu tuli linkistä — voit vaihtaa sen yllä.
@@ -131,10 +134,20 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
   </section>
 
 <script>
+  const sel = document.getElementById('service-select') as HTMLSelectElement | null;
+  const labelField = document.getElementById('service-label-field') as HTMLInputElement | null;
+
+  // The visible <select> only carries the slug (needed to match ?palvelu=);
+  // the hidden field mirrors the chosen option's readable label, since that
+  // is what actually gets submitted to Netlify under the name "service".
+  const syncLabelField = () => {
+    if (sel && labelField) labelField.value = sel.options[sel.selectedIndex].text;
+  };
+  sel?.addEventListener('change', syncLabelField);
+
   // Pre-select the service when arriving from a service page CTA (?palvelu=…)
   const params = new URLSearchParams(window.location.search);
   const palvelu = params.get('palvelu');
-  const sel = document.getElementById('service-select') as HTMLSelectElement | null;
   if (palvelu && sel) {
     const match = [...sel.options].find((o) => o.value === palvelu);
     if (match) {
@@ -142,6 +155,7 @@ const field = 'w-full rounded-lg border border-soft-border bg-off-white px-4 py-
       document.getElementById('service-prefilled')?.classList.remove('hidden');
     }
   }
+  syncLabelField();
 
   const form = document.getElementById('booking-form') as HTMLFormElement;
   const btn = document.getElementById('submit-btn') as HTMLButtonElement;
