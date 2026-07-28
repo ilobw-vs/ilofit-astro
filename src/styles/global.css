@@ -4,7 +4,17 @@
   /* Brand Colors */
   --color-pink: #E8A0B0;
   --color-pink-light: #F5D5DC;
-  --color-pink-dark: #C97A8E;
+  /* darkened from #C97A8E: the old value was 2.32:1 on pink-light, under the
+     3:1 WCAG needs for UI, and only 3.15:1 as text. Now 3.59:1 / 4.89:1. */
+  --color-pink-dark: #A85870;
+
+  /* Category accents — programmes (teal) and travel (sand). Services stay pink. */
+  --color-teal: #3F8078;
+  --color-teal-light: #DCEAE7;
+  --color-teal-dark: #2A5F59;
+  --color-sand: #C89A63;
+  --color-sand-light: #F6E7D3;
+  --color-sand-dark: #8A6234;
   --color-charcoal: #2D2D2D;
   --color-charcoal-mid: #555555;
   --color-off-white: #FAF8F6;
@@ -84,7 +94,8 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background: #E8A0B0;
+  /* per-card override via --card-accent; falls back to brand pink */
+  background: var(--card-accent, #E8A0B0);
   border-radius: 12px 12px 0 0;
 }
 

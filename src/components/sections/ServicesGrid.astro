@@ -37,6 +37,7 @@ const c = {
     },
     {
       label: 'Treenimatkat',
+      category: 'travel',
       description: 'Aktiivinen hyvinvointiloma samanhenkisessä seurassa — sopivasti treeniä, rentoutumista ja elämyksiä.',
       href: '/palvelut/treenimatkat',
       trips: [
@@ -47,6 +48,7 @@ const c = {
     },
     {
       label: 'Treeniohjelmat',
+      category: 'programmes',
       description: 'Yksilöllisesti räätälöity treeniohjelma kattavan taustatietolomakkeen ja haastattelun pohjalta.',
       href: '/palvelut/treeniohjelma',
     },
@@ -62,6 +64,25 @@ const c = {
     },
   ],
 };
+
+/* Category accents. Class strings are written out in full rather than
+   interpolated — Tailwind only generates CSS for classes it can see literally. */
+const themes = {
+  coaching: {
+    accent: '[--card-accent:var(--color-pink)]',
+    icon: 'bg-pink-light text-pink-dark group-hover:bg-pink group-hover:text-white',
+  },
+  programmes: {
+    accent: '[--card-accent:var(--color-teal)]',
+    icon: 'bg-teal-light text-teal-dark group-hover:bg-teal group-hover:text-white',
+  },
+  travel: {
+    accent: '[--card-accent:var(--color-sand)]',
+    icon: 'bg-sand-light text-sand-dark group-hover:bg-sand group-hover:text-white',
+  },
+} as const;
+
+type Category = keyof typeof themes;
 
 const iconMap: Record<string, string> = {
   '/palvelut/yksilovalmennus': `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
@@ -86,12 +107,12 @@ const iconMap: Record<string, string> = {
     </div>
 
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {c.services.map((service: { href: string; label: string; description: string; location?: string; price?: string; price_exact?: boolean; cta?: string; trips?: { year: string; place: string; upcoming?: boolean }[] }) => (
+      {c.services.map((service: { href: string; label: string; description: string; location?: string; price?: string; price_exact?: boolean; cta?: string; category?: Category; trips?: { year: string; place: string; upcoming?: boolean }[] }) => (
         <a
           href={service.href}
-          class="card-accent group relative flex flex-col rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1"
+          class={`card-accent group relative flex flex-col rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1 ${themes[service.category ?? 'coaching'].accent}`}
         >
-          <div class="mb-4 w-11 h-11 rounded-lg bg-pink-light flex items-center justify-center transition-colors group-hover:bg-pink text-pink-dark group-hover:text-white">
+          <div class={`mb-4 w-11 h-11 rounded-lg flex items-center justify-center transition-colors ${themes[service.category ?? 'coaching'].icon}`}>
             <Fragment set:html={iconMap[service.href.split('#')[0]] ?? iconMap['/palvelut/yksilovalmennus']} />
           </div>
           <h3 class="font-display text-xl font-semibold text-charcoal mb-2">
