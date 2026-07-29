@@ -19,31 +19,19 @@ const c = {
       note: 'Palvelun minimikesto on 3 kuukautta.',
       note2: 'Hinta sisältä arvonlisäveron ja tilaus on voimassa 1 kuukauden irtisanomisajalla.',
       rows: [
-        { label: 'Hinta', price: '95 €/kk' },
+        { label: 'Kuukausivalmennus', price: '95 €/kk' },
       ],
     },
-    {
-      heading: 'Valmennuspaketit',
-      note: 'Valmennuspaketit voimassa 3 kuukautta aloituksesta.',
+  ],
+  price_groups2: [
+     {
       rows: [
-        { label: '5 kerran valmennus', price: '70 €/kerta (350 €)' },
-        { label: '10 kerran valmennuspaketti', price: '68 €/kerta (680 €)' },
+        { label: 'Ylimääräinen valmennustapaaminen (20% alennus)', price: '68 €/kerta' },
       ],
-      included: 'Sisältää treeniohjelman ja ruokavalion, mahdolliset muutokset niihin, sekä valmentajan jatkuvan tuen.',
-    },
-    {
-      heading: 'Kertavalmennus',
-      price: '80 €',
-      included: 'Ei sisällä treeniohjelmaa eikä ruokavaliota.',
-    },
-    {
-      heading: 'Treeniohjelma ja valmennus',
-      price: '99 €',
-      included: 'Sisältää 60 min valmennuksen, ei sisällä ruokavaliota.',
     },
   ],
 
-  included_heading: 'Sisältää',
+  included_heading: 'Kuukausivalmennus sisältää',
   included: [
     'Alkuhaastattelu, jossa kartoitetaan henkilökohtaiset toiveet ja tavoitteet sekä huomioidaan rajoitteet.',
     'Yksi 60 min valmennustapaaminen kuukaudessa',
@@ -64,6 +52,7 @@ const c = {
 
 // Kuukausisopimukset renders on its own; everything else shares the left card
 const [monthlyGroup, ...otherGroups] = c.price_groups;
+const [monthlyGroup2] = c.price_groups2;
 
 const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
 
@@ -117,6 +106,17 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
               </div>
             ))}
           </div>
+
+
+          <div class="space-y-3 py-8">
+            {monthlyGroup2.rows.map((row2) => (
+              <div class="flex flex-col gap-1 rounded-xl border border-soft-border bg-white p-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                <span class="text-sm font-medium text-charcoal">{row2.label}</span>
+                <span class="shrink-0 font-semibold text-pink-dark">{row2.price}</span>
+              </div>
+            ))}
+          </div>
+
           {monthlyGroup.included && <p class="text-charcoal-mid text-sm mt-3 leading-relaxed">{monthlyGroup.included}</p>}
           {monthlyGroup.footnote && <p class="text-charcoal-mid/70 text-xs mt-2">{monthlyGroup.footnote}</p>}
 
@@ -136,6 +136,7 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
           </div>
         </div>
 
+        <!-- Sisältää -->
         <div class="rounded-2xl border border-soft-border bg-white p-8">
           <SectionHeader heading={c.included_heading} class="mb-8" />
           <ul class="space-y-4">
