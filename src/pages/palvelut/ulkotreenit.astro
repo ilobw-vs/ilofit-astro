@@ -8,14 +8,13 @@ const c = {
   hero_eyebrow: 'Palvelut',
   hero_heading: 'Ulkotreenit',
   hero_text: 'Ulkotreeneissä treenaamme monipuolisesti lihas- sekä kestävyyskuntoa omalla kehonpainolla, pienvälineitä ja ulkokuntosalin laitteita hyödyntäen. Tehokkaat ja hauskat treenit kaiken tasoisille treenaajille.',
-  hero_cta: 'Varaa paikka',
+  hero_cta: 'Lisätiedot ja Varaus',
   hero_image: '/images/ulkotreenit-hero.webp',
 
-  schedule_heading: 'Aikataulut ja hinnat',
-  schedule_text1: 'Ulkotreenit alkavat taas maaliskuussa 2026 Turun Hirvensalossa.',
-  schedule_text2: 'Seuraa ilmoittelua lähempänä tai ilmoittaudu jo nyt ryhmään laittamalla viestiä :)',
+  schedule_heading: 'Varaus',
+  schedule_text1: 'Ulkotreenit Syvälahdessa Hirvensalossa.',
   prices: [
-    { label: 'Ulkotreenit', price: 'ILMOITTAUDU' },
+    { label: 'Ulkotreenit', price: '' },
   ],
 
   info_heading: 'Treeniä ulkona, ympäri vuoden',
@@ -50,14 +49,13 @@ const c = {
         <div class="rounded-2xl border border-soft-border bg-off-white p-8">
           <SectionHeader heading={c.schedule_heading} class="mb-8" />
           <p class="text-charcoal-mid text-sm mb-3">{c.schedule_text1}</p>
-          <p class="text-charcoal-mid text-sm mb-6">{c.schedule_text2}</p>
           <div class="space-y-4">
-            {c.prices.map((pkg) => (
+          <!--  {c.prices.map((pkg) => (
               <div class="flex items-center justify-between rounded-xl border border-soft-border bg-white p-4">
                 <span class="font-medium text-charcoal">{pkg.label}</span>
                 <span class="text-pink-dark font-semibold">{pkg.price}</span>
               </div>
-            ))}
+            ))}-->
           </div>
           <p class="mb-6"></p>
           <div class="rounded-xl border border-pink/30 p-4">
@@ -69,7 +67,7 @@ const c = {
             </div>
           </div>
           <div class="mt-8">
-            <Button href="https://ilofit.as.me" class="w-full justify-center">Varaa paikka</Button>
+            <Button href="https://ilofit.as.me" class="w-full justify-center">Lisätiedot ja Varaus</Button>
           </div>
         </div>
 

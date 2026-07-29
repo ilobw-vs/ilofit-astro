@@ -12,29 +12,40 @@ const c = {
       description: 'Tulen luoksesi – treenataan kotona, työpaikalla tai ulkokuntosalilla. Räätälöity ohjelma ja jatkuva tuki.',
       href: '/palvelut/yksilovalmennus-asiakkaan-tiloissa#hinnat',
       price: '75 €/kk',
+      vat_needed: true,
       cta: 'Hinnat ja sisältö',
     },
     {
       label: 'Yksilövalmennus',
       location: 'Ole.Fit Manhattan',
       description: 'Henkilökohtainen valmennus Ole.Fit Manhattanin kuntosalilla. Räätälöity ohjelma ja jatkuva tuki.',
-      href: '/palvelut/yksilovalmennus#hinnat',
+      href: '/palvelut/yksilovalmennus',
+      price: 'Kysy hintaa',
+      price_exact: true,
       cta: 'Lisätiedot',
     },
     {
-      label: 'Pienryhmävalmennus',
-      description: 'Energistä ryhmätreeniä Turun alueella enintään 10 hengen porukassa. Motivaatiota ryhmästä + yksilöllistä huomiota.',
+      label: 'Ryhmävalmennus',
+      location: 'Eri paikkoja Turussa',
+      description: 'Energistä ryhmätreeniä Turun alueella. Kahvakuularyhmä tiistaisin ja Bootcamp-ryhmä sunnuntaisin.',
       href: '/palvelut/pienryhmavalmennus',
     },
     {
       label: 'Ulkotreenit',
-      description: 'Monipuolista treeniä kehonpainolla ja välineillä raittiissa ilmassa Turun alueella. Sopii kaikille kuntotasoille.',
-      href: '/palvelut/ulkotreenit',
+      location: 'Syvälahti, Hirvensalo',
+      description: 'Voima + Syke ulkotreenit. Treenaamme koko kehon läpi tehokkailla ja monipuolisilla liikkeillä. Sopii kaikille kuntotasoille.',
+      price: '8 €/kerta',
+      vat_needed: true,
+      href: 'https://ilofit.as.me/',
+      cta: 'Lisätiedot ja varaus',
     },
     {
       label: 'Yrityspalvelut',
+      location: 'Yrityksen tiloissa',
       description: 'Tyky-päivät, taukojumpat ja treenit yrityksen henkilöstölle. Hyvinvoiva henkilöstö on yrityksen voimavara.',
       href: '/palvelut/yrityspalvelut',
+      price: 'Kysy hintaa',
+      price_exact: true,
     },
     {
       label: 'Padel Performance',
@@ -42,8 +53,8 @@ const c = {
       description: 'Toiminnallinen kiertoharjoittelu, joka kehittää räjähtävää voimaa, nopeita suunnanmuutoksia, kiertovoimaa ja tasapainoa — tehokkaasti ja hauskasti.',
       href: '/palvelut/padel-performance',
       price: '9,90 €',
-      // fixed per-class price, so no "alkaen" prefix
       price_exact: true,
+      vat_needed:true,
       cta: 'Lisätiedot ja varaus',
     },
     {
@@ -51,16 +62,22 @@ const c = {
       category: 'programmes',
       description: 'Yksilöllisesti räätälöity treeniohjelma kattavan taustatietolomakkeen ja haastattelun pohjalta.',
       href: '/palvelut/treeniohjelma',
+      price: '50 €',
+      price_exact: true,
+      vat_needed: true,
     },
     {
       label: 'Treenimatkat',
+      location: 'Välimeren alueella',
       category: 'travel',
       description: 'Aktiivinen hyvinvointiloma samanhenkisessä seurassa — sopivasti treeniä, rentoutumista ja elämyksiä.',
       href: '/palvelut/treenimatkat',
+      price: 'Kysy hintaa',
+      price_exact: true,
       trips: [
         { year: '2025', place: 'Sivota, Kreikka 🇬🇷' },
         { year: '2026', place: 'Rodos, Kreikka 🇬🇷' },
-        { year: '2027', place: 'tulossa!', upcoming: true },
+        { year: '2027', place: 'Varattavissa elo/syyskuu 2026!', upcoming: true },
       ],
     },
   ],
@@ -108,7 +125,7 @@ const iconMap: Record<string, string> = {
     </div>
 
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {c.services.map((service: { href: string; label: string; description: string; location?: string; price?: string; price_exact?: boolean; cta?: string; category?: Category; trips?: { year: string; place: string; upcoming?: boolean }[] }) => (
+      {c.services.map((service: { href: string; label: string; description: string; location?: string; price?: string; price_exact?: boolean; vat_needed?: boolean; cta?: string; category?: Category; trips?: { year: string; place: string; upcoming?: boolean }[] }) => (
         <a
           href={service.href}
           class={`card-accent group relative flex flex-col rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1 ${themes[service.category ?? 'coaching'].accent}`}
@@ -148,7 +165,7 @@ const iconMap: Record<string, string> = {
               <p class="mb-3 text-sm text-charcoal-mid">
                 {!service.price_exact && 'alkaen '}
                 <span class="font-semibold text-charcoal">{service.price}</span>
-                <span class="text-xs whitespace-nowrap"> (sis. alv)</span>
+                <span class="text-xs whitespace-nowrap">{service.vat_needed && '(sis. alv)'}</span>
               </p>
             )}
             {/* Styled as a span, not a Button — the whole card is already an
