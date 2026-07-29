@@ -6,8 +6,8 @@ import Button from '../../components/ui/Button.astro';
 const c = {
   hero_eyebrow: 'IloFit kuukausivalmennus',
   hero_heading: 'Kuukausivalmennus',
-  hero_text1: 'Tavoitteista totta!',
-  hero_text2: 'IloFit kuukausivalmennuksessa sinulle tehdään räätälöity treeniohjelma ja ruokavaliosuunnitelma ja säännöllisissä valmennustapaamisissa seurataan aktiivisesti tavoitteiden edistymistä.',
+  hero_text1: 'Sinulle, joka haluat pysyviä tuloksia – et yksittäisiä treenejä.',
+  hero_text2: 'Saat räätälöidyn treeniohjelman ja ruokavaliosuunnitelman, kuukausittaisen valmennustapaamisen ja valmentajan tuen koko matkan ajan. Treenataan sinulle sopivassa paikassa – kotona, työpaikalla tai ulkokuntosalilla.',
   hero_cta_primary: 'Varaa ilmainen konsultaatio',
   hero_image: '/images/ulkotreenit-hero.webp',
 
@@ -16,8 +16,8 @@ const c = {
   price_groups: [
     {
       heading: 'IloFit kuukausivalmennus',
-      note: 'Palvelun minimikesto on 3 kuukautta.',
-      note2: 'Hinta sisältä arvonlisäveron ja tilaus on voimassa 1 kuukauden irtisanomisajalla.',
+      note: 'Valmennus kestää vähintään 3 kuukautta – se on realistinen aika, jossa muutos ehtii näkyä.',
+      note2: 'Hinta sisältää arvonlisäveron ja tilaus on voimassa 1 kuukauden irtisanomisajalla.',
       rows: [
         { label: 'Kuukausivalmennus', price: '95 €/kk' },
       ],
@@ -44,6 +44,34 @@ const c = {
     'Helppokäyttöinen sovellus, josta ohjelmaa ja tavoitteiden edistymistä voi seurata',
   ],
 
+  /* Goal-based rather than age-based, so the planned niche variants
+     (vaihdevuodet, 50+, 60+) still have distinct ground to claim. */
+  suitable_eyebrow: 'Kenelle sopii',
+  suitable_heading: 'Kenelle kuukausivalmennus sopii?',
+  suitable: [
+    {
+      title: 'Aloittelijalle',
+      desc: 'Aloitetaan siitä, missä nyt olet. Salikokemusta ei tarvita.',
+    },
+    {
+      title: 'Painonpudotukseen',
+      desc: 'Treeni ja ruokavalio suunnitellaan yhdessä, ei erikseen.',
+    },
+    {
+      title: 'Lihaskunnon kasvattamiseen',
+      desc: 'Nousujohteinen ohjelma, joka rakentaa voimaa turvallisesti.',
+    },
+    {
+      title: 'Kiireiseen arkeen',
+      desc: 'Ei matkaa salille. Treeni mahtuu työpäivän lomaan.',
+    },
+  ],
+
+  /* Catches the visitor who is not ready to commit to a month */
+  crosslink_text: 'Haluatko ensin kokeilla ilman sitoutumista?',
+  crosslink_label: 'Varaa yksittäinen valmennustapaaminen',
+  crosslink_href: '/palvelut/yksilovalmennus-valmennustapaaminen',
+
   cta_eyebrow: 'Aloitetaan',
   cta_heading: 'Valmis aloittamaan?',
   cta_text: 'Ilmainen alkukartoitus on maksuton ja sitoumukseton.',
@@ -60,8 +88,8 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
 ---
 
 <PageLayout
-  title="Yksilövalmennus kotona tai ulkona | IloFit — Personal Trainer Turku"
-  description="Personal trainer tulee luoksesi Turun alueella. Yksilövalmennusta kotona, työpaikalla tai ulkona – ilman salijäsenyyttä. Varaa ilmainen alkukartoitus."
+  title="IloFit kuukausivalmennus | Personal Trainer Turku"
+  description="Räätälöity treeniohjelma, ruokavaliosuunnitelma ja valmentajan jatkuva tuki. Valmennustapaamiset kotona, työpaikalla tai ulkokuntosalilla Turun alueella. 95 €/kk."
 >
 
   <section class="bg-off-white pt-36 pb-20">
@@ -73,7 +101,7 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
           <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text1}</p>
           <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text2}</p>
           <div class="flex flex-col items-start gap-3">
-            <Button href="/varaa?palvelu=yksilovalmennus-asiakkaan-tiloissa" size="lg">{c.hero_cta_primary}</Button>
+            <Button href="/varaa?palvelu=ilofit-kuukausivalmennus" size="lg">{c.hero_cta_primary}</Button>
           </div>
         </div>
         <div class="relative">
@@ -147,8 +175,32 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
               </li>
             ))}
           </ul>
+
+          {/* Catches the visitor who is not ready for a monthly commitment */}
+          <div class="mt-8 rounded-xl border border-soft-border bg-off-white p-5">
+            <p class="text-sm text-charcoal-mid mb-3 leading-relaxed">{c.crosslink_text}</p>
+            <a href={c.crosslink_href} class="text-sm font-medium text-pink-dark transition-colors hover:text-charcoal">
+              {c.crosslink_label} →
+            </a>
+          </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <SectionHeader eyebrow={c.suitable_eyebrow} heading={c.suitable_heading} centered />
+      </div>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {c.suitable.map((item) => (
+          <div class="card-accent rounded-xl border border-soft-border bg-white p-6 shadow-warm">
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-3">{item.title}</h3>
+            <p class="text-sm text-charcoal-mid leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -157,7 +209,7 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
       <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
       <p class="text-charcoal-mid mb-8">{c.cta_text}</p>
-      <Button href="/varaa?palvelu=yksilovalmennus-asiakkaan-tiloissa" size="lg">{c.cta_button}</Button>
+      <Button href="/varaa?palvelu=ilofit-kuukausivalmennus" size="lg">{c.cta_button}</Button>
     </div>
   </section>
 

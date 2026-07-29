@@ -6,13 +6,13 @@ import Button from '../../components/ui/Button.astro';
 const c = {
   hero_eyebrow: 'IloFit valmennustapaaminen',
   hero_heading: 'Valmennustapaaminen',
-  hero_text1: 'Tulen sinun luoksesi. Treenataan kotonasi, työpaikan tiloissa tai ulkokuntosalilla.',
-  hero_text2: 'Ohjattu valmennustapaaminen sinulle sopivassa paikassa ja sinun aikataulullasi.',
-  hero_cta_primary: 'Varaa ilmainen konsultaatio',
+  hero_text1: 'Yksittäinen ohjattu treeni silloin, kun kaipaat varmuutta tekemiseen.',
+  hero_text2: 'Tulen luoksesi – kotiin, työpaikalle tai ulkokuntosalille. Ei salijäsenyyttä eikä pitkää sitoutumista.',
+  hero_cta_primary: 'Varaa valmennustapaaminen',
   hero_image: '/images/ulkotreenit-hero.webp',
 
   prices_heading: 'Hinnat ja sisältö',
-  prices_vat: 'Kickstart paketti on voimassa 3 kuukautta tilauksesta. Kaikki hinnat sisältävät arvonlisäveron.',
+  prices_vat: 'Kickstart-paketti on voimassa 3 kuukautta tilauksesta. Kaikki hinnat sisältävät arvonlisäveron.',
   price_groups: [
     {
       heading: 'IloFit valmennustapaaminen',
@@ -21,8 +21,8 @@ const c = {
       ],
     },
     {
-      heading: 'Kickstart paketti - 5 valmennustapaamista',
-      note: 'Valmennuspaketit voimassa 3 kuukautta aloituksesta.',
+      heading: 'Kickstart-paketti',
+      note: 'Voimassa 3 kuukautta aloituksesta.',
       rows: [
         { label: '5 valmennustapaamista', price: '70 €/kerta (350 €)' },
       ],
@@ -33,30 +33,27 @@ const c = {
     },
   ],
 
-  price_groups2: [
-     {
-      rows: [
-        { label: 'Kickstart - 5 valmennustapaamista', price: '70 €/kerta (350 €)' },
-      ],
-    },
-  ],
-
   included_heading: 'Valmennustapaaminen sisältää',
   included: [
-    'Ohjattu tapaaminen valitussa paikassa',
-    'Mahdolliset parannusehdotukset nykyiseen treeniohjelmaasi',
-    'Halutessasi suoritustekniikoiden sekä laitteiden ja välineiden oikeaoppisen käytön harjoittelu.',
-    'Muut sovitut asiat',
+    'Ohjattu treeni sinun valitsemassasi paikassa',
+    'Suoritustekniikoiden läpikäynti – opit tekemään liikkeet turvallisesti',
+    'Halutessasi laitteiden ja välineiden oikeaoppinen käyttö',
+    'Parannusehdotukset nykyiseen treeniohjelmaasi',
   ],
+
+  /* Points the visitor who wants ongoing support at the other service,
+     rather than losing them on the wrong page. */
+  crosslink_text: 'Haluatko jatkuvaa tukea, räätälöidyn ohjelman ja ruokavaliosuunnitelman?',
+  crosslink_label: 'Tutustu IloFit kuukausivalmennukseen',
+  crosslink_href: '/palvelut/yksilovalmennus-asiakkaan-tiloissa',
 
   cta_eyebrow: 'Aloitetaan',
   cta_heading: 'Valmis aloittamaan?',
-  cta_button: 'Varaa ilmainen konsultaatio',
+  cta_text: 'Kerro missä haluaisit treenata, niin sovitaan sinulle sopiva aika.',
+  cta_button: 'Varaa valmennustapaaminen',
 };
 
-// Kuukausisopimukset renders on its own; everything else shares the left card
-const [monthlyGroup, ...otherGroups] = c.price_groups;
-const [monthlyGroup2] = c.price_groups2;
+// All price groups render in the left card
 
 const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
 
@@ -64,8 +61,8 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
 ---
 
 <PageLayout
-  title="Yksilövalmennus kotona tai ulkona | IloFit — Personal Trainer Turku"
-  description="Personal trainer tulee luoksesi Turun alueella. Yksilövalmennusta kotona, työpaikalla tai ulkona – ilman salijäsenyyttä. Varaa ilmainen alkukartoitus."
+  title="Valmennustapaaminen | IloFit — Personal Trainer Turku"
+  description="Yksittäinen ohjattu treeni Turun alueella ilman sitoutumista. Personal trainer tulee luoksesi kotiin, työpaikalle tai ulkokuntosalille. Alkaen 70 €/kerta."
 >
 
   <section class="bg-off-white pt-36 pb-20">
@@ -76,6 +73,9 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
           <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">{c.hero_heading}</h1>
           <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text1}</p>
           <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text2}</p>
+          <div class="flex flex-col items-start gap-3">
+            <Button href="/varaa?palvelu=ilofit-valmennustapaaminen" size="lg">{c.hero_cta_primary}</Button>
+          </div>
         </div>
         <div class="relative">
           <div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-warm">
@@ -94,30 +94,31 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
-        {/* Left: monthly contracts — primary offering, carries the CTA */}
+        {/* Left: all price groups, then the terms and booking CTA */}
         <div class="rounded-2xl border border-soft-border bg-off-white p-8">
-          <p class="text-charcoal text-lg font-semibold mb-2">{monthlyGroup.heading}</p>
-          {monthlyGroup.note && <p class="text-charcoal-mid text-sm mb-4">{monthlyGroup.note}</p>}
-          <div class="space-y-3">
-            {monthlyGroup.rows.map((row) => (
-              <div class="flex flex-col gap-1 rounded-xl border border-soft-border bg-white p-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-                <span class="text-sm font-medium text-charcoal">{row.label}</span>
-                <span class="shrink-0 font-semibold text-pink-dark">{row.price}</span>
+          <div class="space-y-8">
+            {c.price_groups.map((g) => (
+              <div>
+                <p class="text-charcoal text-lg font-semibold mb-2">{g.heading}</p>
+                {g.note && <p class="text-charcoal-mid text-sm mb-4">{g.note}</p>}
+                {g.rows && (
+                  <div class="space-y-3">
+                    {g.rows.map((row) => (
+                      <div class="flex flex-col gap-1 rounded-xl border border-soft-border bg-white p-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                        <span class="text-sm font-medium text-charcoal">{row.label}</span>
+                        <span class="shrink-0 font-semibold text-pink-dark">{row.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {g.price && (
+                  <div class="rounded-xl border border-soft-border bg-white p-4">
+                    <span class="font-semibold text-pink-dark">{g.price}</span>
+                  </div>
+                )}
               </div>
             ))}
           </div>
-
-          <div class="space-y-3 py-8">
-            {monthlyGroup2.rows.map((row2) => (
-              <div class="flex flex-col gap-1 rounded-xl border border-soft-border bg-white p-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-                <span class="text-sm font-medium text-charcoal">{row2.label}</span>
-                <span class="shrink-0 font-semibold text-pink-dark">{row2.price}</span>
-              </div>
-            ))}
-          </div>
-
-          {monthlyGroup.included && <p class="text-charcoal-mid text-sm mt-3 leading-relaxed">{monthlyGroup.included}</p>}
-          {monthlyGroup.footnote && <p class="text-charcoal-mid/70 text-xs mt-2">{monthlyGroup.footnote}</p>}
 
           <p class="text-charcoal-mid text-sm py-8">{c.prices_vat}</p>
 
@@ -146,9 +147,25 @@ const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
               </li>
             ))}
           </ul>
+
+          {/* Catches the visitor who wants ongoing support, not a one-off */}
+          <div class="mt-8 rounded-xl border border-soft-border bg-off-white p-5">
+            <p class="text-sm text-charcoal-mid mb-3 leading-relaxed">{c.crosslink_text}</p>
+            <a href={c.crosslink_href} class="text-sm font-medium text-pink-dark transition-colors hover:text-charcoal">
+              {c.crosslink_label} →
+            </a>
+          </div>
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
+      <p class="text-charcoal-mid mb-8">{c.cta_text}</p>
+      <Button href="/varaa?palvelu=ilofit-valmennustapaaminen" size="lg">{c.cta_button}</Button>
     </div>
   </section>
 
