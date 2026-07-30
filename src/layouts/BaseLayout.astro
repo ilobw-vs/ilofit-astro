@@ -1,5 +1,6 @@
 ---
 import { Font } from 'astro:assets';
+import GoogleAnalytics from '../components/layout/GoogleAnalytics.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -88,6 +89,9 @@ const localBusinessSchema = {
     <!-- Self-hosted fonts (see experimental.fonts in astro.config.mjs) -->
     <Font cssVariable="--font-cormorant" preload />
     <Font cssVariable="--font-dm-sans" preload />
+
+    <!-- Analytics last: the fonts above are render-blocking and should win the race -->
+    <GoogleAnalytics />
   </head>
   <body>
     <slot />

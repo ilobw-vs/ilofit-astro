@@ -1,0 +1,31 @@
+---
+// Google Analytics 4.
+//
+// The measurement ID is not a secret — it ships in the page source of every
+// request — so it lives here rather than in an env var. That keeps it out of
+// the Netlify dashboard, where a missing value would silently mean no data.
+const GA_MEASUREMENT_ID = 'G-10B0E88SLY';
+
+// Only in production builds: local `astro dev` traffic would otherwise land in
+// the real reports and quietly inflate every number.
+const enabled = import.meta.env.PROD;
+---
+
+{enabled && (
+  <>
+    <script
+      is:inline
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+    />
+    <script
+      is:inline
+      set:html={`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${GA_MEASUREMENT_ID}');
+      `}
+    />
+  </>
+)}
