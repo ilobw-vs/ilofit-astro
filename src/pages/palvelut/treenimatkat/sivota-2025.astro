@@ -1,0 +1,228 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import SectionHeader from '../../../components/ui/SectionHeader.astro';
+import Button from '../../../components/ui/Button.astro';
+
+// The three scenery shots are landscape, so they fill the wide slots (hero,
+// hotel, programme) rather than the gallery, whose cells are 3:4 portrait.
+// The gallery stays empty until there are training photos to put in it —
+// every image block below renders conditionally, so the page reads as
+// finished either way.
+const c = {
+  hero_eyebrow: 'Treenimatkat',
+  hero_status: 'Matka on jo toteutunut',
+  hero_heading: 'Treeni- ja hyvinvointiloma Sivotassa 12.–19.5.2025',
+  hero_text: 'Toukokuussa 2025 vietimme viikon aktiivista treeni- ja hyvinvointilomaa Kreikan Sivotassa. Pieni satamakaupunki Kreikan mantereella vehreiden vuorien ja kristallinkirkkaan meren ympäröimänä sopi niille, jotka halusivat lomaltaan muutakin kuin aurinkoa ja uimista. Treenit skaalattiin kuntotason mukaan, eikä osallistuminen yhteisiin treeneihin ollut pakollista.',
+  hero_cta: 'Kysy seuraavasta matkasta',
+  hero_image: '/images/sivota-rannikko.webp' as string | null,
+
+  hotel_eyebrow: 'Majoitus',
+  hotel_heading: 'Sivota Retreat powered by Playitas',
+  hotel_stars: 4,
+  hotel_text1: 'Hotelli on rakennettu rinteeseen, josta avautuvat näkymät merelle, vuorille ja saaristoon.',
+  hotel_text2: 'Sporttihotellilta löytyivät huipputason puitteet monipuoliseen liikuntaan ja treeniin niin maissa kuin merellä, liikkujille suunnitellut palvelut sekä terveellistä ja monipuolista ruokaa.',
+  hotel_image: '/images/sivota-allas.webp' as string | null,
+
+  included_heading: 'Matkaan sisältyi',
+  included: [
+    'Lennot Hki–Preveza–Hki (matkatavara + käsimatkatavara)',
+    'Meno: 12.5. Helsinki 7:05 → Preveza 10:30',
+    'Paluu: 19.5. Preveza 11:30 → Helsinki 14:55',
+    'Lentokenttäkuljetukset',
+    'Majoitus 7 yötä Sivota Retreat powered by Playitas -hotellissa',
+    'Täysihoito — aamiainen, lounas ja illallinen',
+    'IloFit-ohjatut treenit — 5 omaa ryhmätreeniä varatuilla treenialueilla',
+    'Kaikki sporttihotellin treenit treenikalenterin mukaan',
+  ],
+
+  extra_heading: 'Lisämaksusta hotellilla',
+  extra_items: [
+    'Tennis ja padel',
+    'Vesiurheilu ja pyörän vuokraus',
+  ],
+
+  program_heading: 'Näin päivät kuluivat',
+  // Grounded in the trip description only. Worth enriching with what actually
+  // happened — the Rodos page's version reads better because it is specific.
+  program_text: 'Viikon aikana pidettiin viisi omaa ohjattua ryhmätreeniä, joita varten hotellilta oli varattu treenialueet vain meidän ryhmämme käyttöön. Niiden lisäksi käytettävissä olivat kaikki sporttihotellin omat treenit treenikalenterin mukaan. Päiviin jäi hyvin tilaa myös levolle, uinnille ja Sivotan maisemien tutkimiselle.',
+  program_image: '/images/sivota-kentat.webp' as string | null,
+
+  gallery_heading: 'Kuvia matkalta',
+  gallery: [] as { src: string; alt: string }[],
+
+  cta_eyebrow: 'Seuraava matka',
+  cta_heading: 'Kiinnostaako seuraava treenimatka?',
+  cta_text: 'Seuraavan matkan ajankohta ja kohde tarkentuvat myöhemmin. Ole rohkeasti yhteydessä, niin kerron heti kun uusi matka on suunnitteilla. Matkat järjestetään Apollomatkojen kanssa ja ovat heidän yleisten matkanjärjestäjäehtojensa alaisia.',
+  cta_email: 'ilona@ilofit.com',
+  cta_button: 'Ota yhteyttä',
+};
+
+const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+
+const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+---
+
+<PageLayout title="Treenimatka Sivotaan 5/2025 | IloFit — Personal Trainer Turku" description="IloFitin treeni- ja hyvinvointiloma Kreikan Sivotassa toteutui 12.–19.5.2025. Katso millainen viikko oli ja kysy seuraavasta treenimatkasta.">
+
+  <!-- Hero -->
+  <section class="relative bg-off-white pt-36 pb-20 overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class:list={['grid grid-cols-1 gap-12 items-center', c.hero_image && 'lg:grid-cols-2']}>
+        <div>
+          <a href="/palvelut/treenimatkat" class="inline-flex items-center gap-1 text-xs font-medium uppercase tracking-widest text-pink-dark mb-3 transition-colors hover:text-charcoal">
+            ← {c.hero_eyebrow}
+          </a>
+          {/* Makes it unmistakable that this trip has already run */}
+          <p class="mb-4">
+            <span class="inline-block rounded-full border border-soft-border bg-white px-3 py-1 text-xs font-medium text-charcoal-mid">
+              {c.hero_status}
+            </span>
+          </p>
+          <h1 class="font-display text-4xl font-semibold text-charcoal sm:text-5xl mb-6 leading-tight">{c.hero_heading}</h1>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text}</p>
+          <div class="flex flex-wrap items-center gap-4">
+            <Button href="/yhteystiedot?palvelu=treenimatkat" size="lg">{c.hero_cta}</Button>
+            {!c.hero_image && (
+              <span class="inline-flex items-center gap-2 rounded-full border border-soft-border bg-white px-4 py-2 text-sm text-charcoal-mid">
+                Kohde: <span class="font-display font-semibold text-charcoal">Sivota, Kreikka 🇬🇷</span>
+              </span>
+            )}
+          </div>
+        </div>
+        {c.hero_image && (
+          <div class="relative">
+            <div class="w-full h-[460px] rounded-3xl overflow-hidden shadow-warm">
+              <img
+                src={c.hero_image}
+                alt="Treenimatka Sivotaan – IloFit"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <!-- Floating badge -->
+            <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-warm px-5 py-3 border border-soft-border">
+              <p class="text-xs text-charcoal-mid uppercase tracking-widest mb-1">Kohde</p>
+              <p class="font-display font-semibold text-charcoal">Sivota, Kreikka 🇬🇷</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sisältö + Hotelli -->
+  <section class="bg-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Sisältö-kortti -->
+        <div class="rounded-2xl border border-soft-border bg-off-white p-8">
+          <SectionHeader heading={c.included_heading} class="mb-8" />
+
+          <ul class="space-y-3 mb-8">
+            {c.included.map((item: string) => (
+              <li class="flex items-start gap-3">
+                <Fragment set:html={checkSvg} />
+                <span class="text-charcoal-mid text-sm">{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="rounded-xl border border-soft-border bg-white p-5">
+            <p class="text-sm font-semibold text-charcoal mb-3">{c.extra_heading}</p>
+            <ul class="space-y-2">
+              {c.extra_items.map((item: string) => (
+                <li class="flex items-start gap-3">
+                  <Fragment set:html={extraSvg} />
+                  <span class="text-charcoal-mid text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mt-8">
+            <Button href="/yhteystiedot?palvelu=treenimatkat" class="w-full justify-center">{c.hero_cta}</Button>
+          </div>
+        </div>
+
+        <!-- Hotelli-kortti -->
+        <div class="rounded-2xl border border-soft-border bg-white p-8">
+          <p class="text-xs font-medium uppercase tracking-widest text-pink-dark mb-2">{c.hotel_eyebrow}</p>
+          <h2 class="font-display text-2xl font-semibold text-charcoal mb-1">{c.hotel_heading}</h2>
+          <p class="text-pink-dark mb-6">{'★'.repeat(c.hotel_stars)}</p>
+
+          {c.hotel_image && (
+            <div class="w-full h-56 rounded-2xl overflow-hidden mb-6">
+              <img
+                src={c.hotel_image}
+                alt="Sivota Retreat powered by Playitas – Kreikka"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          )}
+
+          <div class="space-y-4 text-charcoal-mid leading-relaxed text-sm">
+            <p>{c.hotel_text1}</p>
+            <p>{c.hotel_text2}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Esimerkki päivän ohjelmasta -->
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class:list={['grid grid-cols-1 gap-16 items-center', c.program_image && 'lg:grid-cols-2']}>
+        <div class:list={[!c.program_image && 'max-w-3xl']}>
+          <SectionHeader heading={c.program_heading} class="mb-6" />
+          <p class="text-charcoal-mid leading-relaxed">{c.program_text}</p>
+        </div>
+        {c.program_image && (
+          <div class="w-full h-[380px] rounded-3xl overflow-hidden shadow-warm">
+            <img
+              src={c.program_image}
+              alt="Treeniä Sivotassa – IloFit"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {c.gallery.length > 0 && (
+    <!-- Kuvagalleria -->
+    <section class="bg-white py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader heading={c.gallery_heading} centered class="mb-12" />
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {c.gallery.map((photo) => (
+            <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-warm">
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class:list={[c.gallery.length > 0 ? 'bg-off-white' : 'bg-white', 'py-24']}>
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
+      <p class="text-charcoal-mid mb-3">{c.cta_text}</p>
+      <p class="text-charcoal-mid mb-8">
+        Sähköposti: <a href={`mailto:${c.cta_email}`} class="text-pink-dark hover:underline">{c.cta_email}</a>
+      </p>
+      <Button href="/yhteystiedot?palvelu=treenimatkat" size="lg">{c.cta_button}</Button>
+    </div>
+  </section>
+
+</PageLayout>
