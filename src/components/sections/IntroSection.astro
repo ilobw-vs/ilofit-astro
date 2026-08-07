@@ -6,11 +6,23 @@ const c = {
   heading: 'Hei, olen Ilona',
   image: '/images/ilona.webp',
   paragraphs: [
-    'Olen Ilona, 48-vuotias personal trainer Turusta. Valmennan erityisesti 40+ naisia, jotka haluavat aloittaa treenaamisen tai saada lisää tehoa jo aloitettuun – oli tavoitteena painonpudotus, lihaskunto tai parempi jaksaminen arjessa.',
+    'Olen Ilona, 48-vuotias personal trainer Turusta. Valmennan erityisesti 40+ naisia, jotka haluavat aloittaa treenaamisen tai saada lisää tehoa harjoitteluun – oli tavoitteena painonpudotus, lihaskunto tai parempi jaksaminen arjessa.',
     'Tiedän itsekin, millaista on sovittaa treeni ruuhkavuosien arkeen. Kahden lapsen äitinä työn ja perheen yhteensovittaminen on tuttua – ja se, miten helposti oma hyvinvointi jää viimeiseksi. Olen samassa elämänvaiheessa kuin moni valmennettavani, ja tiedän omasta kokemuksesta, että keho toimii neljänkympin jälkeen eri tavalla kuin kaksikymppisenä, ja myös esivaihdevuosien tuomat muutokset ovat tulleet minulle tutuksi.',
-    'Juuri siksi treeni pitää rakentaa tähän ikään sopivaksi. Lihasmassan ylläpito, luuston vahvistaminen ja riittävä palautuminen ovat tärkeämpiä kuin koskaan. Suunnittelen ohjelman, joka sopii sinun arkeesi, kuntotasoosi ja tavoitteisiisi.',
-    'Valmennan lempeän jämäkästi – kuunnellen, kannustaen ja sopivasti haastaen. Ilman tiukkapipoisuutta ja ilman pikadieettejä. Aloittaa voi juuri siitä, missä nyt olet.',
-    'Vapaa-ajalla treenaan salilla ja pelaan padelia. Luonnossa liikkuminen ja jooga tuovat vastapainoa kiireiseen arkeen.',
+    'Juuri siksi treeni pitää rakentaa tähän ikään sopivaksi. Lihasmassan ylläpito, luuston vahvistaminen ja riittävä palautuminen ovat tärkeämpiä kuin koskaan. Suunnittelen ohjelman, joka sopii sinun arkeesi, kuntotasoosi ja tavoitteisiisi sekä olen tukena matkalla kohti tavoitteitasi.',
+    'Valmennan lempeän jämäkästi – kuunnellen, kannustaen ja sopivasti haastaen. Ilman tiukkapipoisuutta ja ilman pikadieettejä.',
+    'Liikunta on ollut osa elämääni lapsuudesta asti ja kilpavoimistelutaustani on luonut vahvan pohjan kehonhallinnalle ja liiketekniikalle. Nykyään kuntosaliharjoittelu, padel, jooga ja luonnossa liikkuminen pitävät minut hyvässä kunnossa.',
+  ],
+
+  // Sits after the story on purpose: the paragraphs earn the trust, this block
+  // backs it up. Also the one part of the intro a first-time visitor scans for,
+  // so it stays in the text column — the photo column is hidden on mobile.
+  credentials_heading: 'Koulutus',
+  credentials: [
+    { title: 'Personal trainer', provider: 'Trainer4You', year: '2019' },
+    { title: 'Toiminnallisen harjoittelun ohjaaja', provider: 'Spartan', year: '2021' },
+    { title: 'Mobility Coach', provider: 'Spartan', year: '2021' },
+    { title: 'Kahvakuulaohjaaja', provider: 'Spartan', year: '2022' },
+    { title: 'Ikääntyneiden VOITAS voima- ja tasapainoharjoitteluvalmentaja', provider: 'Turun kaupunki', year: '2025' },
   ],
 };
 ---
@@ -43,6 +55,20 @@ const c = {
         {c.paragraphs.map((p: string) => (
           <p class="text-charcoal-mid leading-relaxed text-md mb-6">{p}</p>
         ))}
+
+        <div class="mt-10 rounded-xl border border-soft-border bg-off-white p-6">
+          <p class="text-xs font-medium uppercase tracking-widest text-pink-dark mb-4">{c.credentials_heading}</p>
+          <ul class="space-y-3">
+            {c.credentials.map((item) => (
+              <li>
+                {/* Title on its own line — the VOITAS one is long enough to wrap
+                    badly if the provider sits beside it */}
+                <p class="text-sm font-medium text-charcoal leading-snug">{item.title}</p>
+                <p class="text-xs text-charcoal-mid mt-0.5">{item.provider} · {item.year}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   </div>
