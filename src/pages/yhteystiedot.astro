@@ -40,12 +40,19 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
             <div>
               <label class="block text-sm font-medium text-charcoal mb-1.5">Palvelu</label>
               <select id="service-select" name="service" class="w-full rounded-lg border border-soft-border bg-off-white px-4 py-3 text-sm text-charcoal focus:border-pink focus:outline-none focus:ring-2 focus:ring-pink/20 transition-colors">
+                {/* Labels and order follow the navigation, so the list a visitor
+                    picks from matches the one they browsed. Values stay as the
+                    page slugs — ?palvelu=pienryhmavalmennus and =treenimatkat are
+                    linked from service pages and must keep resolving. */}
                 <option value="">Valitse palvelu</option>
-                <option value="yksilovalmennus">Henkilökohtainen valmennus</option>
                 <option value="treeniohjelma">Treeniohjelma</option>
-                <option value="pienryhmavalmennus">Pienryhmävalmennus</option>
+                <option value="ilofit-kuukausivalmennus">IloFit kuukausivalmennus</option>
+                <option value="ilofit-valmennustapaaminen">IloFit valmennustapaaminen</option>
+                <option value="yksilovalmennus">Valmennus kuntosalilla</option>
+                <option value="pienryhmavalmennus">Ryhmävalmennus</option>
                 <option value="ulkotreenit">Ulkotreenit</option>
                 <option value="yrityspalvelut">Yrityspalvelut</option>
+                <option value="padel-performance">Padel Performance</option>
                 <option value="treenimatkat">Treenimatkat</option>
                 <option value="muu">Muu</option>
               </select>
@@ -135,15 +142,14 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 
 
 <script>
+  const sel = document.getElementById('service-select') as HTMLSelectElement | null;
+
   // Pre-select service from URL param e.g. ?palvelu=pienryhmavalmennus
   const params = new URLSearchParams(window.location.search);
   const palvelu = params.get('palvelu');
-  if (palvelu) {
-    const sel = document.getElementById('service-select') as HTMLSelectElement;
-    if (sel) {
-      const match = [...sel.options].find(o => o.value === palvelu);
-      if (match) sel.value = match.value;
-    }
+  if (palvelu && sel) {
+    const match = [...sel.options].find(o => o.value === palvelu);
+    if (match) sel.value = match.value;
   }
 
   const form = document.getElementById('contact-form') as HTMLFormElement;
@@ -158,7 +164,14 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
     success.classList.add('hidden');
     error.classList.add('hidden');
 
-    const data = new URLSearchParams(new FormData(form) as any).toString();
+    // Send the readable label rather than the option's slug, so the enquiry
+    // reads "Ryhmävalmennus" and not "pienryhmavalmennus". Swapped at send
+    // time rather than by changing the <select> or adding a field, so the
+    // form's field set stays exactly what Netlify already detected — same
+    // approach as /varaa. Left untouched when nothing is chosen.
+    const fd = new FormData(form);
+    if (sel && sel.value) fd.set('service', sel.options[sel.selectedIndex].text);
+    const data = new URLSearchParams(fd as any).toString();
 
     try {
       const res = await fetch('/', {

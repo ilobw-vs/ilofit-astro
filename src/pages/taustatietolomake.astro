@@ -52,10 +52,18 @@ const selectClass = 'w-full rounded-lg border border-soft-border bg-off-white px
           <div>
             <label class={labelClass}>Mistä palvelusta olet kiinnostunut?</label>
             <select name="palvelu" id="palvelu-select" class={selectClass}>
+              {/* Values are readable rather than slugs: Web3Forms emails the
+                  submitted value verbatim. "Treeniohjelma" must stay, since the
+                  prefill below substring-matches ?palvelu=treeniohjelma from the
+                  treeniohjelma page. Deliberately narrower than the /yhteystiedot
+                  list — this form asks about goals and injuries, which suits
+                  individual coaching, not treenimatkat or yrityspalvelut. */}
               <option value="">Valitse palvelu</option>
               <option value="Treeniohjelma">Treeniohjelma</option>
-              <option value="Yksilövalmennus">Yksilövalmennus</option>
-              <option value="Verkkovalmennus">Verkkovalmennus</option>
+              <option value="IloFit kuukausivalmennus">IloFit kuukausivalmennus</option>
+              <option value="IloFit valmennustapaaminen">IloFit valmennustapaaminen</option>
+              <option value="Valmennus kuntosalilla">Valmennus kuntosalilla</option>
+              <option value="Ryhmävalmennus">Ryhmävalmennus</option>
               <option value="En ole vielä varma">En ole vielä varma</option>
             </select>
           </div>
