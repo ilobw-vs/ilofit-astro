@@ -3,11 +3,9 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 import SectionHeader from '../../../components/ui/SectionHeader.astro';
 import Button from '../../../components/ui/Button.astro';
 
-// The three scenery shots are landscape, so they fill the wide slots (hero,
-// hotel, programme) rather than the gallery, whose cells are 3:4 portrait.
-// The gallery stays empty until there are training photos to put in it —
-// every image block below renders conditionally, so the page reads as
-// finished either way.
+// Landscape shots fill the wide slots (hero, hotel, programme); the 3:4
+// portraits go in the gallery. Every image block still renders conditionally,
+// so the page holds together if any of them is cleared.
 const c = {
   hero_eyebrow: 'Treenimatkat',
   hero_status: 'Matka on jo toteutunut',
@@ -42,13 +40,22 @@ const c = {
   ],
 
   program_heading: 'Näin päivät kuluivat',
-  // Grounded in the trip description only. Worth enriching with what actually
-  // happened — the Rodos page's version reads better because it is specific.
-  program_text: 'Viikon aikana pidettiin viisi omaa ohjattua ryhmätreeniä, joita varten hotellilta oli varattu treenialueet vain meidän ryhmämme käyttöön. Niiden lisäksi käytettävissä olivat kaikki sporttihotellin omat treenit treenikalenterin mukaan. Päiviin jäi hyvin tilaa myös levolle, uinnille ja Sivotan maisemien tutkimiselle.',
-  program_image: '/images/sivota-kentat.webp' as string | null,
+  program_text: 'Viikon aikana pidettiin 2-3 ohjattua treeniä per päivä ja yksi päivä oli täysin vapaa. Niiden lisäksi käytettävissä olivat kaikki sporttihotellin omat treenit treenikalenterin mukaan. Päiviin jäi hyvin tilaa myös levolle, uinnille ja Sivotan maisemien tutkimiselle.',
+  // The dock yoga shot rather than the courts aerial: it shows the group
+  // actually training, which is what this section is about, and it's landscape
+  // so the wide slot fits it uncropped. The aerial still serves the hub card.
+  program_image: '/images/sivota-jooga-laituri.webp' as string | null,
 
   gallery_heading: 'Kuvia matkalta',
-  gallery: [] as { src: string; alt: string }[],
+  // Ordered as a day rather than by subject — treeni, allas, padel, illallinen,
+  // auringonlasku.
+  gallery: [
+    { src: '/images/sivota-ulkotreeni.webp', alt: 'Kahvakuulatreeniä hotellin ulkoilmatreenialueella' },
+    { src: '/images/sivota-allastreeni.webp', alt: 'Allastreeniä hotellin uima-altaassa' },
+    { src: '/images/sivota-padel.webp', alt: 'Padelia hotellin kentällä' },
+    { src: '/images/sivota-illallinen.webp', alt: 'IloFit-ryhmän illallispöytä merinäköalalla' },
+    { src: '/images/sivota-auringonlasku.webp', alt: 'Ryhmäkuva Sivotan kyltin edessä auringonlaskussa' },
+  ] as { src: string; alt: string }[],
 
   cta_eyebrow: 'Seuraava matka',
   cta_heading: 'Kiinnostaako seuraava treenimatka?',
@@ -196,7 +203,9 @@ const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
     <section class="bg-white py-24">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader heading={c.gallery_heading} centered class="mb-12" />
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* Five across on desktop rather than the Rodos page's four — five
+            photos in a four-column grid leaves one stranded on its own row */}
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
           {c.gallery.map((photo) => (
             <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-warm">
               <img
