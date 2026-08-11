@@ -1,15 +1,18 @@
 ---
 const year = new Date().getFullYear();
 
+// Labels and order follow Navbar and ServicesGrid — keep the three in sync when
+// a service is renamed or added.
 const services = [
-  { label: 'Yksilövalmennus – Ole.Fit Manhattan', href: '/palvelut/yksilovalmennus' },
-  { label: 'Yksilövalmennus – asiakkaan tiloissa', href: '/palvelut/yksilovalmennus-asiakkaan-tiloissa' },
+  { label: 'IloFit kuukausivalmennus', href: '/palvelut/yksilovalmennus-asiakkaan-tiloissa' },
+  { label: 'IloFit valmennustapaaminen', href: '/palvelut/yksilovalmennus-valmennustapaaminen' },
+  { label: 'Valmennus kuntosalilla', href: '/palvelut/yksilovalmennus' },
   { label: 'Ryhmävalmennus', href: '/palvelut/pienryhmavalmennus' },
   { label: 'Ulkotreenit', href: '/palvelut/ulkotreenit' },
-  { label: 'Treeniohjelmat', href: '/palvelut/treeniohjelma' },
   { label: 'Yrityspalvelut', href: '/palvelut/yrityspalvelut' },
-  { label: 'Treenimatkat', href: '/palvelut/treenimatkat' },
   { label: 'Padel Performance', href: '/palvelut/padel-performance' },
+  { label: 'Treeniohjelmat', href: '/palvelut/treeniohjelma' },
+  { label: 'Treenimatkat', href: '/palvelut/treenimatkat' },
 ];
 
 const company = [
