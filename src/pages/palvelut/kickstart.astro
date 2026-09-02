@@ -1,0 +1,156 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Button from '../../components/ui/Button.astro';
+
+/* Sivun runko on kopioitu IloFit kuukausivalmennus -sivulta. Kickstartin omat
+   tiedot (hinta 395 €, viisi valmennustapaamista, paikka Boost / asiakkaan
+   tilat, sisältää-lista, hero-tekstit ja ristiinlinkitys) on päivitetty.
+   Vielä kuukausivalmennukselta perittyä ja tarkistamatonta: hero-kuva. */
+const c = {
+  hero_eyebrow: 'IloFit Kickstart',
+  hero_heading: 'Kickstart',
+  hero_text1: 'Hyvä alku voimaharjoitteluun: oikeat tekniikat, oma ohjelma ja vauhti päälle.',
+  hero_text2: 'Saat räätälöidyn treeniohjelman, ruokavaliosuunnitelman ja viisi valmennustapaamista. Treenataan Boostilla tai sinulle sopivassa paikassa.',
+  hero_text3: 'Olitpa aloittamassa ensimmäistä kertaa tai palaamassa tauolta – aloitetaan siitä, missä nyt olet.',
+  hero_cta_primary: 'Varaa ilmainen konsultaatio',
+  hero_image: '/images/ulkotreenit-hero.webp',
+
+  prices_heading: 'Hinta ja sisältö',
+  prices_vat: 'Valmennustapaamiset Boostilla tai asiakkaan tiloissa. Salilla treenatessa asiakas maksaa itse kuntosalin käyntimaksun tai jäsenyyden.',
+  price_groups: [
+    {
+      heading: 'IloFit Kickstart',
+      note: 'Valmennukseen sisältyy viisi valmennustapaamista, jotka käytetään enintään kahden kuukauden aikana.',
+      note2: 'Hinta sisältää arvonlisäveron.',
+      rows: [
+        { label: 'Kickstart', price: '395 €' },
+      ],
+    },
+  ],
+
+  included_heading: 'Kickstart sisältää',
+  included: [
+    'Alkuhaastattelu, jossa kartoitetaan henkilökohtaiset toiveet ja tavoitteet sekä huomioidaan rajoitteet.',
+    'Yksilöllinen, juuri sinulle räätälöity treeniohjelma',
+    'Ruokavaliosuunnitelma tukemaan tavoitteisiin pääsyä',
+    'Mahdollisten kehonkoostumus- ja muiden mittaustulosten hyödyntäminen ohjelmassa',
+    'Helppokäyttöinen sovellus, josta ohjelmaa ja tavoitteiden edistymistä voi seurata',
+  ],
+
+  /* Ohjaa eteenpäin kuukausivalmennukseen, jos Kickstart jää liian lyhyeksi */
+  crosslink_text: 'Haluatko jatkuvaa tukea, räätälöidyn ohjelman ja ruokavaliosuunnitelman?',
+  crosslink_label: 'Tutustu IloFit kuukausivalmennukseen',
+  crosslink_href: '/palvelut/yksilovalmennus-asiakkaan-tiloissa',
+
+  cta_eyebrow: 'Aloitetaan',
+  cta_heading: 'Valmis aloittamaan?',
+  cta_text: 'Ilmainen alkukartoitus on maksuton ja sitoumukseton.',
+  cta_button: 'Varaa ilmainen konsultaatio',
+};
+
+const [monthlyGroup] = c.price_groups;
+
+const checkSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+---
+
+<PageLayout
+  title="IloFit Kickstart | Personal Trainer Turku"
+  description="Räätälöity treeniohjelma, ruokavaliosuunnitelma ja mittaustulosten hyödyntäminen. Valmennus sovitussa paikassa Turun alueella."
+>
+
+  <section class="bg-off-white pt-36 pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-xs font-medium uppercase tracking-widest text-pink-dark mb-3">{c.hero_eyebrow}</p>
+          <h1 class="font-display text-5xl font-semibold text-charcoal sm:text-6xl mb-6">{c.hero_heading}</h1>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text1}</p>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text2}</p>
+          {/* Puhuttelee erikseen tauolta palaavia, joita "aloittelija" ei kuvaa */}
+          <p class="text-lg text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text3}</p>
+          <div class="flex flex-col items-start gap-3">
+            <Button href="/varaa?palvelu=ilofit-kickstart" size="lg">{c.hero_cta_primary}</Button>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-warm">
+            <img src={c.hero_image} alt="IloFit Kickstart -valmennusta Turussa" class="w-full h-full object-cover object-center grayscale" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* scroll-mt clears the fixed 80px navbar when linked to via #hinnat */}
+  <section id="hinnat" class="scroll-mt-24 bg-white py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+      <SectionHeader heading={c.prices_heading} class="mb-4" />
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+        {/* Left: monthly contracts — primary offering, carries the CTA */}
+        <div class="rounded-2xl border border-soft-border bg-off-white p-8">
+          <p class="text-charcoal text-lg font-semibold mb-2">{monthlyGroup.heading}</p>
+          {monthlyGroup.note && <p class="text-charcoal-mid text-sm mb-4">{monthlyGroup.note}</p>}
+          {monthlyGroup.note2 && <p class="text-charcoal-mid text-sm mb-4">{monthlyGroup.note2}</p>}
+          <div class="space-y-3">
+            {monthlyGroup.rows.map((row) => (
+              <div class="flex flex-col gap-1 rounded-xl border border-soft-border bg-white p-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                <span class="text-sm font-medium text-charcoal">{row.label}</span>
+                <span class="shrink-0 font-semibold text-pink-dark">{row.price}</span>
+              </div>
+            ))}
+          </div>
+
+          <p class="text-charcoal-mid text-sm py-8">{c.prices_vat}</p>
+
+          <div class="mb-8 rounded-xl border border-pink/30 p-4 max-w-md">
+            <p class="text-charcoal-mid text-sm mb-2">Huom: myös liikuntaedut käyvät!</p>
+            <div class="mt-2 flex flex-wrap gap-2">
+              <span class="rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">Smartum</span>
+              <span class="rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">E-passi</span>
+              <span class="rounded-full bg-pink-light px-3 py-1 text-xs font-medium text-charcoal">Edenred</span>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <Button href="/varaa?palvelu=ilofit-kickstart" class="w-full justify-center">Tee varaus tästä</Button>
+          </div>
+        </div>
+
+        <!-- Sisältää -->
+        <div class="rounded-2xl border border-soft-border bg-white p-8">
+          <SectionHeader heading={c.included_heading} class="mb-8" />
+          <ul class="space-y-4">
+            {c.included.map((item) => (
+              <li class="flex items-start gap-3">
+                <Fragment set:html={checkSvg} />
+                <span class="text-charcoal-mid">{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Catches the visitor who is not ready for a monthly commitment */}
+          <div class="mt-8 rounded-xl border border-soft-border bg-off-white p-5">
+            <p class="text-sm text-charcoal-mid mb-3 leading-relaxed">{c.crosslink_text}</p>
+            <a href={c.crosslink_href} class="text-sm font-medium text-pink-dark transition-colors hover:text-charcoal">
+              {c.crosslink_label} →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-off-white py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeader eyebrow={c.cta_eyebrow} heading={c.cta_heading} centered class="mb-6" />
+      <p class="text-charcoal-mid mb-8">{c.cta_text}</p>
+      <Button href="/varaa?palvelu=ilofit-kickstart" size="lg">{c.cta_button}</Button>
+    </div>
+  </section>
+
+</PageLayout>
