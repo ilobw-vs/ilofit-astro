@@ -58,10 +58,10 @@ const c = {
   ] as { src: string; alt: string }[],
 
   cta_eyebrow: 'Seuraava matka',
-  cta_heading: 'Kiinnostaako seuraava treenimatka?',
-  cta_text: 'Seuraavan matkan ajankohta ja kohde tarkentuvat myöhemmin. Ole rohkeasti yhteydessä, niin kerron heti kun uusi matka on suunnitteilla. Matkat järjestetään Apollomatkojen kanssa ja ovat heidän yleisten matkanjärjestäjäehtojensa alaisia.',
+  cta_heading: 'Seuraava matka: Sivota 5/2027',
+  cta_text: 'Seuraava treeni- ja hyvinvointiloma suuntaa Sivotaan 10.–17.5.2027 ja ilmoittautuminen on auki. Matkat järjestetään Apollomatkojen kanssa ja ovat heidän yleisten matkanjärjestäjäehtojensa alaisia.',
   cta_email: 'ilona@ilofit.com',
-  cta_button: 'Ota yhteyttä',
+  cta_button: 'Katso seuraavan matkan tiedot',
 };
 
 const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A0B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
@@ -230,7 +230,7 @@ const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
       <p class="text-charcoal-mid mb-8">
         Sähköposti: <a href={`mailto:${c.cta_email}`} class="text-pink-dark hover:underline">{c.cta_email}</a>
       </p>
-      <Button href="/yhteystiedot?palvelu=treenimatkat" size="lg">{c.cta_button}</Button>
+      <Button href="/palvelut/treenimatkat" size="lg">{c.cta_button}</Button>
     </div>
   </section>
 
