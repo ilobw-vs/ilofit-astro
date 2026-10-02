@@ -13,7 +13,8 @@ const c = {
   hero_eyebrow: 'Treenimatkat',
   hero_status: 'Ilmoittautuminen auki',
   hero_heading: 'Treeni- ja hyvinvointiloma Sivotassa 10.–17.5.2027',
-  hero_text: 'Toukokuussa 2027 suuntaamme jälleen Kreikan Sivotaan. Pieni satamakaupunki Kreikan mantereella vehreiden vuorien ja kristallinkirkkaan meren ympäröimänä sopii niille, jotka haluavat lomaltaan muutakin kuin aurinkoa ja uimista. Treenit skaalataan kuntotason mukaan, eikä osallistuminen yhteisiin treeneihin ole pakollista.',
+  hero_text: 'Lähde viettämään aktiivista treeni- ja hyvinvointilomaa upeaan Kreikan Sivotaan toukokuussa 2027. Pieni satamakaupunki Kreikan mantereella vehreiden vuorien ja kristallinkirkkaan meren ympäröimänä sopii niille, jotka haluavat lomaltaan muutakin kuin aurinkoa ja uimista.',
+  hero_text2: 'Luvassa on sopivasti treeniä sekä rentoutumista, maukasta ja terveellistä Välimeren keittiön ruokaa sekä paljon erilaisia aktiviteetteja unohtamatta omaa aikaa esim. altaalla löhöillen tai retkeillen.',
   hero_cta: 'Ilmoittaudu matkalle',
   hero_image: '/images/sivota-lahti-ilmasta.webp' as string | null,
 
@@ -49,7 +50,8 @@ const c = {
   hotel_image: '/images/sivota-allasalue.webp' as string | null,
 
   program_heading: 'Näin päivät kuluvat',
-  program_text: 'Viikon aikana treenataan oman ryhmän kesken noin kymmenen kertaa. Niiden lisäksi käytettävissä ovat sporttihotellin omat treenit ja aktiviteetit treenikalenterin mukaan. Päiviin jää hyvin tilaa myös levolle, uinnille ja Sivotan maisemien tutkimiselle.',
+  program_text: 'Viikko sisältää monipuoliset treenit oman ryhmän kesken kaksi kertaa päivässä ja treenit skaalautuvat kaikille kuntotasoille.',
+  program_text2: 'Aamulla n. klo 10 tehdään päivän rankempi treeni kuten voimatreeni tai Hyrox-tyyppinen treeni. Sen jälkeen on lounas sekä omaa aikaa rentoutumiseen tai muihin aktiviteetteihin. Ennen illallista tehdään toinen, rauhallisempi treeni kuten pilates tai jooga / kehonhuolto. Illallinen nautitaan yhdessä ryhmän kanssa hotellin ravintolassa.',
   program_image: '/images/sivota-ryhmatreeni.webp' as string | null,
 
   gallery_heading: 'Kuvia edelliseltä Sivotan matkalta',
@@ -116,7 +118,9 @@ const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
             </span>
           </p>
           <h1 class="font-display text-4xl font-semibold text-charcoal sm:text-5xl mb-6 leading-tight">{c.hero_heading}</h1>
-          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text}</p>
+          <p class="text-xl text-charcoal-mid max-w-xl leading-relaxed mb-6">{c.hero_text}</p>
+          {/* Toinen kappale astetta pienempi: ensimmäinen on kutsu, tämä kertoo mitä viikko pitää sisällään */}
+          <p class="text-lg text-charcoal-mid max-w-xl leading-relaxed mb-8">{c.hero_text2}</p>
           <div class="flex flex-wrap items-center gap-4">
             <Button href={c.signup_href} external size="lg">{c.hero_cta}</Button>
           </div>
@@ -218,7 +222,8 @@ const extraSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
       <div class:list={['grid grid-cols-1 gap-16 items-center', c.program_image && 'lg:grid-cols-2']}>
         <div class:list={[!c.program_image && 'max-w-3xl']}>
           <SectionHeader heading={c.program_heading} class="mb-6" />
-          <p class="text-charcoal-mid leading-relaxed">{c.program_text}</p>
+          <p class="text-charcoal-mid leading-relaxed mb-4">{c.program_text}</p>
+          <p class="text-charcoal-mid leading-relaxed">{c.program_text2}</p>
         </div>
         {c.program_image && (
           <div class="w-full h-[380px] rounded-3xl overflow-hidden shadow-warm">
