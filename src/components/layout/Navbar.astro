@@ -26,8 +26,11 @@ const valmennus_services = [
   { label: 'Padel Performance', href: '/palvelut/padel-performance' },
 ];
 
+// Rendered last, just before the CTA, on desktop and mobile
 const training_trips = [
   { label: 'Treenimatkat', href: '/palvelut/treenimatkat' },
+  // Not "Suositukset" — that also reads as client references/testimonials
+  { label: 'Suosittelen', href: '/suosittelen' },
 ];
 
 const pathname = Astro.url.pathname;

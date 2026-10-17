@@ -1,0 +1,116 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+
+// Every link on this page is a commercial affiliate link. Each card carries its
+// own "Mainoslinkki" badge, right next to the link — that is the marking, so it
+// must stay visible and must not be removed from a card. Links use
+// rel="sponsored" so search engines don't read them as endorsements.
+//
+// To add a recommendation: append to `services` or `products`. Sections with
+// no entries don't render, so the products block appears once it has content.
+// `why` is optional — Ilona's own reason for recommending, shown if set.
+// `logo` is optional — the partner's logo replaces the text name when set.
+// Logos live in public/images/kumppanit/, transparent background.
+
+type Recommendation = {
+  name: string;
+  partner: string;
+  logo?: string;
+  blurb: string;
+  why?: string;
+  href: string;
+  cta: string;
+};
+
+const c = {
+  eyebrow: 'Suosittelen',
+  heading: 'Näitä suosittelen',
+  intro: 'Tälle sivulle olen koonnut palveluita ja tuotteita, joista uskon olevan hyötyä myös sinulle.',
+
+  services_heading: 'Terveys ja testaus',
+  services: [
+    {
+      name: 'Naisen 360° terveysanalyysi',
+      partner: 'Viven',
+      logo: '/images/kumppanit/viven.webp',
+      blurb: 'Laaja verikoepaketti naisille: 70 mittaria, myös hormonit. Tulokset yhdistetään oireisiisi ja elintapoihisi, ja lääkäri kommentoi ne ja antaa jatkosuositukset. Näytteenottopisteitä on ympäri Suomen.',
+      href: 'https://id.viven.fi/t/t?a=2070523708&as=2057669310&t=2&tk=1',
+      cta: 'Siirry Viveniin',
+    },
+    {
+      name: 'Laboratoriopaketit',
+      partner: 'Puhti',
+      logo: '/images/kumppanit/puhti.webp',
+      blurb: 'Laboratoriotutkimuksia ilman lääkärin lähetettä. Voit valita valmiin paketin, esimerkiksi liikkujille suunnatun, tai koota oman kokonaisuuden yksittäisistä tutkimuksista. Tarjolla on myös kehonmittauksia. Tulokset näet selkeästi verkossa.',
+      href: 'https://at.puhti.fi/t/t?a=1299881114&as=2057669310&t=2&tk=1',
+      cta: 'Siirry Puhtiin',
+    },
+  ] as Recommendation[],
+
+  products_heading: 'Treenivälineet ja tuotteet',
+  products: [] as Recommendation[],
+};
+
+const outboundSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M7 17L17 7"/><polyline points="7 7 17 7 17 17"/></svg>`;
+
+const sections = [
+  { heading: c.services_heading, items: c.services },
+  { heading: c.products_heading, items: c.products },
+].filter((s) => s.items.length > 0);
+---
+
+<PageLayout
+  title="Suosittelen | IloFit — Personal Trainer Turku"
+  description="Personal trainer Ilona Salomäen suosittelemat terveys- ja laboratoriopalvelut sekä treenituotteet."
+>
+
+  <!-- Hero -->
+  <section class="bg-off-white pt-36 pb-16">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-medium uppercase tracking-widest text-pink-dark mb-3">{c.eyebrow}</p>
+      <h1 class="font-display text-4xl font-semibold text-charcoal sm:text-5xl mb-6 leading-tight">{c.heading}</h1>
+      <p class="text-xl text-charcoal-mid leading-relaxed">{c.intro}</p>
+    </div>
+  </section>
+
+  {sections.map((section, i) => (
+    <section class:list={[i % 2 === 0 ? 'bg-white' : 'bg-off-white', 'py-20']}>
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader heading={section.heading} class="mb-10" />
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {section.items.map((item) => (
+            <a
+              href={item.href}
+              target="_blank"
+              rel="sponsored noopener"
+              class="group flex flex-col rounded-xl border border-soft-border bg-white p-6 shadow-warm transition-all duration-300 hover:shadow-warm-md hover:-translate-y-1"
+            >
+              {/* The ad marking — sits next to the link itself, so keep it on every card */}
+              <div class="mb-4 flex items-center justify-between gap-3">
+                {item.logo ? (
+                  <img src={item.logo} alt={item.partner} class="h-8 w-auto" />
+                ) : (
+                  <span class="text-xs font-medium uppercase tracking-widest text-pink-dark">{item.partner}</span>
+                )}
+                <span class="flex-shrink-0 rounded bg-charcoal px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
+                  Mainoslinkki
+                </span>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-charcoal mb-3 leading-snug">{item.name}</h3>
+              <p class="text-sm text-charcoal-mid leading-relaxed mb-4">{item.blurb}</p>
+              {item.why && (
+                <p class="text-sm text-charcoal leading-relaxed mb-4 border-l-2 border-pink pl-3 italic">{item.why}</p>
+              )}
+              <span class="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-medium text-pink-dark transition-colors group-hover:text-charcoal">
+                {item.cta}
+                <Fragment set:html={outboundSvg} />
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+</PageLayout>
