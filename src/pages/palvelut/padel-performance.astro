@@ -27,6 +27,14 @@ const c = {
     'Kestävyys',
   ],
 
+  // Shown under the benefits list — the padel-specific subset of Ilona's
+  // qualifications. The full list lives in IntroSection on the homepage.
+  coach_heading: 'Ohjaajana Ilona',
+  coach_credentials: [
+    { title: 'Padelohjaaja taso 1', provider: 'Suomen Padelliitto', year: '2026' },
+    { title: 'Physical Coaching for padel', provider: 'PadelMBA Academy', year: '2026' },
+  ],
+
   cta_eyebrow: 'Tule mukaan',
   cta_heading: 'Varaa paikkasi Padel Performance -tunnille',
   cta_text: 'Tunnit järjestetään Boost Sports Clubilla. Varaukset tehdään Boostin omassa varausjärjestelmässä.',
@@ -89,6 +97,18 @@ const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" st
               </li>
             ))}
           </ul>
+
+          <div class="mt-8 border-t border-soft-border pt-6">
+            <p class="text-xs font-medium uppercase tracking-widest text-pink-dark mb-4">{c.coach_heading}</p>
+            <ul class="space-y-3">
+              {c.coach_credentials.map((item) => (
+                <li>
+                  <p class="text-sm font-medium text-charcoal leading-snug">{item.title}</p>
+                  <p class="text-xs text-charcoal-mid mt-0.5">{item.provider} · {item.year}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
       </div>

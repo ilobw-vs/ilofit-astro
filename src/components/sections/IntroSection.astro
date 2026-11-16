@@ -23,6 +23,8 @@ const c = {
     { title: 'Mobility Coach', provider: 'Spartan', year: '2021' },
     { title: 'Kahvakuulaohjaaja', provider: 'Spartan', year: '2022' },
     { title: 'Ikääntyneiden VOITAS voima- ja tasapainoharjoitteluvalmentaja', provider: 'Turun kaupunki', year: '2025' },
+    { title: 'Padelohjaaja taso 1', provider: 'Suomen Padelliitto', year: '2026' },
+    { title: 'Physical Coaching for padel', provider: 'PadelMBA Academy', year: '2026' },
   ],
 };
 ---
@@ -64,7 +66,7 @@ const c = {
                 {/* Title on its own line — the VOITAS one is long enough to wrap
                     badly if the provider sits beside it */}
                 <p class="text-sm font-medium text-charcoal leading-snug">{item.title}</p>
-                <p class="text-xs text-charcoal-mid mt-0.5">{item.provider} · {item.year}</p>
+                <p class="text-xs text-charcoal-mid mt-0.5">{item.provider}{item.year && ` · ${item.year}`}</p>
               </li>
             ))}
           </ul>
