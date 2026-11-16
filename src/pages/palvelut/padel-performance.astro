@@ -12,7 +12,11 @@ const c = {
   hero_cta: 'Varaa nyt',
   // Booking is handled by Boost's own Matchi system, not by IloFit
   booking_url: 'https://www.matchi.se/facilities/Boost?lang=fi?date=&sport=#ClassActivity-149127',
-  hero_image: '/images/small_groups.webp',
+  // A real Padel Performance class at Boost — reaction drill with tennis balls,
+  // TRX rows behind. Near-square, so the wide hero box crops top and bottom.
+  // Anchored to the bottom edge: the second ball sits at ~95% height and any
+  // higher anchor cuts it off. What's lost is ceiling.
+  hero_image: '/images/padel-performance-boost.webp',
 
   price_heading: 'Hinta',
   price: '9,90 €',
@@ -66,7 +70,7 @@ const checkSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" st
         </div>
         <div class="relative">
           <div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-warm">
-            <img src={c.hero_image} alt="Padel Performance -kiertoharjoittelu Boost Sports Clubilla – IloFit" class="w-full h-full object-cover object-center grayscale" />
+            <img src={c.hero_image} alt="Padel Performance -kiertoharjoittelu Boost Sports Clubilla – IloFit" class="w-full h-full object-cover object-bottom" />
           </div>
         </div>
       </div>
